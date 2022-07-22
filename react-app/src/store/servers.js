@@ -26,7 +26,7 @@ const remove = serverId => ({
 })
 
 export const loadServers = () => async dispatch => {
-  const res = await csrfFetch(`/api/servers`);
+  const res = await fetch(`/api/servers`);
 
   if (res.ok) {
     const list = await res.json();
@@ -35,7 +35,7 @@ export const loadServers = () => async dispatch => {
 }
 
 export const createServer = payload => async dispatch => {
-  const res = await csrfFetch(`/api/servers`, {
+  const res = await fetch(`/api/servers`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
