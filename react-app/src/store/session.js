@@ -24,26 +24,31 @@ export const authenticate = () => async (dispatch) => {
     if (data.errors) {
       return;
     }
-  
+
     dispatch(setUser(data));
   }
 }
 
-export const login = (email, password) => async (dispatch) => {
+export const login = (credential, password) => async (dispatch) => {
+  console.log('hitting login thunk')
+  console.log('credential', credential)
+  console.log('password', password)
   const response = await fetch('/api/auth/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      email,
+      credential,
       password
     })
   });
-  
-  
+
+  console.log('response', response)
+
   if (response.ok) {
     const data = await response.json();
+    console.log('data', data)
     dispatch(setUser(data))
     return null;
   } else if (response.status < 500) {
@@ -82,7 +87,7 @@ export const signUp = (username, email, password) => async (dispatch) => {
       password,
     }),
   });
-  
+
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data))

@@ -6,17 +6,26 @@ from app.models import User
 
 def user_exists(form, field):
     # Checking if user exists
-    email = field.data
-    user = User.query.filter(User.email == email).first()
+    email_username = field.data
+    user_email = User.query.filter(User.email == email_username).first()
+    user_username = User.query.filter(User.username == email_username).first()
+    user = user_email if user_email else user_username
+    print('user_email', user_email)
+    print('user_username', user_username)
+    print('user', user)
     if not user:
-        raise ValidationError('Email provided not found.')
+        raise ValidationError('Invalid credentials.')
 
 
 def password_matches(form, field):
     # Checking if password matches
+    print('hitting backend login_form.py')
     password = field.data
-    email = form.data['email']
-    user = User.query.filter(User.email == email).first()
+    # email = form.data['email']
+    # user = User.query.filter(User.email == email).first()
+    email_username = form.data['email_username']
+    user = User.query.filter(User.email == email_username).first()
+#  or User.username == email_username
     if not user:
         raise ValidationError('No such user exists.')
     if not user.check_password(password):
@@ -24,6 +33,6 @@ def password_matches(form, field):
 
 
 class LoginForm(FlaskForm):
-    email = StringField('email', validators=[DataRequired(), user_exists])
+    email_username = StringField('Email/Username', validators=[DataRequired(), user_exists])
     password = StringField('password', validators=[
                            DataRequired(), password_matches])

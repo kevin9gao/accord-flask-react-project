@@ -33,14 +33,22 @@ def login():
     """
     Logs a user in
     """
+    print('hitting auth_routes.py')
     form = LoginForm()
     # Get the csrf_token from the request cookie and put it into the
     # form manually to validate_on_submit can be used
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         # Add the user to the session, we are logged in!
-        user = User.query.filter(User.email == form.data['email']).first()
+        print('validated on submit')
+        user_email = User.query.filter(User.email == form.data['email_username']).first()
+        user_username = User.query.filter(User.username == form.data['email_username']).first()
+        user = user_email if user_email else user_username
+        print('user_email', user_email)
+        print('user_username', user_username)
+        print('user', user)
         login_user(user)
+        print('user.to_dict', user.to_dict)
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
