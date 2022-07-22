@@ -1,14 +1,20 @@
 from flask import Blueprint
-from .models import Server
+from .models import Server, db
+from .forms import ServerForm
 
 
 server_routes = Blueprint('servers', __name__)
 
-@server_routes("/servers")
+@server_routes.route("/servers")
 def all_servers():
     servers = Server.query.all()
-    return servers.to_dict()
+    return {'servers': [server.to_dict() for server in servers]}
 
-@server_routes("/servers", methods=['POST'])
+@server_routes.route("/servers", methods=['POST'])
 def create_server():
-    server = 
+    form = ServerForm()
+    if form.validate_on_submit():
+        server = Server(name=form.data['name'])
+        db.session.add(server)
+        db.session.commit()
+        return server.to_dict()
