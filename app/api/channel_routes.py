@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from app.models import channel, db
-from app.forms import channelForm, EditchannelForm
+from app.forms import ChannelForm, EditChannelForm
 
 
 channel_routes = Blueprint('channels', __name__)

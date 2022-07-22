@@ -16,6 +16,7 @@ class Server(db.Model):
     owner_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
     owner = db.relationship("User", back_populates="servers_owned")
+    channels = db.relationship("Channel", back_populates="server")
     server_members = db.relationship("User",
         secondary=members,
         back_populates='servers_joined',
