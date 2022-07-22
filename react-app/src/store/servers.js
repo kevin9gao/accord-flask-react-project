@@ -1,4 +1,3 @@
-import { csrfFetch } from './csrf';
 
 const LOAD = '/servers/LOAD';
 const ADD = '/servers/ADD';
