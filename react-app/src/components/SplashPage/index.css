@@ -1,0 +1,15 @@
+.splash-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    background-image: url('https://free4kwallpapers.com/uploads/originals/2022/03/28/anime-landscape-for-desktop-scenery-clouds-stars-buildings-wallpaper.jpg');
+    /* background-image: url('../../../../background-img.jpg'); */
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    left: 0;
+    color: white;
+    text-shadow: 4px 4px 4px black;
+}
