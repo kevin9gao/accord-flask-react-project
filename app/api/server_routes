@@ -1,0 +1,14 @@
+from flask import Blueprint
+from .models import Server
+
+
+server_routes = Blueprint('servers', __name__)
+
+@server_routes("/servers")
+def all_servers():
+    servers = Server.query.all()
+    return servers.to_dict()
+
+@server_routes("/servers", methods=['POST'])
+def create_server():
+    server = 
