@@ -3,7 +3,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 
-const NavBar = () => {
+const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
   return (
     <nav>
       <ul>
@@ -27,9 +27,12 @@ const NavBar = () => {
             Users
           </NavLink>
         </li>
-        <li>
-          <LogoutButton />
-        </li>
+        <h1>{isLoggedIn ? 'True' : 'False'}</h1>
+        {isLoggedIn && (
+          <li>
+            <LogoutButton setIsLoggedIn={setIsLoggedIn} />
+          </li>
+        )}
       </ul>
     </nav>
   );

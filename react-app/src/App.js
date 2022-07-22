@@ -13,12 +13,16 @@ import SplashPage from './components/SplashPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
     (async() => {
-      await dispatch(authenticate());
+      let user = await dispatch(authenticate());
       setLoaded(true);
+      if (user) {
+        setIsLoggedIn(true)
+      } else setIsLoggedIn(false);
     })();
   }, [dispatch]);
 
@@ -28,7 +32,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+      <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
       <Switch>
         <Route path='/' exact={true}>
           <SplashPage />
