@@ -1,0 +1,39 @@
+.footer {
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    left: 0;
+    color: white;
+}
+
+.footer>ul {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.footer>ul>div>li {
+    text-decoration: none;
+    list-style: none;
+}
+
+.fa-github-alt,
+.fa-linkedin {
+    letter-spacing: 0.05em;
+    color: white;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.fa-github-alt:hover,
+.fa-linkedin:hover {
+    letter-spacing: 0.05em;
+    color: white;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
