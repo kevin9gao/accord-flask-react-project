@@ -1,6 +1,6 @@
 from flask import Blueprint, request
-from .models import Server, db
-from .forms import ServerForm, EditServerForm
+from app.models import Server, db
+from app.forms import ServerForm, EditServerForm
 
 
 server_routes = Blueprint('servers', __name__)
