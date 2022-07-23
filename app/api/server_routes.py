@@ -7,7 +7,9 @@ server_routes = Blueprint('servers', __name__)
 
 @server_routes.route("/")
 def all_servers():
+    # print("HITTING BACKEND ROUTE")
     servers = Server.query.all()
+    # print("backend ROUTE", servers)
     return {'servers': [server.to_dict() for server in servers]}
 
 @server_routes.route("/", methods=['POST'])

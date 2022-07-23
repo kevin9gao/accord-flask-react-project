@@ -10,6 +10,8 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import Footer from './components/Footer'
 import SplashPage from './components/SplashPage';
+import ServerDiscover from './components/Servers/ServerDiscover';
+import { loadServers } from './store/servers';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -21,6 +23,10 @@ function App() {
       setLoaded(true);
     })();
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(loadServers())
+  }, [dispatch])
 
   if (!loaded) {
     return null;
@@ -40,6 +46,9 @@ function App() {
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
+        </Route>
+        <Route path='/discover' exact={true}>
+          <ServerDiscover />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>

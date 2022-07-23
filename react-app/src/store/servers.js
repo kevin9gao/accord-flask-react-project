@@ -1,4 +1,3 @@
-
 const LOAD = '/servers/LOAD';
 const ADD = '/servers/ADD';
 const EDIT = '/servers/EDIT';
@@ -25,10 +24,12 @@ const remove = serverId => ({
 })
 
 export const loadServers = () => async dispatch => {
-  const res = await fetch(`/api/servers`);
-
+  // console.log("INSIDE LOADSERVERS THUNK")
+  const res = await fetch(`/api/servers/`);
+  // console.log("RES in THUNK", res)
   if (res.ok) {
     const list = await res.json();
+    // console.log("INSIDE THUNK RES.OK", list)
     dispatch(load(list));
   }
 }
@@ -76,8 +77,12 @@ let newState;
 export default function serversReducer(state = {}, action) {
   switch (action.type) {
     case LOAD:
+      // console.log("REDUCER", action)
       newState = {};
-      action.list.forEach(server => {
+      // console.log("action", action.list)
+      const serversList = action.list['servers']
+      // console.log("object.values", serversList)
+      serversList.forEach(server => {
         newState[server.id] = server
       })
       return newState;
