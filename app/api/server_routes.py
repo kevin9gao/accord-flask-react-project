@@ -12,13 +12,15 @@ def all_servers():
     # print("backend ROUTE", servers)
     return {'servers': [server.to_dict() for server in servers]}
 
-@server_routes.route("/", methods=['POST'])
+@server_routes.route("/", methods=['GET', 'POST'])
 def create_server():
+    print("HITTING BACKEND ROUTE")
     form = ServerForm()
     if form.validate_on_submit():
         server = Server(name=form.data['name'])
         db.session.add(server)
         db.session.commit()
+        print("backend ROUTE", server.to_dict())
         return server.to_dict()
 
 @server_routes.route("/<int:id>", methods=['PUT'])

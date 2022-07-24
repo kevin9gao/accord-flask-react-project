@@ -35,14 +35,17 @@ export const loadServers = () => async dispatch => {
 }
 
 export const createServer = payload => async dispatch => {
-  const res = await fetch(`/api/servers`, {
+  console.log("INSIDE LOADSERVERS THUNK")
+  const res = await fetch(`/api/servers/`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
   });
+  console.log("RES in THUNK", res)
 
   if (res.ok) {
     const server = await res.json();
+    console.log("INSIDE THUNK RES.OK", server)
     dispatch(add(server));
     return server;
   }
