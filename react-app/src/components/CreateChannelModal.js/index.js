@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import CreateChannelForm from './CreateChannelForm';
 
-const createChannelModal = () => {
+const CreateChannelModal = () => {
     const [ showModal, setShowModal ] = useState(false);
 
     return (
@@ -21,4 +21,4 @@ const createChannelModal = () => {
         
 }
 
-export default createChannel;
+export default CreateChannelModal;

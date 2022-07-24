@@ -67,7 +67,7 @@ export const deleteChannel = channel => async dispatch => {
   })
 
   if (res.ok) {
-    dispatch(remove(channelId))
+    dispatch(remove(channel.id))
   }
 }
 
