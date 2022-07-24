@@ -14,7 +14,7 @@ import ServerDiscover from './components/Servers/ServerDiscover';
 import { loadServers } from './store/servers';
 import CreateChannelForm from './components/CreateChannelModal.js/CreateChannelForm';
 import ChannelsNavBar from './components/Channels/ChannelsNavBar';
-import ServerNavBar from './components/Servers/ServerNavBar';
+import CreateServerModal from './components/Servers/CreateServerModal';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -35,7 +35,7 @@ function App() {
     return null;
   }
 
-  
+
   return (
     <BrowserRouter>
       <NavBar />
@@ -52,7 +52,7 @@ function App() {
         </Route>
         <Route path='/discover' exact={true}>
           <ServerDiscover />
-          <ServerNavBar /> {/* move to another place */}
+          <CreateServerModal /> {/* move to another place */}
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>

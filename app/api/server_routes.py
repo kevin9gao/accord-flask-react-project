@@ -20,7 +20,8 @@ def create_server():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         print("HITTING BACKEND ROUTE IF STATEMENT")
-        server = Server(name=form.data['name'])
+        server = Server(name=form.data['name'],
+                        owner_id=form.data['owner_id'])
         db.session.add(server)
         db.session.commit()
         print("backend ROUTE", server.to_dict())

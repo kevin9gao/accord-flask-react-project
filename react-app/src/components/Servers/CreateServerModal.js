@@ -5,7 +5,7 @@ import { loadServers } from '../../store/servers';
 import { Modal } from '../../context/Modal';
 import CreateServerForm from './CreateServerForm';
 
-const ServerNavBar = () => {
+const CreateServerModal = () => {
     const [ showModal, setShowModal ] = useState(false);
 
     return (
@@ -22,4 +22,4 @@ const ServerNavBar = () => {
     )
 };
 
-export default ServerNavBar;
+export default CreateServerModal;

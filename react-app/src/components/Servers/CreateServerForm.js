@@ -15,7 +15,7 @@ const CreateServerForm = ({ hideForm }) => {
     const [ name, setName ] = useState("");
     const [ hasSubmitted, setHasSubmitted ] = useState(false);
     const [ validationErrors, setValidationErrors ] = useState([]);
-    
+
     useEffect(() => {
         const errors = [];
         if (!name) errors.push("Server name cannot be empty");
@@ -31,11 +31,12 @@ const CreateServerForm = ({ hideForm }) => {
 
         const payload = {
             name,
-            // ownerId: owner.id
+            owner_id: owner.id
         };
 
         const createdServer = await dispatch(createServer(payload));
         console.log("FRONTEND ROUTE, createdserver", createdServer)
+        console.log('createserver component, owner: ', owner);
         if (createdServer) reset();
         setHasSubmitted(false);
         hideForm();
@@ -58,7 +59,7 @@ const CreateServerForm = ({ hideForm }) => {
             <h3>Create a server</h3>
             <p>Your server is where you and your friends hang out. Make yours and start talking.</p>
             <label>SERVER NAME</label>
-            <input 
+            <input
                 placeholder={`${owner.username}'s server`}
                 type="text"
                 value={name}

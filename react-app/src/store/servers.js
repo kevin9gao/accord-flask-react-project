@@ -35,7 +35,7 @@ export const loadServers = () => async (dispatch) => {
 }
 
 export const createServer = payload => async dispatch => {
-  console.log("INSIDE createERVERS THUNK")
+  console.log("INSIDE createSERVERS THUNK")
   const res = await fetch(`/api/servers/`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
