@@ -23,9 +23,9 @@ const remove = serverId => ({
   serverId
 })
 
-export const loadServers = () => async dispatch => {
+export const loadServers = () => async (dispatch) => {
   // console.log("INSIDE LOADSERVERS THUNK")
-  const res = await fetch(`/api/servers/`);
+  const res = await fetch('/api/servers/');
   // console.log("RES in THUNK", res)
   if (res.ok) {
     const list = await res.json();
@@ -35,7 +35,7 @@ export const loadServers = () => async dispatch => {
 }
 
 export const createServer = payload => async dispatch => {
-  console.log("INSIDE LOADSERVERS THUNK")
+  console.log("INSIDE createERVERS THUNK")
   const res = await fetch(`/api/servers/`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

@@ -27,9 +27,9 @@ function App() {
     })();
   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(loadServers())
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(loadServers())
+  // }, [dispatch])
 
   if (!loaded) {
     return null;

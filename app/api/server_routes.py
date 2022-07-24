@@ -16,7 +16,10 @@ def all_servers():
 def create_server():
     print("HITTING BACKEND ROUTE")
     form = ServerForm()
+    print(form)
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        print("HITTING BACKEND ROUTE IF STATEMENT")
         server = Server(name=form.data['name'])
         db.session.add(server)
         db.session.commit()

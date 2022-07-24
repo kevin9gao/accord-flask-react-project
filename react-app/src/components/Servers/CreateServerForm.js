@@ -31,11 +31,11 @@ const CreateServerForm = ({ hideForm }) => {
 
         const payload = {
             name,
-            ownerId: owner.id
+            // ownerId: owner.id
         };
 
         const createdServer = await dispatch(createServer(payload));
-        console.log("FRONTEND ROUTE, createdServer", createdServer)
+        console.log("FRONTEND ROUTE, createdserver", createdServer)
         if (createdServer) reset();
         setHasSubmitted(false);
         hideForm();
