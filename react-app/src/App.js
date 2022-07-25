@@ -14,6 +14,9 @@ import ServerDiscover from './components/Servers/ServerDiscover';
 import { loadServers } from './store/servers';
 import ChannelsNavBar from './components/Channels/ChannelsNavBar';
 import CreateServerModal from './components/Servers/CreateServerModal';
+import PrivateServer from './components/PrivateServer';
+import SingleServer from './components/Servers/SingleServer';
+import ServersNavBar from './components/Servers/ServersNavbar';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -50,10 +53,12 @@ function App() {
           <SignUpForm />
         </Route>
         <Route path='/discover' exact={true}>
+          <ServersNavBar />
           <ServerDiscover />
-          <CreateServerModal /> {/* move to another place */}
+          {/* <CreateServerModal /> move to another place */}
         </Route>
         <ProtectedRoute path='/users' exact={true} >
+          <ServersNavBar />
           <UsersList/>
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
@@ -65,9 +70,13 @@ function App() {
         <ProtectedRoute path='/channels/:serverId' exact={true}>
           <ChannelsNavBar />
         </ProtectedRoute>
-        {/* <ProtectedRoute path='/channels/:serverId' exact={true}>
-          <CreateChannelForm />
-        </ProtectedRoute> */}
+        <ProtectedRoute path='/channels/@me' exact={true}>
+          <PrivateServer />
+        </ProtectedRoute>
+        <ProtectedRoute path='/channels/:serverId' exact={true}>
+          <SingleServer />
+          {/* <CreateChannelForm /> */}
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );

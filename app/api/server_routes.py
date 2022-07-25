@@ -1,5 +1,8 @@
+from crypt import methods
 from flask import Blueprint, request
-from app.models import Server, db
+from app.forms.join_server_form import JoinServerForm
+from app.models import Server, User, db
+from app.models.server import members
 from app.forms import ServerForm, EditServerForm
 
 
@@ -43,3 +46,20 @@ def delete_server(id):
     db.session.delete(server)
     db.session.commit()
     return server.to_dict()
+
+@server_routes.route('/<int:id>/join', methods=['POST'])
+def join_server(id):
+    form = JoinServerForm()
+    # print('BACKEND id', id)
+    # print('BACKEND FORM.DATA', form.data)
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        print('validated ON SUBMIT')
+        user = User.query.get(form.data['user_id'])
+        server = Server.query.get(form.data['server_id'])
+        # print('user from query:', user)
+        # print('server from query:', server)
+        user.servers_joined.append(server)
+        db.session.add(user)
+        db.session.commit()
+        return 'successful'
