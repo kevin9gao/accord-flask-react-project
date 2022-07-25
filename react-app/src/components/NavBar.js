@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
-import SignUpForm from './SignUpFormModal/SignUpForm';
+import SignUpForm from './auth/SignUpForm';
 import LoginFormModal from './LoginFormModal';
 import DemoUser from './LoginFormModal/DemoUser';
 
