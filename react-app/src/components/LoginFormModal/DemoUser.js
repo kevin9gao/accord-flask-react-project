@@ -11,7 +11,7 @@ function DemoUser() {
     const email = 'demo@aa.io';
     const password = 'password';
 
-    dispatch(sessionActions.login({ email, password }));
+    dispatch(sessionActions.login(email, password ));
   }
 
   return (
