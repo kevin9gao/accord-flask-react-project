@@ -47,6 +47,7 @@ export const loadSingleUserServers = (userId) => async dispatch => {
 
   if (res.ok) {
     const list = await res.json();
+    console.log('list in loadSingleUserServers thunk: ', list)
     dispatch(load(list));
   }
 }
@@ -69,15 +70,18 @@ export const createServer = payload => async dispatch => {
 }
 
 export const joinServer = payload => async dispatch => {
-  console.log('payload', payload)
+  console.log('payload in joinserver thunk: ', payload)
   const res = await fetch(`/api/servers/${payload.server_id}/join`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
   });
 
+  console.log('res in joinServer thunk: ', res)
+
   if (res.ok) {
-    const joinedServer = res.json();
+    const joinedServer = await res.json();
+    console.log('res.ok, joinedServer: ', joinedServer)
     dispatch(join(joinedServer));
   }
 }

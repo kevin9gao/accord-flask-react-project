@@ -1,5 +1,5 @@
 from .db import db
-from app.models.server import Members
+from app.models.server import members
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
@@ -30,4 +30,8 @@ class User(db.Model, UserMixin):
         }
 
     servers_owned = db.relationship("Server", back_populates="owner")
-    servers_joined = db.relationship("Server", back_populates='server_members')
+    servers_joined = db.relationship("Server",
+        secondary=members,
+        back_populates='server_members',
+        cascade='all, delete'
+    )

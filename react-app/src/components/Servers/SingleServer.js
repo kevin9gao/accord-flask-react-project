@@ -9,13 +9,17 @@ export default function SingleServer() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const handleJoin = () => {
+  const handleJoin = async (e) => {
+    e.preventDefault();
+
     const payload = {
       user_id: user.id,
-      server_id: serverId
+      server_id: Number(serverId)
     }
 
-    dispatch(joinServer(payload));
+    console.log('payload in SingleServer component: ', payload)
+
+    await dispatch(joinServer(payload));
     history.push(`/channels/${server.id}`);
   }
 

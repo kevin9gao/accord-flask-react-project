@@ -21,7 +21,10 @@ def user(id):
 @user_routes.route('/<int:id>/servers')
 @login_required
 def userServers(id):
-    user = db.session.query(User.id).join(Server).all()
+    print('hitting /api/users/:userid/servers')
+    # user = db.session.query(User.id)
     # servers = user.servers_joined
-    print('SERVERS JOINED BY USER', user)
-    return dict(user)
+    servers = User.query.filter(User.servers_joined).all()
+    # print('user:', user)
+    print('SERVERS JOINED BY USER', servers)
+    return {'servers': [server.to_dict() for server in servers]}

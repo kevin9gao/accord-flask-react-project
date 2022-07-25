@@ -1,13 +1,11 @@
 from .db import db
 
-
-class Members(db.Model):
-    __tablename__ = "members"
-
-    user_id = db.Column('user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
-    server_id = db.Column('server_id', db.Integer, db.ForeignKey('servers.id'), primary_key=True)
-    user = db.relationship("Server", back_populates="servers_joined")
-    server = db.relationship("User", back_populates="server_members")
+members = db.Table(
+    'members',
+    db.Model.metadata,
+    db.Column('users', db.Integer, db.ForeignKey('users.id'), primary_key=True),
+    db.Column('servers', db.Integer, db.ForeignKey('servers.id'), primary_key=True),
+)
 
 
 class Server(db.Model):
@@ -27,4 +25,8 @@ class Server(db.Model):
 
     owner = db.relationship("User", back_populates="servers_owned")
     channels = db.relationship("Channel", back_populates="server")
-    server_members = db.relationship("User", back_populates='servers_joined')
+    server_members = db.relationship("User",
+        secondary=members,
+        back_populates='servers_joined',
+        cascade='all, delete'
+        )
