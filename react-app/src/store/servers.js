@@ -55,7 +55,7 @@ export const loadSingleUserServers = (userId) => async dispatch => {
   if (res.ok) {
     const list = await res.json();
     console.log('list in loadSingleUserServers thunk: ', list)
-    dispatch(load(list));
+    dispatch(loadSingleUser(list));
     return list;
   }
 }

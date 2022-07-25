@@ -1,22 +1,20 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearUserServers, loadSingleUserServers } from "../../store/servers";
 
 export default function ServersNavBar() {
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user);
-  const servers = useSelector(state => state.servers);
+  const userServers = useSelector(state => state.servers['user-servers']);
 
   // console.log('user.id: ', user.id)
 
-  let userServers;
-
   useEffect(async () => {
     if (user) {
-      userServers = await dispatch(loadSingleUserServers(user.id));
-      console.log('userServers: ', userServers)
+      await dispatch(loadSingleUserServers(user.id));
     } else dispatch(clearUserServers());
   }, [dispatch])
+
 
   if (user) {
     return (
