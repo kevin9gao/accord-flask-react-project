@@ -8,6 +8,7 @@ const EditChannelModal = ({channel}) => {
 
     return (
         <div>
+            
             <div>
                 <button onClick={()=> setShowModal(true)}>Edit Channel</button>
             </div>

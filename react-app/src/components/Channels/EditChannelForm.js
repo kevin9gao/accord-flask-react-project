@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import { editChannel } from "../../store/channels";
+import { editChannel, deleteChannel } from "../../store/channels";
 
 const EditChannelForm = ({hideForm, channel}) => {
     const dispatch = useDispatch();
@@ -50,6 +50,13 @@ const EditChannelForm = ({hideForm, channel}) => {
         hideForm();
     }
 
+    // const onDelete = async(e, id) => {
+    //     e.preventDefault()
+    // // need live chat to get channel id from useParams
+    //     await dispatch(deleteChannel(id));
+    //     hideForm()
+    // };
+
     return (
         <div>
             <form onSubmit={onSubmit}>
@@ -61,6 +68,7 @@ const EditChannelForm = ({hideForm, channel}) => {
                     </ul>
                 )}
                 <h3>Edit Channel</h3>
+                {/* <button type="button" onClick={(e) => onDelete(e, channel.id)}>Delete Channel</button> */}
                 <label>CHANNEL NAME</label>
                 <input
                     type="text"
