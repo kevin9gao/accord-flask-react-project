@@ -21,8 +21,10 @@ function LoginFormModal() {
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <LoginForm />
-                    <NavLink to='/sign-up' exact={true} activeClassName='active'>Don't have an account?  Sign up here!</NavLink>
+                    <NavLink className='form-misc' to='/sign-up' exact={true} activeClassName='active'>Don't have an account?  Sign up here!</NavLink>
+                    <div className='form-misc'>
                     <button onClick={handleClose}>Close</button>
+                    </div>
                 </Modal>
             )}
         </>
