@@ -29,10 +29,6 @@ function App() {
     })();
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   dispatch(loadServers())
-  // }, [dispatch])
-
   if (!loaded) {
     return null;
   }
@@ -67,11 +63,11 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
         </ProtectedRoute>
-        <ProtectedRoute path='/channels/:serverId' exact={true}>
-          <ChannelsNavBar />
-        </ProtectedRoute>
         <ProtectedRoute path='/channels/@me' exact={true}>
           <PrivateServer />
+        </ProtectedRoute>
+        <ProtectedRoute path='/channels/:serverId' exact={true}>
+          <ChannelsNavBar />
         </ProtectedRoute>
         <ProtectedRoute path='/channels/:serverId' exact={true}>
           <SingleServer />

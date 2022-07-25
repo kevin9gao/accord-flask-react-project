@@ -67,7 +67,7 @@ const CreateChannelForm = ({ hideForm }) => {
                 />
                 <div>
                     <button type="button" onClick={onCancel}>Cancel</button>
-                    <button type="submit">Create Channel</button>
+                    <button type="submit">Sumbit New Channel</button>
                 </div>
             </form>
         </>
