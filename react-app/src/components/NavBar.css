@@ -13,22 +13,35 @@
     margin-right: 10px;
     color: red;
 } */
-nav {
+/* nav {
     position: relative;
     height: 50px;
     border: 1px solid red;
-}
+    top: 0;
+    margin: 0px;
+} */
 
-.navigation {
+
+/* .navigation {
     width: 80%;
     margin: 0 auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    top: 0;
+} */
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px solid red; */
+    margin: 0 auto;
 }
 
-.navigation>li {
+.navigation>div {
     display: flex;
-    margin-top: 1.5%;
+}
+
+.navigation>div>div{
+    margin-right: 10px;
 }

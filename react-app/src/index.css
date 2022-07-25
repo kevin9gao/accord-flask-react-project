@@ -3,3 +3,14 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     letter-spacing: 0.05em;
 }
+
+.form {
+    padding: 10px;
+    margin: 10px;
+}
+
+.form-misc {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}

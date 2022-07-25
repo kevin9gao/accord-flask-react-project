@@ -46,6 +46,7 @@ export const login = (email, password) => async (dispatch) => {
   console.log('login thunk response: ', response)
 
   if (response.ok) {
+    console.log('RESPONSE.OK', response.ok)
     const data = await response.json();
     dispatch(setUser(data))
     return null;
