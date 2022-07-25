@@ -7,6 +7,12 @@ import {Link, NavLink } from 'react-router-dom';
 function LoginFormModal() {
     const [showModal, setShowModal] = useState(false);
 
+    const handleClose = () => setShowModal(false);
+    // const onLoginFormSubmit = e => {
+    //     e.preventDefault();
+    //     handleClose();
+    // }
+
     return (
         <>
             <button className='button'
@@ -16,6 +22,7 @@ function LoginFormModal() {
                 <Modal onClose={() => setShowModal(false)}>
                     <LoginForm />
                     <NavLink to='/sign-up' exact={true} activeClassName='active'>Don't have an account?  Sign up here!</NavLink>
+                    <button onClick={handleClose}>Close</button>
                 </Modal>
             )}
         </>
