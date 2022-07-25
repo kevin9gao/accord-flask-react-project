@@ -1,15 +1,216 @@
-.splash-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    position: fixed;
-    background-image: url('https://free4kwallpapers.com/uploads/originals/2022/03/28/anime-landscape-for-desktop-scenery-clouds-stars-buildings-wallpaper.jpg');
-    /* background-image: url('../../../../background-img.jpg'); */
+/* .splash-page {
+    display: block;
+    position: relative;
+}
+
+.image-container {
+    position: relative;
+    top: 0;
+    left: 0;
     height: 100%;
     width: 100%;
-    background-size: cover;
-    left: 0;
+} */
+html,
+body {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+
+}
+
+.splash-image1 {
+    position: relative;
+    display: flex;
+    height: 50%;
+    background-image: url("https://coolhdwall.com/storage/202103/sky-city-scenery-horizon-landscape-anime-4k-wallpaper-3840x2160.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.splash-image1>h1 {
+    color: white;
+    font-weight: 1000px;
+    line-height: 95%;
+    text-transform: uppercase;
+    text-rendering: geometricPrecision;
+    text-align: center;
+    text-shadow: 4px 4px 4px black;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    position: static;
+}
+
+.splash-image1>h2 {
     color: white;
     text-shadow: 4px 4px 4px black;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    flex-direction: column;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+
+.splash-image2 {
+    position: relative;
+    display: flex;
+    height: 50%;
+    background-image: url("https://images.hdqwalls.com/wallpapers/morning-on-the-river-anime-4k-rk.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.splash-image2>h1 {
+    color: white;
+    font-weight: 1000px;
+    line-height: 95%;
+    text-rendering: geometricPrecision;
+    text-align: center;
+    text-shadow: 4px 4px 4px black;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10%;
+}
+
+.splash-image2>h2 {
+    color: white;
+    text-shadow: 4px 4px 4px black;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    margin-right: 10%;
+    margin-left: 50%;
+}
+
+.splash-image3 {
+    position: relative;
+    display: flex;
+    height: 50%;
+    background-image: url("https://cutewallpaper.org/21/anime-backgrounds-4k/Wallpaper-4k-Japan-Anime-Sky-4k-wallpapers-anime-wallpapers-.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.splash-image3>h1 {
+    color: white;
+    font-weight: 1000px;
+    line-height: 95%;
+    text-rendering: geometricPrecision;
+    text-align: center;
+    text-shadow: 4px 4px 4px black;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 10%;
+}
+
+.splash-image3>h2 {
+    color: white;
+    text-shadow: 4px 4px 4px black;
+    display: flex;
+    flex-direction: column;
+    margin-left: 10%;
+    margin-right: 50%;
+}
+
+.splash-image4 {
+    position: relative;
+    display: flex;
+    height: 50%;
+    background-image: url("https://free4kwallpapers.com/uploads/originals/2022/03/28/anime-landscape-for-desktop-scenery-clouds-stars-buildings-wallpaper.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.splash-image4>h1 {
+    color: white;
+    font-weight: 1000px;
+    line-height: 95%;
+    text-rendering: geometricPrecision;
+    text-align: center;
+    text-shadow: 4px 4px 4px black;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20%;
+}
+
+.splash-image4>h2 {
+    color: white;
+    text-shadow: 4px 4px 4px black;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    margin-right: 10%;
+    margin-left: 50%;
+}
+
+.splash-image5 {
+    position: relative;
+    display: flex;
+    height: 50%;
+    background-image: url("https://wallpapercave.com/wp/wp6357796.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    flex-direction: column;
+}
+
+.splash-image5>h1 {
+    color: white;
+    font-weight: 1000px;
+    line-height: 95%;
+    text-rendering: geometricPrecision;
+    text-align: center;
+    text-shadow: 4px 4px 4px black;
+    display: flex;
+    justify-content: center;
+}
+
+.splash-image5>h2 {
+    color: white;
+    text-shadow: 4px 4px 4px black;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-right: 10%;
+    margin-left: 10%;
+}
+
+.splash-image6 {
+    position: relative;
+    display: flex;
+    height: 25%;
+    background-image: url("https://wallpapercave.com/wp/wp10348248.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.splash-image6>h1 {
+    color: white;
+    font-weight: 1000px;
+    line-height: 95%;
+    text-rendering: geometricPrecision;
+    text-align: center;
+    text-shadow: 4px 4px 4px black;
+    display: flex;
+    justify-content: center;
+    margin-right: 20%;
+    margin-left: 20%;
 }
