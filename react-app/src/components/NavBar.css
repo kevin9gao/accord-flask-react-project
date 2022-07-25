@@ -1,0 +1,34 @@
+/* .navigation {
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+    position: absolute;
+    color: white;
+} */
+
+/* .navigation {
+    display: flex;
+    justify-content: space-between;
+    position: static;
+    margin-right: 10px;
+    color: red;
+} */
+nav {
+    position: relative;
+    height: 50px;
+    border: 1px solid red;
+}
+
+.navigation {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navigation>li {
+    display: flex;
+    margin-top: 1.5%;
+}

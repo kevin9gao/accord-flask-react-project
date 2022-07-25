@@ -1,0 +1,68 @@
+.splash-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    /* background-image: url('https://free4kwallpapers.com/uploads/originals/2022/03/28/anime-landscape-for-desktop-scenery-clouds-stars-buildings-wallpaper.jpg'); */
+    /* background-image: url('../../../../background-img.jpg'); */
+    /* height: 100%;
+    width: 100%; */
+    /* background-size: cover; */
+    left: 0;
+    color: white;
+    text-shadow: 4px 4px 4px black;
+}
+
+/* .splash-images {
+    box-sizing: border-box;
+    height: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+} */
+/* body,
+html {
+    height: 100%;
+    margin: 0;
+}
+
+.splash-image {
+    height: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.img1 {
+    background-image: url("https://free4kwallpapers.com/uploads/originals/2022/03/28/anime-landscape-for-desktop-scenery-clouds-stars-buildings-wallpaper.jpg");
+}
+
+.img2 {
+    background-image: url("https://cutewallpaper.org/21/anime-backgrounds-4k/Wallpaper-4k-Japan-Anime-Sky-4k-wallpapers-anime-wallpapers-.jpg");
+}
+
+.img3 {
+    background-image: url("https://coolhdwall.com/storage/202103/sky-city-scenery-horizon-landscape-anime-4k-wallpaper-3840x2160.jpg");
+}
+
+.img4 {
+    background-image: url("https://images.hdqwalls.com/wallpapers/morning-on-the-river-anime-4k-rk.jpg");
+}
+
+.splash-text {
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    font-weight: bold;
+    font-size: 80px;
+    border: 10px solid #f1f1f1;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+} */
