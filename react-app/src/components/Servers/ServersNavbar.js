@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loadSingleUserServers } from "../../store/servers";
+import { clearUserServers, loadSingleUserServers } from "../../store/servers";
 
 export default function ServersNavBar() {
   const dispatch = useDispatch();
@@ -9,8 +9,13 @@ export default function ServersNavBar() {
 
   // console.log('user.id: ', user.id)
 
-  useEffect(() => {
-    if (user) dispatch(loadSingleUserServers(user.id));
+  let userServers;
+
+  useEffect(async () => {
+    if (user) {
+      userServers = await dispatch(loadSingleUserServers(user.id));
+      console.log('userServers: ', userServers)
+    } else dispatch(clearUserServers());
   }, [dispatch])
 
   return (

@@ -3,6 +3,7 @@ const ADD = '/servers/ADD';
 const EDIT = '/servers/EDIT';
 const REMOVE = '/servers/REMOVE';
 const JOIN = '/servers/JOIN';
+const CLEAR = '/servers/CLEAR';
 
 const load = list => ({
   type: LOAD,
@@ -29,6 +30,10 @@ const join = serverId => ({
   serverId
 })
 
+const clear = () => ({
+  type: CLEAR
+})
+
 export const loadServers = () => async (dispatch) => {
   // console.log("INSIDE LOADSERVERS THUNK")
   const res = await fetch('/api/servers/');
@@ -49,6 +54,7 @@ export const loadSingleUserServers = (userId) => async dispatch => {
     const list = await res.json();
     console.log('list in loadSingleUserServers thunk: ', list)
     dispatch(load(list));
+    return list;
   }
 }
 
@@ -110,6 +116,10 @@ export const deleteServer = serverId => async dispatch => {
   }
 }
 
+export const clearUserServers = () => dispatch => {
+  dispatch(clear());
+}
+
 let newState;
 
 export default function serversReducer(state = {}, action) {
@@ -138,6 +148,11 @@ export default function serversReducer(state = {}, action) {
     case REMOVE:
       newState = {...state}
       delete newState[action.serverId];
+      return newState;
+
+    case CLEAR:
+      newState = {...state};
+      delete newState['user-servers'];
       return newState;
 
     case JOIN:
