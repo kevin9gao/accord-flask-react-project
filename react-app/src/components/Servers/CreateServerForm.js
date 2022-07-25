@@ -31,7 +31,7 @@ const CreateServerForm = ({ hideForm }) => {
 
         const payload = {
             name,
-            // ownerId: owner.id
+            owner_id: owner.id
         };
 
         const createdServer = await dispatch(createServer(payload));
