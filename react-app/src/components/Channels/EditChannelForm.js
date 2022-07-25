@@ -7,7 +7,6 @@ import { editChannel, deleteChannel } from "../../store/channels";
 const EditChannelForm = ({hideForm, channel}) => {
     const dispatch = useDispatch();
     const { serverId } = useParams();
-    const { id } = useParams();
 
     const channels = useSelector(state => state.channels);
     const channelsArr = Object.values(channels);
@@ -50,12 +49,12 @@ const EditChannelForm = ({hideForm, channel}) => {
         hideForm();
     }
 
-    // const onDelete = async(e, id) => {
-    //     e.preventDefault()
-    // // need live chat to get channel id from useParams
-    //     await dispatch(deleteChannel(id));
-    //     hideForm()
-    // };
+    const onDelete = async(e) => {
+        e.preventDefault()
+    // need live chat to get channel id from useParams
+        await dispatch(deleteChannel(serverId, channel.id));
+        hideForm()
+    };
 
     return (
         <div>
@@ -68,7 +67,7 @@ const EditChannelForm = ({hideForm, channel}) => {
                     </ul>
                 )}
                 <h3>Edit Channel</h3>
-                {/* <button type="button" onClick={(e) => onDelete(e, channel.id)}>Delete Channel</button> */}
+                <button type="button" onClick={(e) => onDelete(e, channel.id)}>Delete Channel</button>
                 <label>CHANNEL NAME</label>
                 <input
                     type="text"
