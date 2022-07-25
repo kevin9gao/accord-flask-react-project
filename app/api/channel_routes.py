@@ -1,13 +1,15 @@
 from flask import Blueprint, request
-from app.models import channel, db
+from app.models import Channel, db
 from app.forms import ChannelForm, EditChannelForm
 
 
 channel_routes = Blueprint('channels', __name__)
 
 @channel_routes.route("/<int:server_id>")
-def all_channels():
-    channels = Channel.query.all()
+def all_channels(server_id):
+    channels = Channel.query.filter(Channel.server_id == server_id).all()
+    print("CHANNELS backend", channels)
+    print("channels", [channel.to_dict() for channel in channels])
     return {'channels': [channel.to_dict() for channel in channels]}
 
 @channel_routes.route("/<int:server_id>", methods=['POST'])

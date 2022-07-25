@@ -63,12 +63,12 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
         </ProtectedRoute>
-        <ProtectedRoute path='/channels' exact={true}>
+        <ProtectedRoute path='/channels/:serverId' exact={true}>
           <ChannelsNavBar />
         </ProtectedRoute>
-        <ProtectedRoute path='/channels/:serverId' exact={true}>
+        {/* <ProtectedRoute path='/channels/:serverId' exact={true}>
           <CreateChannelForm />
-        </ProtectedRoute>
+        </ProtectedRoute> */}
       </Switch>
     </BrowserRouter>
   );
