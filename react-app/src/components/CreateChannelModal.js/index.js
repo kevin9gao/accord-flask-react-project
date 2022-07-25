@@ -9,7 +9,7 @@ const CreateChannelModal = () => {
     return (
         <div>
             <div>
-                <button>Create Channel</button>
+                <button onClick={()=> setShowModal(true)}>Create Channel</button>
             </div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
@@ -18,7 +18,7 @@ const CreateChannelModal = () => {
             )}
         </div>
     )
-        
+
 }
 
 export default CreateChannelModal;

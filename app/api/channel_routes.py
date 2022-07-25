@@ -13,10 +13,13 @@ def all_channels(server_id):
     return {'channels': [channel.to_dict() for channel in channels]}
 
 @channel_routes.route("/<int:server_id>", methods=['POST'])
-def create_channel():
+def create_channel(server_id):
     form = ChannelForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    print("FORM DATA", form.data)
     if form.validate_on_submit():
-        channel = channel(name=form.data['name'])
+        channel = Channel(name=form.data['name'], server_id=form.data['server_id'])
         db.session.add(channel)
         db.session.commit()
         return channel.to_dict()
