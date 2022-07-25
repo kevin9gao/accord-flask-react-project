@@ -2,25 +2,26 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import { createChannel } from "../../store/channels";
+import { editChannel, deleteChannel } from "../../store/channels";
 
-const CreateChannelForm = ({ hideForm }) => {
+const EditChannelForm = ({hideForm, channel}) => {
     const dispatch = useDispatch();
     const { serverId } = useParams();
-    
+
     const channels = useSelector(state => state.channels);
     const channelsArr = Object.values(channels);
 
-    const [ name, setName ] = useState("");
+    const [ editName, setEditName ] = useState(channel.name);
     const [ hasSubmitted, setHasSubmitted ] = useState(false);
     const [ validationErrors, setValidationErrors ] = useState([]);
-    
+
+
     useEffect(() => {
         const errors = [];
-        if (!name) errors.push("Channel name cannot be empty");
-        if (channelsArr.map(channel => channel.name).includes(name)) errors.push("Channel name must be unique");
+        if (!editName) errors.push("Channel name cannot be empty");
+        if (channelsArr.map(channel => channel.name).includes(editName)) errors.push("Channel name must be unique");
         setValidationErrors(errors);
-    }, [name]);
+    }, [editName]);
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -28,17 +29,19 @@ const CreateChannelForm = ({ hideForm }) => {
         if(validationErrors.length) alert("Cannot create channel");
 
         const payload = {
-            name,
-            serverId:  serverId
+            id: channel.id,
+            name: editName,
+            server_id:  channel.server_id,
         };
 
-        let createdChannel = await dispatch(createChannel(payload));
-        if (createdChannel) reset();
+        let editedChannel = await dispatch(editChannel(payload));
+        if (editedChannel) reset();
         setHasSubmitted(false);
+        hideForm();
     };
 
     const reset = () => {
-        setName("");
+        setEditName("");
     };
 
     const onCancel = (e) => {
@@ -46,8 +49,15 @@ const CreateChannelForm = ({ hideForm }) => {
         hideForm();
     }
 
+    const onDelete = async(e) => {
+        e.preventDefault()
+    // need live chat to get channel id from useParams
+        await dispatch(deleteChannel(serverId, channel.id));
+        hideForm()
+    };
+
     return (
-        <>
+        <div>
             <form onSubmit={onSubmit}>
                 {hasSubmitted && validationErrors.length > 0 && (
                     <ul>
@@ -56,21 +66,21 @@ const CreateChannelForm = ({ hideForm }) => {
                         ))}
                     </ul>
                 )}
-                <h3>Create Channel</h3>
+                <h3>Edit Channel</h3>
+                <button type="button" onClick={(e) => onDelete(e, channel.id)}>Delete Channel</button>
                 <label>CHANNEL NAME</label>
-                <input 
-                    placeholder="new-channel"
+                <input
                     type="text"
-                    value={name}
-                    onChange={e => setName(e.target.value)}
+                    value={editName}
+                    onChange={e => setEditName(e.target.value)}
                 />
                 <div>
                     <button type="button" onClick={onCancel}>Cancel</button>
-                    <button type="submit">Create Channel</button>
+                    <button type="submit">Submit Edit Channel</button>
                 </div>
             </form>
-        </>
+        </div>
     )
 }
 
-export default CreateChannelForm;
+export default EditChannelForm;

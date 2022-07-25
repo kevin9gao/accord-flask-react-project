@@ -2,6 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
+
+import './NavBar.css'
 import SignUpForm from './auth/SignUpForm';
 import LoginFormModal from './LoginFormModal';
 import DemoUser from './LoginFormModal/DemoUser';
@@ -28,10 +30,10 @@ const NavBar = () => {
 
   return (
     <nav>
-      <ul>
+      <ul className='navigation'>
         <li>
           <NavLink to='/' exact={true} activeClassName='active'>
-            Home
+            ACCORD
           </NavLink>
         </li>
         <li>
