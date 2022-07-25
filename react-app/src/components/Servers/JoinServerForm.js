@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory, useParams } from "react-router-dom";
 import { joinServer } from "../../store/servers";
 
-const JoinServerForm = ({ server }) => {
+const JoinServerForm = ({ server, hideForm }) => {
   const serverId = server.id;
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
@@ -22,6 +22,7 @@ const JoinServerForm = ({ server }) => {
     // console.log('payload in SingleServer component: ', payload)
 
     await dispatch(joinServer(payload));
+    hideForm()
     return <Redirect to={`/channels/${serverId}`} />
   }
 

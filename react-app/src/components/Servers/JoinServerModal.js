@@ -15,7 +15,7 @@ function JoinServerModal({ server }) {
             </button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <JoinServerForm server={server} />
+                    <JoinServerForm server={server} hideForm={() => setShowModal(false)} />
                 </Modal>
             )}
         </>
