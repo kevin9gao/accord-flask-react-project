@@ -10,6 +10,11 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import Footer from './components/Footer'
 import SplashPage from './components/SplashPage';
+import ServerDiscover from './components/Servers/ServerDiscover';
+import { loadServers } from './store/servers';
+import CreateChannelForm from './components/CreateChannelModal.js/CreateChannelForm';
+import ChannelsNavBar from './components/Channels/ChannelsNavBar';
+import CreateServerModal from './components/Servers/CreateServerModal';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -22,9 +27,14 @@ function App() {
     })();
   }, [dispatch]);
 
+  // useEffect(() => {
+  //   dispatch(loadServers())
+  // }, [dispatch])
+
   if (!loaded) {
     return null;
   }
+
 
   return (
     <BrowserRouter>
@@ -40,6 +50,10 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
+        <Route path='/discover' exact={true}>
+          <ServerDiscover />
+          <CreateServerModal /> {/* move to another place */}
+        </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
         </ProtectedRoute>
@@ -48,6 +62,12 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
+        </ProtectedRoute>
+        <ProtectedRoute path='/channels' exact={true}>
+          <ChannelsNavBar />
+        </ProtectedRoute>
+        <ProtectedRoute path='/channels/:serverId' exact={true}>
+          <CreateChannelForm />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
