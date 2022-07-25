@@ -25,12 +25,18 @@ def create_channel(server_id):
         return channel.to_dict()
 
 @channel_routes.route("/<int:server_id>/<int:id>", methods=['PUT'])
-def edit_channel(id):
+def edit_channel(server_id, id):
     form = EditChannelForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    print("HITTING BACKEND ROUTE")
+    print("FORM", form.data)
     if form.validate_on_submit():
-        channel = channel.query.get(id)
+        channel = Channel.query.get(id)
+        print("CHANNEL FROM BACKEND QUERY", channel)
         data = request.json
+        print("DATA FROM THUNK IN BACKEND", data)
         channel.name = data['name']
+        channel.server_id = data['server_id']
         db.session.commit()
         return channel.to_dict()
 

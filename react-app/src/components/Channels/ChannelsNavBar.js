@@ -28,7 +28,7 @@ const ChannelsNavBar = () => {
                 {channelsArr && channelsArr.map(channel => (
                     <ul>
                         <li key={channel.id}>{channel.name}</li>
-                        <EditChannelModal />
+                        <EditChannelModal channel={channel}/>
                     </ul>
                 ))}
             </div>

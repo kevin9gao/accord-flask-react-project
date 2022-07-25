@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 import { editChannel } from "../../store/channels";
 
-const EditChannelForm = ({hideForm}) => {
+const EditChannelForm = ({hideForm, channel}) => {
     const dispatch = useDispatch();
     const { serverId } = useParams();
     const { id } = useParams();
@@ -12,17 +12,17 @@ const EditChannelForm = ({hideForm}) => {
     const channels = useSelector(state => state.channels);
     const channelsArr = Object.values(channels);
 
-    const [ name, setName ] = useState(channel.name);
+    const [ editName, setEditName ] = useState(channel.name);
     const [ hasSubmitted, setHasSubmitted ] = useState(false);
     const [ validationErrors, setValidationErrors ] = useState([]);
 
 
     useEffect(() => {
         const errors = [];
-        if (!name) errors.push("Channel name cannot be empty");
-        if (channelsArr.map(channel => channel.name).includes(name)) errors.push("Channel name must be unique");
+        if (!editName) errors.push("Channel name cannot be empty");
+        if (channelsArr.map(channel => channel.name).includes(editName)) errors.push("Channel name must be unique");
         setValidationErrors(errors);
-    }, [name]);
+    }, [editName]);
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -30,8 +30,9 @@ const EditChannelForm = ({hideForm}) => {
         if(validationErrors.length) alert("Cannot create channel");
 
         const payload = {
-            name,
-            server_id:  serverId,
+            id: channel.id,
+            name: editName,
+            server_id:  channel.server_id,
         };
 
         let editedChannel = await dispatch(editChannel(payload));
@@ -41,7 +42,7 @@ const EditChannelForm = ({hideForm}) => {
     };
 
     const reset = () => {
-        setName("");
+        setEditName("");
     };
 
     const onCancel = (e) => {
@@ -51,7 +52,26 @@ const EditChannelForm = ({hideForm}) => {
 
     return (
         <div>
-
+            <form onSubmit={onSubmit}>
+                {hasSubmitted && validationErrors.length > 0 && (
+                    <ul>
+                        {validationErrors.map(error => (
+                            <li key={error}>{error}</li>
+                        ))}
+                    </ul>
+                )}
+                <h3>Edit Channel</h3>
+                <label>CHANNEL NAME</label>
+                <input
+                    type="text"
+                    value={editName}
+                    onChange={e => setEditName(e.target.value)}
+                />
+                <div>
+                    <button type="button" onClick={onCancel}>Cancel</button>
+                    <button type="submit">Submit Edit Channel</button>
+                </div>
+            </form>
         </div>
     )
 }

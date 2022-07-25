@@ -51,11 +51,13 @@ export const createChannel = payload => async dispatch => {
 }
 
 export const editChannel = payload => async dispatch => {
+  console.log("PAYLOAD FROM THUNK ", payload)
   const res = await fetch(`/api/channels/${payload.server_id}/${payload.id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
   });
+
 
   if (res.ok) {
     const channel = await res.json();
