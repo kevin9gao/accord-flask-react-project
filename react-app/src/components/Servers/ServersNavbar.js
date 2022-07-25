@@ -7,10 +7,10 @@ export default function ServersNavBar() {
   const user = useSelector(state => state.session.user);
   const servers = useSelector(state => state.servers);
 
-  console.log('user.id: ', user.id)
+  // console.log('user.id: ', user.id)
 
   useEffect(() => {
-    dispatch(loadSingleUserServers(user.id));
+    if (user) dispatch(loadSingleUserServers(user.id));
   }, [dispatch])
 
   return (
