@@ -5,20 +5,25 @@ import { loadSingleUserServers } from "../../store/servers";
 export default function ServersNavBar() {
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user);
-  const servers = useSelector(state => state.servers);
+  const userServers = useSelector(state => state.servers['user-servers']);
 
-  console.log('user.id: ', user.id)
+  // console.log('user.id: ', user.id)
 
   useEffect(() => {
-    dispatch(loadSingleUserServers(user.id));
+    if (user) dispatch(loadSingleUserServers(user.id));
   }, [dispatch])
 
-  return (
-    <div>
-      Server Navbar
-      {servers && Object.values(servers).map(server => (
-        <h3>{server.name}</h3>
-      ))}
-    </div>
-  );
+  if (user) {
+    return (
+      <div>
+        Server Navbar
+        {/* {Object.values(servers).map(server => (
+          <h3>{server.name}</h3>
+        ))} */}
+        {userServers && Object.values(userServers)?.map(server => (
+          <h3>{server.name}</h3>
+        ))}
+      </div>
+    );
+  } else return null;
 }

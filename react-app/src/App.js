@@ -73,10 +73,6 @@ function App() {
         <ProtectedRoute path='/channels/@me' exact={true}>
           <PrivateServer />
         </ProtectedRoute>
-        <ProtectedRoute path='/channels/:serverId' exact={true}>
-          <SingleServer />
-          {/* <CreateChannelForm /> */}
-        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );
