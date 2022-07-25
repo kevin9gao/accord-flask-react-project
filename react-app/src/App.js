@@ -15,6 +15,7 @@ import { loadServers } from './store/servers';
 import CreateChannelForm from './components/CreateChannelModal.js/CreateChannelForm';
 import ChannelsNavBar from './components/Channels/ChannelsNavBar';
 import CreateServerModal from './components/Servers/CreateServerModal';
+import PrivateServer from './components/PrivateServer';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -65,6 +66,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/channels' exact={true}>
           <ChannelsNavBar />
+        </ProtectedRoute>
+        <ProtectedRoute path='/channels/@me' exact={true}>
+          <PrivateServer />
         </ProtectedRoute>
         <ProtectedRoute path='/channels/:serverId' exact={true}>
           <CreateChannelForm />

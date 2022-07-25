@@ -34,6 +34,17 @@ export const loadServers = () => async (dispatch) => {
   }
 }
 
+export const loadSingleUserServers = (userId) => async dispatch => {
+  const res = await fetch(`/api/users/${userId}/servers`);
+
+  console.log('res in loadSingleUserServers thunk: ', res);
+
+  if (res.ok) {
+    const list = await res.json();
+    dispatch(load(list));
+  }
+}
+
 export const createServer = payload => async dispatch => {
   console.log("INSIDE createSERVERS THUNK")
   const res = await fetch(`/api/servers/`, {
