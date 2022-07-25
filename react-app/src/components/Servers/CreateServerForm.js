@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { createServer } from "../../store/servers";
+import { createServer, joinServer } from "../../store/servers";
 
 const CreateServerForm = ({ hideForm }) => {
     const dispatch = useDispatch();
@@ -35,6 +35,11 @@ const CreateServerForm = ({ hideForm }) => {
         };
 
         const createdServer = await dispatch(createServer(payload));
+        const joinServerPayload = {
+            user_id: owner.id,
+            server_id: createdServer.id
+        }
+        await dispatch(joinServer(joinServerPayload))
         console.log("FRONTEND ROUTE, createdserver", createdServer)
         console.log('createserver component, owner: ', owner);
         if (createdServer) reset();
