@@ -20,11 +20,12 @@ const NavBar = () => {
     )
   } else {
     sessionLinks = (
-      <>
-        {/* <SignUpForm /> */}
-        <LoginFormModal />
-        <DemoUser />
-      </>
+      <div>
+        <div>
+          <LoginFormModal />
+          <DemoUser />
+        </div>
+      </div>
     )
   }
 
