@@ -29,7 +29,12 @@ function SplashPage() {
                     </h2>
                 </div>
                 <div className='splash-image4'>
-
+                    <h1>
+                        From few to a fandom
+                    </h1>
+                    <h2>
+                    Get any community running with moderation tools and custom member access. Give members special powers, set up private channels, and more.
+                    </h2>
                 </div>
             </div>
         </div>

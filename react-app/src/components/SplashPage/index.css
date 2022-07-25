@@ -99,6 +99,8 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100% auto;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .splash-image3>h1 {
@@ -109,8 +111,7 @@ body {
     text-align: center;
     text-shadow: 4px 4px 4px black;
     display: flex;
-    justify-content: center;
-    flex-direction: column;
+    justify-content: flex-start;
     margin-left: 10%;
 }
 
@@ -118,9 +119,9 @@ body {
     color:white;
     text-shadow: 4px 4px 4px black;
     display: flex;
-    justify-content: flex-start;
     flex-direction: column;
     margin-left: 10%;
+    margin-right: 50%;
 }
 
 .splash-image4 {
@@ -131,4 +132,28 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100% auto;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.splash-image4>h1{
+    color: white;
+    font-weight: 1000px;
+    line-height: 95%;
+    text-rendering: geometricPrecision;
+    text-align: center;
+    text-shadow: 4px 4px 4px black;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20%;
+}
+
+.splash-image4>h2{
+    color:white;
+    text-shadow: 4px 4px 4px black;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    margin-right: 10%;
+    margin-left: 50%;
 }
