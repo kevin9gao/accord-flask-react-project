@@ -28,6 +28,7 @@ body {
     background-repeat: no-repeat;
     background-size: 100% auto;
     justify-content: center;
+    flex-direction: column;
 }
 
 .splash-image1>h1 {
@@ -41,15 +42,20 @@ body {
     display: flex;
     justify-content: center;
     align-self: center;
+    position: static;
 }
 
-.image-p{
+.splash-image1>h2 {
     color:white;
     text-shadow: 4px 4px 4px black;
     display: flex;
     justify-content: center;
     align-self: center;
+    flex-direction: column;
+    margin-left: 10%;
+    margin-right: 10%;
 }
+
 
 .splash-image2 {
     position: relative;
@@ -59,6 +65,30 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100% auto;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.splash-image2>h1 {
+    color: white;
+    font-weight: 1000px;
+    line-height: 95%;
+    text-rendering: geometricPrecision;
+    text-align: center;
+    text-shadow: 4px 4px 4px black;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10%;
+}
+
+.splash-image2>h2 {
+    color:white;
+    text-shadow: 4px 4px 4px black;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    margin-right: 10%;
+    margin-left: 50%;
 }
 
 .splash-image3 {
@@ -69,6 +99,28 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100% auto;
+}
+
+.splash-image3>h1 {
+    color: white;
+    font-weight: 1000px;
+    line-height: 95%;
+    text-rendering: geometricPrecision;
+    text-align: center;
+    text-shadow: 4px 4px 4px black;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 10%;
+}
+
+.splash-image3>h2 {
+    color:white;
+    text-shadow: 4px 4px 4px black;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin-left: 10%;
 }
 
 .splash-image4 {
