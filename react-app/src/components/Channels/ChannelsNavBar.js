@@ -34,7 +34,6 @@ const ChannelsNavBar = () => {
                     <ul>
                         <li key={channel.id}>{channel.name}</li>
                         <EditChannelModal channel={channel}/>
-                        <button>Delete</button>
                     </ul>
                 ))}
             </div>

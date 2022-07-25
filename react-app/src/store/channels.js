@@ -66,13 +66,13 @@ export const editChannel = payload => async dispatch => {
   }
 }
 
-export const deleteChannel = channel => async dispatch => {
-  const res = await fetch(`/api/channels/${channel.serverId}/${channel.id}`, {
+export const deleteChannel = (serverId, channelId) => async dispatch => {
+  const res = await fetch(`/api/channels/${serverId}/${channelId}`, {
     method: 'DELETE'
   })
 
   if (res.ok) {
-    dispatch(remove(channel.id))
+    dispatch(remove(channelId))
   }
 }
 

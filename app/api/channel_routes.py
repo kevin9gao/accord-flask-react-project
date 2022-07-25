@@ -41,8 +41,10 @@ def edit_channel(server_id, id):
         return channel.to_dict()
 
 @channel_routes.route("/<int:server_id>/<int:id>", methods=['DELETE'])
-def delete_channel(id):
+def delete_channel(server_id, id):
+    print("HITTING BACKEND ROUTE")
     channel = Channel.query.get(id)
+    print("backend route, server id, id", server_id, id)
     db.session.delete(channel)
     db.session.commit()
     return channel.to_dict()
