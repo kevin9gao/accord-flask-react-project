@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadSingleUserServers } from "../../store/servers";
+import CreateServerModal from "./CreateServerModal";
+import EditServerModal from "./EditServerModal";
 
 export default function ServersNavBar() {
   const dispatch = useDispatch();
@@ -16,8 +18,12 @@ export default function ServersNavBar() {
   return (
     <div>
       Server Navbar
+      <CreateServerModal />
       {servers && Object.values(servers).map(server => (
-        <h3>{server.name}</h3>
+        <div>
+          <h3>{server.name}</h3>
+          <EditServerModal server={server} />
+        </div>
       ))}
     </div>
   );
