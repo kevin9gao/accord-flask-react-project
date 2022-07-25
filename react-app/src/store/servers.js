@@ -138,7 +138,8 @@ export default function serversReducer(state = {}, action) {
       return newState;
 
     case LOAD_SINGLE_USER:
-      newState = {...state};
+      // newState = {...state};
+      console.log("STATE-------------", state)
 
       const userServers = action.list['servers'];
       // console.log('userServers in reducer: ', userServers);

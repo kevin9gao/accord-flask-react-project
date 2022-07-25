@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loadSingleUserServers } from "../../store/servers";
+import { loadServers, loadSingleUserServers } from "../../store/servers";
 import CreateServerModal from "./CreateServerModal";
 import EditServerModal from "./EditServerModal";
 
@@ -9,9 +9,8 @@ export default function ServersNavBar() {
   const user = useSelector(state => state.session.user);
   const userServers = useSelector(state => state.servers['user-servers']);
 
-  // console.log('user.id: ', user.id)
 
-  useEffect(() => {
+useEffect(() => {
     if (user) dispatch(loadSingleUserServers(user.id));
   }, [dispatch])
 
@@ -32,5 +31,5 @@ export default function ServersNavBar() {
       </div>
     );
   } else return null;
-  
+
 }
