@@ -26,9 +26,14 @@ nav {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    top: 0;
 }
 
-.navigation>li {
+.navigation>div {
     display: flex;
-    margin-top: 1.5%;
+    top: 0;
+}
+
+.navigation>div>div{
+    margin-right: 10px;
 }

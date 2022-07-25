@@ -21,7 +21,7 @@ const NavBar = () => {
   } else {
     sessionLinks = (
       <>
-        <SignUpForm />
+        {/* <SignUpForm /> */}
         <LoginFormModal />
         <DemoUser />
       </>
@@ -31,21 +31,23 @@ const NavBar = () => {
   return (
     <nav>
       <ul className='navigation'>
-        <li>
-          <NavLink to='/' exact={true} activeClassName='active'>
-            ACCORD
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/discover' exact={true} activeClassName='active'>
-            Discover
-          </NavLink>
-        </li>
+        <div>
+          <div>
+            <NavLink to='/' exact={true} activeClassName='active'>
+              ACCORD
+            </NavLink>
+          </div>
+          <div>
+            <NavLink to='/users' exact={true} activeClassName='active'>
+              Users
+            </NavLink>
+          </div>
+          <div>
+            <NavLink to='/discover' exact={true} activeClassName='active'>
+              Discover
+            </NavLink>
+          </div>
+        </div>
         {sessionLinks}
       </ul>
     </nav>
