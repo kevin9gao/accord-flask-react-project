@@ -51,7 +51,7 @@ export const createChannel = payload => async dispatch => {
 }
 
 export const editChannel = payload => async dispatch => {
-  const res = await fetch(`/api/channels/${payload.serverId}/${payload.id}`, {
+  const res = await fetch(`/api/channels/${payload.server_id}/${payload.id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
