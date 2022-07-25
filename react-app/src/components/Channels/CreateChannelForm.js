@@ -7,14 +7,14 @@ import { createChannel } from "../../store/channels";
 const CreateChannelForm = ({ hideForm }) => {
     const dispatch = useDispatch();
     const { serverId } = useParams();
-    
+
     const channels = useSelector(state => state.channels);
     const channelsArr = Object.values(channels);
 
     const [ name, setName ] = useState("");
     const [ hasSubmitted, setHasSubmitted ] = useState(false);
     const [ validationErrors, setValidationErrors ] = useState([]);
-    
+
     useEffect(() => {
         const errors = [];
         if (!name) errors.push("Channel name cannot be empty");
@@ -29,12 +29,13 @@ const CreateChannelForm = ({ hideForm }) => {
 
         const payload = {
             name,
-            serverId:  serverId
+            server_id:  serverId
         };
 
         let createdChannel = await dispatch(createChannel(payload));
         if (createdChannel) reset();
         setHasSubmitted(false);
+        hideForm();
     };
 
     const reset = () => {
@@ -58,7 +59,7 @@ const CreateChannelForm = ({ hideForm }) => {
                 )}
                 <h3>Create Channel</h3>
                 <label>CHANNEL NAME</label>
-                <input 
+                <input
                     placeholder="new-channel"
                     type="text"
                     value={name}

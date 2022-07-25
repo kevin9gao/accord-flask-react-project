@@ -25,16 +25,19 @@ const remove = channelId => ({
 })
 
 export const loadChannels= (serverId) => async dispatch => {
+  console.log("INSIDE THUNK")
   const res = await fetch(`/api/channels/${serverId}`);
-
+  console.log("serverId inside thunk", serverId)
+  console.log("AFTER RES", res)
   if (res.ok) {
     const list = await res.json();
+    console.log("after res.ok, list", list)
     dispatch(load(list));
   }
 }
 
 export const createChannel = payload => async dispatch => {
-  const res = await fetch(`/api/channels/${payload.serverId}`, {
+  const res = await fetch(`/api/channels/${payload.server_id}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
@@ -48,11 +51,13 @@ export const createChannel = payload => async dispatch => {
 }
 
 export const editChannel = payload => async dispatch => {
-  const res = await fetch(`/api/channels/${payload.serverId}/${payload.id}`, {
+  console.log("PAYLOAD FROM THUNK ", payload)
+  const res = await fetch(`/api/channels/${payload.server_id}/${payload.id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
   });
+
 
   if (res.ok) {
     const channel = await res.json();
@@ -77,7 +82,9 @@ export default function channelsReducer(state = {}, action) {
   switch (action.type) {
     case LOAD:
       newState = {};
-      action.list.forEach(channel => {
+      const channelsList = action.list['channels']
+      console.log("inside reducer", channelsList)
+      channelsList.forEach(channel => {
         newState[channel.id] = channel
       })
       return newState;

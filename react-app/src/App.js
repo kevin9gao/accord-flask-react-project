@@ -12,7 +12,6 @@ import Footer from './components/Footer'
 import SplashPage from './components/SplashPage';
 import ServerDiscover from './components/Servers/ServerDiscover';
 import { loadServers } from './store/servers';
-import CreateChannelForm from './components/CreateChannelModal.js/CreateChannelForm';
 import ChannelsNavBar from './components/Channels/ChannelsNavBar';
 import CreateServerModal from './components/Servers/CreateServerModal';
 
@@ -63,12 +62,12 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
         </ProtectedRoute>
-        <ProtectedRoute path='/channels' exact={true}>
+        <ProtectedRoute path='/channels/:serverId' exact={true}>
           <ChannelsNavBar />
         </ProtectedRoute>
-        <ProtectedRoute path='/channels/:serverId' exact={true}>
+        {/* <ProtectedRoute path='/channels/:serverId' exact={true}>
           <CreateChannelForm />
-        </ProtectedRoute>
+        </ProtectedRoute> */}
       </Switch>
     </BrowserRouter>
   );
