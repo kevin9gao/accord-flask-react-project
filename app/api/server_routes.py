@@ -33,10 +33,12 @@ def create_server():
 @server_routes.route("/<int:id>", methods=['PUT'])
 def edit_server(id):
     form = EditServerForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         server = Server.query.get(id)
         data = request.json
         server.name = data['name']
+        server.owner_id = data['owner_id']
         db.session.commit()
         return server.to_dict()
 

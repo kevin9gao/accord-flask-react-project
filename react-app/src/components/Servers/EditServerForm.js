@@ -1,49 +1,47 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-import { createServer } from "../../store/servers";
+import { editServer } from "../../store/servers";
 
-const CreateServerForm = ({ hideForm }) => {
+const EditServerForm = ({ server, hideForm }) => {
     const dispatch = useDispatch();
-    // const history = useHistory();
 
     const owner = useSelector(state => state.session.user);
     const servers = useSelector(state => state.servers);
     const serversArray = Object.values(servers);
 
-    const [ name, setName ] = useState("");
+    const [ editName, setEditName ] = useState(server.name);
     const [ hasSubmitted, setHasSubmitted ] = useState(false);
     const [ validationErrors, setValidationErrors ] = useState([]);
 
     useEffect(() => {
         const errors = [];
-        if (!name) errors.push("Server name cannot be empty");
-        if (serversArray.map(server => server.name).includes(name)) errors.push("Server name must be unique");
+        if (!editName) errors.push("Server name cannot be empty");
+        if (serversArray.map(server => server.name).includes(editName)) errors.push("Server name must be unique");
         setValidationErrors(errors);
-    }, [name]);
+    }, [editName]);
 
     const onSubmit = async (e) => {
         e.preventDefault();
         setHasSubmitted(true);
 
-        if (validationErrors.length) alert("Cannot create new server");
+        if (validationErrors.length) alert("Cannot edit channel");
 
         const payload = {
-            name,
+            id: server.id,
+            name: editName,
             owner_id: owner.id
-        };
+        }
 
-        const createdServer = await dispatch(createServer(payload));
-        console.log("FRONTEND ROUTE, createdserver", createdServer)
-        console.log('createserver component, owner: ', owner);
-        if (createdServer) reset();
+        const editedServer = await dispatch(editServer(payload));
+        if (editServer) reset();
         setHasSubmitted(false);
         hideForm();
     }
 
     const reset = () => {
-        setName("");
+        setEditName("");
     };
 
     return (
@@ -56,21 +54,19 @@ const CreateServerForm = ({ hideForm }) => {
                     ))}
                 </ul>
             )}
-            <h3>Create a server</h3>
-            <p>Your server is where you and your friends hang out. Make yours and start talking.</p>
+            <h3>Edit Server</h3>
             <label>SERVER NAME</label>
             <input
-                placeholder={`${owner.username}'s server`}
                 type="text"
-                value={name}
-                onChange={e => setName(e.target.value)}
+                value={editName}
+                onChange={e => setEditName(e.target.value)}
             />
             <div>
-                <button type="submit">Create</button>
+                <button type="submit">Submit</button>
             </div>
             </form>
         </>
     )
-};
+}
 
-export default CreateServerForm;
+export default EditServerForm;

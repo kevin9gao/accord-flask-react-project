@@ -10,22 +10,18 @@ const ChannelsNavBar = () => {
     const { serverId } = useParams();
 
     const channels = useSelector(state => state.channels)
-    console.log("CHANNELS", channels.channel)
     const channelsArr = Object.values(channels)
 
-    console.log("frontend server channels", channelsArr)
-
+    
     useEffect(() => {
         dispatch(loadChannels(serverId));
     }, [dispatch])
 
-    // const onDelete = async(e, id) => {
-    //     e.preventDefault()
-    //     // need live chat to get channel id from useParams
-    // }
-
     return (
         <div>
+            <div>
+                {}
+            </div>
             <div>
                 <CreateChannelModal />
             </div>
