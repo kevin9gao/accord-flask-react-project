@@ -17,15 +17,15 @@ function SplashPage() {
                         Create an invite-only place where you belong
                     </h1>
                     <h2>
-                    Accord servers are organized into topic-based channels where you can collaborate, share, and just talk about your day without clogging up a group chat.
+                        Accord servers are organized into topic-based channels where you can collaborate, share, and just talk about your day without clogging up a group chat.
                     </h2>
                 </div>
                 <div className='splash-image3'>
                     <h1>
-                    Where hanging out is easy
+                        Where hanging out is easy
                     </h1>
                     <h2>
-                    Grab a seat in a voice channel when you’re free. Friends in your server can see you’re around and instantly pop in to talk without having to call.
+                        Grab a seat in a voice channel when you’re free. Friends in your server can see you’re around and instantly pop in to talk without having to call.
                     </h2>
                 </div>
                 <div className='splash-image4'>
@@ -33,8 +33,21 @@ function SplashPage() {
                         From few to a fandom
                     </h1>
                     <h2>
-                    Get any community running with moderation tools and custom member access. Give members special powers, set up private channels, and more.
+                        Get any community running with moderation tools and custom member access. Give members special powers, set up private channels, and more.
                     </h2>
+                </div>
+                <div className='splash-image5'>
+                    <h1>
+                        RELIABLE TECH FOR STAYING CLOSE
+                    </h1>
+                    <h2>
+                        Low-latency voice and video feels like you’re in the same room. Wave hello over video, watch friends stream their games, or gather up and have a drawing session with screen share.
+                    </h2>
+                </div>
+                <div className='splash-image6'>
+                    <h1>
+                        Ready to start your journey?
+                    </h1>
                 </div>
             </div>
         </div>
