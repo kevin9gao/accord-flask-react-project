@@ -2,6 +2,7 @@ const LOAD = '/servers/LOAD';
 const ADD = '/servers/ADD';
 const EDIT = '/servers/EDIT';
 const REMOVE = '/servers/REMOVE';
+const JOIN = '/servers/JOIN';
 
 const load = list => ({
   type: LOAD,
@@ -20,6 +21,11 @@ const edit = server => ({
 
 const remove = serverId => ({
   type: REMOVE,
+  serverId
+})
+
+const join = serverId => ({
+  type: JOIN,
   serverId
 })
 
@@ -59,6 +65,20 @@ export const createServer = payload => async dispatch => {
     console.log("INSIDE THUNK RES.OK", server)
     dispatch(add(server));
     return server;
+  }
+}
+
+export const joinServer = payload => async dispatch => {
+  console.log('payload', payload)
+  const res = await fetch(`/api/servers/${payload.server_id}/join`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+
+  if (res.ok) {
+    const joinedServer = res.json();
+    dispatch(join(joinedServer));
   }
 }
 
@@ -115,6 +135,9 @@ export default function serversReducer(state = {}, action) {
       newState = {...state}
       delete newState[action.serverId];
       return newState;
+
+    case JOIN:
+      return state;
 
     default:
       return state;

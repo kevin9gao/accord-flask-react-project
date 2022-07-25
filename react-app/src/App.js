@@ -16,6 +16,7 @@ import CreateChannelForm from './components/CreateChannelModal.js/CreateChannelF
 import ChannelsNavBar from './components/Channels/ChannelsNavBar';
 import CreateServerModal from './components/Servers/CreateServerModal';
 import PrivateServer from './components/PrivateServer';
+import SingleServer from './components/Servers/SingleServer';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -53,7 +54,7 @@ function App() {
         </Route>
         <Route path='/discover' exact={true}>
           <ServerDiscover />
-          <CreateServerModal /> {/* move to another place */}
+          {/* <CreateServerModal /> move to another place */}
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
@@ -71,7 +72,8 @@ function App() {
           <PrivateServer />
         </ProtectedRoute>
         <ProtectedRoute path='/channels/:serverId' exact={true}>
-          <CreateChannelForm />
+          <SingleServer />
+          {/* <CreateChannelForm /> */}
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
