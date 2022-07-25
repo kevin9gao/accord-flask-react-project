@@ -67,11 +67,11 @@ function App() {
           <PrivateServer />
         </ProtectedRoute>
         <ProtectedRoute path='/channels/:serverId' exact={true}>
-          <ChannelsNavBar />
-        </ProtectedRoute>
-        <ProtectedRoute path='/channels/:serverId' exact={true}>
           <SingleServer />
           {/* <CreateChannelForm /> */}
+        </ProtectedRoute>
+        <ProtectedRoute path='/channels/:serverId' exact={true}>
+          <ChannelsNavBar />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

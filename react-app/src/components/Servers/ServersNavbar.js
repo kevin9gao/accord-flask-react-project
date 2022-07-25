@@ -18,12 +18,17 @@ export default function ServersNavBar() {
     } else dispatch(clearUserServers());
   }, [dispatch])
 
-  return (
-    <div>
-      Server Navbar
-      {servers && Object.values(servers).map(server => (
-        <h3>{server.name}</h3>
-      ))}
-    </div>
-  );
+  if (user) {
+    return (
+      <div>
+        Server Navbar
+        {/* {Object.values(servers).map(server => (
+          <h3>{server.name}</h3>
+        ))} */}
+        {userServers && Object.values(userServers)?.map(server => (
+          <h3>{server.name}</h3>
+        ))}
+      </div>
+    );
+  } else return null;
 }

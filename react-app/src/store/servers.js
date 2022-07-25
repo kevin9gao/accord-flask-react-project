@@ -1,4 +1,5 @@
 const LOAD = '/servers/LOAD';
+const LOAD_SINGLE_USER = '/servers/LOAD_SINGLE_USER';
 const ADD = '/servers/ADD';
 const EDIT = '/servers/EDIT';
 const REMOVE = '/servers/REMOVE';
@@ -7,6 +8,11 @@ const CLEAR = '/servers/CLEAR';
 
 const load = list => ({
   type: LOAD,
+  list
+})
+
+const loadSingleUser = list => ({
+  type: LOAD_SINGLE_USER,
   list
 })
 
@@ -25,13 +31,9 @@ const remove = serverId => ({
   serverId
 })
 
-const join = serverId => ({
-  type: JOIN,
-  serverId
-})
-
 const clear = () => ({
-  type: CLEAR
+  type: CLEAR,
+
 })
 
 export const loadServers = () => async (dispatch) => {
@@ -86,9 +88,9 @@ export const joinServer = payload => async dispatch => {
   console.log('res in joinServer thunk: ', res)
 
   if (res.ok) {
-    const joinedServer = await res.json();
-    console.log('res.ok, joinedServer: ', joinedServer)
-    dispatch(join(joinedServer));
+    const list = await res.json();
+    console.log('res.ok, list: ', list)
+    dispatch(loadSingleUser(list));
   }
 }
 
@@ -126,13 +128,27 @@ export default function serversReducer(state = {}, action) {
   switch (action.type) {
     case LOAD:
       // console.log("REDUCER", action)
-      newState = {};
+      newState = {...state};
       // console.log("action", action.list)
       const serversList = action.list['servers']
       // console.log("object.values", serversList)
       serversList.forEach(server => {
         newState[server.id] = server
       })
+      return newState;
+
+    case LOAD_SINGLE_USER:
+      newState = {...state};
+
+      const userServers = action.list['servers'];
+      // console.log('userServers in reducer: ', userServers);
+
+      // instantiate 'user-servers' key in newState.servers so that userServers can be normalized
+      newState['user-servers'] = {};
+      userServers.forEach(server => {
+        newState['user-servers'][server.id] = server;
+      })
+
       return newState;
 
     case ADD:

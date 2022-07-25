@@ -62,4 +62,6 @@ def join_server(id):
         user.servers_joined.append(server)
         db.session.add(user)
         db.session.commit()
-        return 'successful'
+        # print('user.servers_joined', user.servers_joined)
+        print('LIST COMPREHENSION RESULT:', {'user-servers': [server.to_dict() for server in user.servers_joined]})
+        return {'servers': [server.to_dict() for server in user.servers_joined]}
