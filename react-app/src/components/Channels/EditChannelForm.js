@@ -55,3 +55,5 @@ const EditChannelForm = ({hideForm}) => {
         </div>
     )
 }
+
+export default EditChannelForm;

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { loadChannels } from '../../store/channels';
-import CreateChannelModal from './CreateChannelModal.js';
-import EditChannelModal from './EditChannelModal.js'
+import CreateChannelModal from './CreateChannelModal'
+import EditChannelModal from './EditChannelModal'
 
 const ChannelsNavBar = () => {
     const dispatch = useDispatch();
@@ -26,8 +26,10 @@ const ChannelsNavBar = () => {
             </div>
             <div>
                 {channelsArr && channelsArr.map(channel => (
-                    <li key={channel.id}>{channel.name}</li>
-                    <EditChannelModal />
+                    <ul>
+                        <li key={channel.id}>{channel.name}</li>
+                        <EditChannelModal />
+                    </ul>
                 ))}
             </div>
         </div>
