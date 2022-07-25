@@ -27,7 +27,7 @@ const CreateServerForm = ({ hideForm }) => {
         e.preventDefault();
         setHasSubmitted(true);
 
-        if (validationErrors.length) alert("Cannot create new channel");
+        if (validationErrors.length) alert("Cannot create new server");
 
         const payload = {
             name,
