@@ -8,6 +8,7 @@ const CreateChannelForm = ({ hideForm }) => {
     const dispatch = useDispatch();
     const { serverId } = useParams();
 
+    const sessionUser = useSelector(state => state.session.user);
     const channels = useSelector(state => state.channels);
     const channelsArr = Object.values(channels);
 
