@@ -128,9 +128,12 @@ export default function serversReducer(state = {}, action) {
       const userServers = action.list['servers'];
       // instantiate 'user-servers' key in newState.servers so that userServers can be normalized
       newState['user-servers'] = {};
+      // instantiate 'user-servers' key in newState.servers so that userServers can be normalized
+      console.log("INSIDE REDUCER", action, action.type, action.list)
       userServers.forEach(server => {
         newState['user-servers'][server.id] = server;
       })
+      
 
       return newState;
 
@@ -141,11 +144,7 @@ export default function serversReducer(state = {}, action) {
 
     case EDIT:
       const newStateEdit = {...state};
-      console.log("NEW STATE FROM EDIT REDUCER", newState)
-      console.log("NEW STATEEDIT FROM EDIT REDUCER", newStateEdit)
-      console.log("WHAT IS THIS", action.server)
-      console.log("WHAT IS THIS 2",  newStateEdit[action.server.id])
-      console.log("WHAT IS THIS 3", newStateEdit['user-servers'])
+
       newStateEdit[action.server.id] = action.server;
       newStateEdit['user-servers'][action.server.id] = action.server
       return newStateEdit;
@@ -153,6 +152,7 @@ export default function serversReducer(state = {}, action) {
     case REMOVE:
       newState = {...state}
       delete newState[action.serverId];
+      delete newState['user-servers'][action.serverId]
       return newState;
 
 
