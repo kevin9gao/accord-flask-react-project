@@ -13,13 +13,12 @@ export default function ServersNavBar() {
   const sessionUser = useSelector(state => state.session.user);
   const userServersArr = userServers ? Object.values(userServers) : null
 
-console.log("UPDATED SERVER? FROM NAVBAR", userServers)
 useEffect(()=> {
   dispatch(loadServers)
 }, [dispatch])
 
 useEffect(() => {
-    if (user) dispatch(loadSingleUserServers(user.id));
+   if (user) dispatch(loadSingleUserServers(user.id));
   }, [dispatch])
   
 
