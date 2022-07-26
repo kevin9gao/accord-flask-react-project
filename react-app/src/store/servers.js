@@ -128,9 +128,12 @@ export default function serversReducer(state = {}, action) {
       const userServers = action.list['servers'];
       // instantiate 'user-servers' key in newState.servers so that userServers can be normalized
       newState['user-servers'] = {};
+      // instantiate 'user-servers' key in newState.servers so that userServers can be normalized
+      console.log("INSIDE REDUCER", action, action.type, action.list)
       userServers.forEach(server => {
         newState['user-servers'][server.id] = server;
       })
+      
 
       return newState;
 

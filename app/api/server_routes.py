@@ -35,6 +35,7 @@ def create_server():
 def edit_server(id):
     form = EditServerForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    print("backendROUTE", form.data)
     if form.validate_on_submit():
         server = Server.query.get(id)
         data = request.json
