@@ -27,7 +27,7 @@ useEffect(() => {
     await dispatch(deleteServer(id))
   }
 
-  if (user) {
+  if (user && userServers) {
     return (
       <div>
         <h2>Logged in user: {user.username}</h2>
