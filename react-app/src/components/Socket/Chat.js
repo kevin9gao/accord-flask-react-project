@@ -23,6 +23,7 @@ const Chat = () => {
 
     //when component unmounts, disconnect
     return (() => {
+      // socket.removeAllListeners()
       socket.disconnect()
     }, [])
   }, [])
@@ -57,7 +58,9 @@ const Chat = () => {
           value={chatInput}
           onChange={updateChatInput}
         />
-        <button>Send</button>
+        <button
+          // onClick={}
+        >Send</button>
       </form>
     </div>
   ));
