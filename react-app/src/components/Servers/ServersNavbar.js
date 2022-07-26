@@ -4,6 +4,7 @@ import { loadServers, loadSingleUserServers } from "../../store/servers";
 import CreateServerModal from "./CreateServerModal";
 import EditServerModal from "./EditServerModal";
 import { deleteServer } from "../../store/servers";
+import { NavLink } from "react-router-dom";
 
 export default function ServersNavBar() {
   const dispatch = useDispatch();
@@ -35,8 +36,9 @@ useEffect(() => {
 
         {userServersArr && userServersArr.map(server => (
         <div>
-          <h3>{server.name}</h3>
-
+          <NavLink to={`/channels/${server.id}`}>
+            <h3>{server.name}</h3>
+          </NavLink>
           {sessionUser?.id === server.owner_id &&
             (
               <div>
