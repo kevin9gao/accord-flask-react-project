@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Component } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { loadChannels } from '../../store/channels';
@@ -10,22 +10,17 @@ const ChannelsNavBar = () => {
     const { serverId } = useParams();
 
     const channels = useSelector(state => state.channels)
-    console.log("CHANNELS", channels.channel)
     const channelsArr = Object.values(channels)
-
-    console.log("frontend server channels", channelsArr)
 
     useEffect(() => {
         dispatch(loadChannels(serverId));
     }, [dispatch])
 
-    // const onDelete = async(e, id) => {
-    //     e.preventDefault()
-    //     // need live chat to get channel id from useParams
-    // }
-
     return (
         <div>
+            <div>
+                Channels NavBar
+            </div>
             <div>
                 <CreateChannelModal />
             </div>
@@ -36,6 +31,7 @@ const ChannelsNavBar = () => {
                         <EditChannelModal channel={channel}/>
                     </ul>
                 ))}
+
             </div>
         </div>
     )

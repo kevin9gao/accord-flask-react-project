@@ -32,6 +32,5 @@ class User(db.Model, UserMixin):
     servers_owned = db.relationship("Server", back_populates="owner")
     servers_joined = db.relationship("Server",
         secondary=members,
-        back_populates='server_members',
-        cascade='all, delete'
+        back_populates='server_members'
     )
