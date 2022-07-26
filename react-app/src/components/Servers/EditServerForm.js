@@ -33,9 +33,10 @@ const EditServerForm = ({ server, hideForm }) => {
             name: editName,
             owner_id: owner.id
         }
+        console.log("payload in COMPONENT", payload )
 
         const editedServer = await dispatch(editServer(payload));
-        if (editServer) reset();
+        if (editedServer) reset();
         setHasSubmitted(false);
         hideForm();
     }

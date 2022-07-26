@@ -1,5 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { loadSingleUserServers } from "../../store/servers";
 import CreateServerModal from "./CreateServerModal";
 import EditServerModal from "./EditServerModal";
@@ -7,13 +8,22 @@ import EditServerModal from "./EditServerModal";
 export default function ServersNavBar() {
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user);
-  const userServers = useSelector(state => state.servers['user-servers']);
+  const userServers = useSelector(state => state ? state.servers['user-servers'] : null);
+  const userServersArr = userServers ? Object.values(userServers) : null;
+  console.log("frontend",userServers)
+  console.log(userServersArr)
 
   // console.log('user.id: ', user.id)
+  // const [servers, setServers ]
+  
+  // const server = userServers[1]['name']
+  // const server = userServersArr?.filter(server => server.id = serverId);
+  // console.log(server)
 
   useEffect(() => {
-    if (user) dispatch(loadSingleUserServers(user.id));
+      dispatch(loadSingleUserServers(user.id));
   }, [dispatch])
+  
 
   if (user) {
     return (
@@ -23,7 +33,7 @@ export default function ServersNavBar() {
         {/* {Object.values(servers).map(server => (
           <h3>{server.name}</h3>
         ))} */}
-        {userServers && Object.values(userServers)?.map(server => (
+        {userServersArr && userServersArr?.map(server => (
         <div>
           <h3>{server.name}</h3>
           <EditServerModal server={server} />

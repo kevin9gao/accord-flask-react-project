@@ -107,6 +107,7 @@ export const editServer = payload => async dispatch => {
 
   if (res.ok) {
     const server = await res.json();
+    console.log("server in THUNK", server)
     dispatch(edit(server));
     return server;
   }
@@ -139,15 +140,18 @@ export default function serversReducer(state = {}, action) {
 
     case LOAD_SINGLE_USER:
       newState = {...state};
-
+      
       const userServers = action.list['servers'];
+      console.log("inside REDUCER", userServers)
       // console.log('userServers in reducer: ', userServers);
-
-      // instantiate 'user-servers' key in newState.servers so that userServers can be normalized
+      
       newState['user-servers'] = {};
+      // instantiate 'user-servers' key in newState.servers so that userServers can be normalized
+      console.log("INSIDE REDUCER", action, action.type, action.list)
       userServers.forEach(server => {
         newState['user-servers'][server.id] = server;
       })
+      
 
       return newState;
 
