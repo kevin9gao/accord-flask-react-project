@@ -9,10 +9,14 @@ export default function ServersNavBar() {
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user);
   const userServers = useSelector(state => state.servers['user-servers']);
-  // const userServers = useSelector(state => state.servers);
+  const allServers = useSelector(state => state.servers);
   const sessionUser = useSelector(state => state.session.user);
+  const userServersArr = userServers ? Object.values(userServers) : null
 
-
+console.log("UPDATED SERVER? FROM NAVBAR", userServers)
+useEffect(()=> {
+  dispatch(loadServers)
+}, [dispatch])
 
 useEffect(() => {
     if (user) dispatch(loadSingleUserServers(user.id));
@@ -29,7 +33,7 @@ useEffect(() => {
         Server Navbar
         <CreateServerModal />
 
-        {userServers && Object.values(userServers)?.map(server => (
+        {userServersArr && userServersArr.map(server => (
         <div>
           <h3>{server.name}</h3>
 

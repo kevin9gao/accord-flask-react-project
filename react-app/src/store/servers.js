@@ -95,8 +95,8 @@ export const editServer = payload => async dispatch => {
 
   if (res.ok) {
     const server = await res.json();
+    console.log("EDITED SERVER FROM THUNK", server)
     dispatch(edit(server));
-    return server;
   }
 }
 
@@ -140,9 +140,15 @@ export default function serversReducer(state = {}, action) {
       return newState;
 
     case EDIT:
-      newState = {...state};
-      newState[action.server.id] = action.server;
-      return newState;
+      const newStateEdit = {...state};
+      console.log("NEW STATE FROM EDIT REDUCER", newState)
+      console.log("NEW STATEEDIT FROM EDIT REDUCER", newStateEdit)
+      console.log("WHAT IS THIS", action.server)
+      console.log("WHAT IS THIS 2",  newStateEdit[action.server.id])
+      console.log("WHAT IS THIS 3", newStateEdit['user-servers'])
+      newStateEdit[action.server.id] = action.server;
+      newStateEdit['user-servers'][action.server.id] = action.server
+      return newStateEdit;
 
     case REMOVE:
       newState = {...state}
