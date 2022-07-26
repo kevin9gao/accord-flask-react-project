@@ -51,7 +51,6 @@ const EditChannelForm = ({hideForm, channel}) => {
 
     const onDelete = async(e) => {
         e.preventDefault()
-    // need live chat to get channel id from useParams
         await dispatch(deleteChannel(serverId, channel.id));
         hideForm()
     };

@@ -1,46 +1,55 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { loadSingleUserServers } from "../../store/servers";
+import { loadServers, loadSingleUserServers } from "../../store/servers";
 import CreateServerModal from "./CreateServerModal";
 import EditServerModal from "./EditServerModal";
+import { deleteServer } from "../../store/servers";
 
 export default function ServersNavBar() {
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user);
-  const userServers = useSelector(state => state ? state.servers['user-servers'] : null);
-  const userServersArr = userServers ? Object.values(userServers) : null;
-  console.log("frontend",userServers)
-  console.log(userServersArr)
+  const userServers = useSelector(state => state.servers['user-servers']);
+  const allServers = useSelector(state => state.servers);
+  const sessionUser = useSelector(state => state.session.user);
+  const userServersArr = userServers ? Object.values(userServers) : null
 
-  // console.log('user.id: ', user.id)
-  // const [servers, setServers ]
-  
-  // const server = userServers[1]['name']
-  // const server = userServersArr?.filter(server => server.id = serverId);
-  // console.log(server)
+console.log("UPDATED SERVER? FROM NAVBAR", userServers)
+useEffect(()=> {
+  dispatch(loadServers)
+}, [dispatch])
 
-  useEffect(() => {
-      dispatch(loadSingleUserServers(user.id));
+useEffect(() => {
+    if (user) dispatch(loadSingleUserServers(user.id));
   }, [dispatch])
   
+
+  const deleteServ = async (id) => {
+    await dispatch(deleteServer(id))
+  }
 
   if (user) {
     return (
       <div>
+        <h2>Logged in user: {user.username}</h2>
         Server Navbar
         <CreateServerModal />
-        {/* {Object.values(servers).map(server => (
-          <h3>{server.name}</h3>
-        ))} */}
-        {userServersArr && userServersArr?.map(server => (
+
+        {userServersArr && userServersArr.map(server => (
         <div>
           <h3>{server.name}</h3>
-          <EditServerModal server={server} />
+
+          {sessionUser?.id === server.owner_id &&
+            (
+              <div>
+                <EditServerModal server={server} />
+                <button type="submit" onClick={(id)=> deleteServ(server.id)}>Delete Server</button>
+              </div>
+            )
+          }
       </div>
         ))}
       </div>
     );
   } else return null;
-  
+
 }

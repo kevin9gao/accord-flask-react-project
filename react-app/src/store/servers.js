@@ -3,8 +3,6 @@ const LOAD_SINGLE_USER = '/servers/LOAD_SINGLE_USER';
 const ADD = '/servers/ADD';
 const EDIT = '/servers/EDIT';
 const REMOVE = '/servers/REMOVE';
-const CLEAR = '/servers/CLEAR';
-// const JOIN = '/servers/JOIN';
 
 const load = list => ({
   type: LOAD,
@@ -31,35 +29,25 @@ const remove = serverId => ({
   serverId
 })
 
-const clear = () => ({
-  type: CLEAR,
 
-})
 
-// const join = list => ({
-//   type: JOIN,
-//   list
-// })
+
 
 export const loadServers = () => async (dispatch) => {
-  // console.log("INSIDE LOADSERVERS THUNK")
   const res = await fetch('/api/servers/');
-  // console.log("RES in THUNK", res)
   if (res.ok) {
     const list = await res.json();
-    // console.log("INSIDE THUNK RES.OK", list)
     dispatch(load(list));
   }
 }
 
 export const loadSingleUserServers = (userId) => async dispatch => {
+  // const res = await fetch(`/api/users/${userId}/servers`);
   const res = await fetch(`/api/users/${userId}/servers`);
-
-  console.log('res in loadSingleUserServers thunk: ', res);
 
   if (res.ok) {
     const list = await res.json();
-    console.log('list in loadSingleUserServers thunk: ', list)
+    console.log("LIST OF SERVERS JOINED FROM THUNK", list)
     dispatch(loadSingleUser(list));
   }
 }
@@ -89,12 +77,12 @@ export const joinServer = payload => async dispatch => {
     body: JSON.stringify(payload)
   });
 
-  console.log('res in joinServer thunk: ', res)
 
   if (res.ok) {
     const list = await res.json();
     console.log('res.ok, list: ', list)
     dispatch(loadSingleUser(list));
+    return list;
   }
 }
 
@@ -107,9 +95,8 @@ export const editServer = payload => async dispatch => {
 
   if (res.ok) {
     const server = await res.json();
-    console.log("server in THUNK", server)
+    console.log("EDITED SERVER FROM THUNK", server)
     dispatch(edit(server));
-    return server;
   }
 }
 
@@ -128,23 +115,18 @@ let newState;
 export default function serversReducer(state = {}, action) {
   switch (action.type) {
     case LOAD:
-      // console.log("REDUCER", action)
       newState = {...state};
-      // console.log("action", action.list)
+      console.log("NEWSTATE FROM LOAD ONLY", newState)
       const serversList = action.list['servers']
-      // console.log("object.values", serversList)
       serversList.forEach(server => {
         newState[server.id] = server
       })
       return newState;
 
     case LOAD_SINGLE_USER:
-      newState = {...state};
-      
+      newState = {...state}
       const userServers = action.list['servers'];
-      console.log("inside REDUCER", userServers)
-      // console.log('userServers in reducer: ', userServers);
-      
+      // instantiate 'user-servers' key in newState.servers so that userServers can be normalized
       newState['user-servers'] = {};
       // instantiate 'user-servers' key in newState.servers so that userServers can be normalized
       console.log("INSIDE REDUCER", action, action.type, action.list)
@@ -161,19 +143,21 @@ export default function serversReducer(state = {}, action) {
       return newState;
 
     case EDIT:
-      newState = {...state};
-      newState[action.server.id] = action.server;
-      return newState;
+      const newStateEdit = {...state};
+      console.log("NEW STATE FROM EDIT REDUCER", newState)
+      console.log("NEW STATEEDIT FROM EDIT REDUCER", newStateEdit)
+      console.log("WHAT IS THIS", action.server)
+      console.log("WHAT IS THIS 2",  newStateEdit[action.server.id])
+      console.log("WHAT IS THIS 3", newStateEdit['user-servers'])
+      newStateEdit[action.server.id] = action.server;
+      newStateEdit['user-servers'][action.server.id] = action.server
+      return newStateEdit;
 
     case REMOVE:
       newState = {...state}
       delete newState[action.serverId];
       return newState;
 
-    // case JOIN:
-    //   newState = {...state};
-    //   newState['user-servers'] = action.list;
-    //   return newState;
 
     default:
       return state;

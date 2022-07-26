@@ -15,7 +15,6 @@ import { loadServers } from './store/servers';
 import ChannelsNavBar from './components/Channels/ChannelsNavBar';
 import CreateServerModal from './components/Servers/CreateServerModal';
 import PrivateServer from './components/PrivateServer';
-import SingleServer from './components/Servers/SingleServer';
 import ServersNavBar from './components/Servers/ServersNavbar';
 
 function App() {
@@ -28,10 +27,6 @@ function App() {
       setLoaded(true);
     })();
   }, [dispatch]);
-
-  // useEffect(() => {
-  //   dispatch(loadServers())
-  // }, [dispatch])
 
   if (!loaded) {
     return null;
@@ -67,13 +62,20 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
         </ProtectedRoute>
-        <ProtectedRoute path='/channels/:serverId' exact={true}>
-          {/* <ServersNavBar /> */}
-          <ChannelsNavBar />
-        </ProtectedRoute>
         <ProtectedRoute path='/channels/@me' exact={true}>
           <PrivateServer />
+          <ServersNavBar />
         </ProtectedRoute>
+        <ProtectedRoute path='/channels/:serverId' exact={true}>
+          <ServersNavBar />
+          <ChannelsNavBar />
+        </ProtectedRoute>
+
+        {/* <ProtectedRoute path='/channels/:serverId' exact={true}>
+          <SingleServer />
+          {/* <CreateChannelForm /> */}
+        {/* </ProtectedRoute> */}
+
       </Switch>
     </BrowserRouter>
   );
