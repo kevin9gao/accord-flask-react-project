@@ -8,22 +8,20 @@ import EditChannelModal from './EditChannelModal'
 const ChannelsNavBar = () => {
     const dispatch = useDispatch();
     const { serverId } = useParams();
-    const sessionUser = useSelector(state => state.session.user);
 
     const channels = useSelector(state => state.channels)
-    console.log("CHANNELS", channels.channel)
     const channelsArr = Object.values(channels)
 
-    console.log("frontend server channels", channelsArr)
 
     useEffect(() => {
         dispatch(loadChannels(serverId));
     }, [dispatch])
 
-
-
     return (
         <div>
+            <div>
+                {}
+            </div>
             <div>
                 <CreateChannelModal />
             </div>
@@ -34,8 +32,7 @@ const ChannelsNavBar = () => {
                         <EditChannelModal channel={channel}/>
                     </ul>
                 ))}
-                {/* {sessionUser?.id === } */}
-                <button type="submit">Delete Server</button>
+
             </div>
         </div>
     )

@@ -12,6 +12,7 @@ server_routes = Blueprint('servers', __name__)
 def all_servers():
     # print("HITTING BACKEND ROUTE")
     servers = Server.query.all()
+    
     # print("backend ROUTE", servers)
     return {'servers': [server.to_dict() for server in servers]}
 
@@ -33,10 +34,12 @@ def create_server():
 @server_routes.route("/<int:id>", methods=['PUT'])
 def edit_server(id):
     form = EditServerForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         server = Server.query.get(id)
         data = request.json
         server.name = data['name']
+        server.owner_id = data['owner_id']
         db.session.commit()
         return server.to_dict()
 
@@ -62,4 +65,6 @@ def join_server(id):
         user.servers_joined.append(server)
         db.session.add(user)
         db.session.commit()
-        return 'successful'
+        # print('user.servers_joined', user.servers_joined)
+        print('LIST COMPREHENSION RESULT:', {'user-servers': [server.to_dict() for server in user.servers_joined]})
+        return {'servers': [server.to_dict() for server in user.servers_joined]}
