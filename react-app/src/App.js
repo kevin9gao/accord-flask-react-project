@@ -16,6 +16,7 @@ import ChannelsNavBar from './components/Channels/ChannelsNavBar';
 import CreateServerModal from './components/Servers/CreateServerModal';
 import PrivateServer from './components/PrivateServer';
 import ServersNavBar from './components/Servers/ServersNavbar';
+import Chat from './components/Socket/Chat';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -63,6 +64,7 @@ function App() {
           <h1>My Home Page</h1>
         </ProtectedRoute>
         <ProtectedRoute path='/channels/@me' exact={true}>
+          <Chat />
           <PrivateServer />
           <ServersNavBar />
         </ProtectedRoute>
