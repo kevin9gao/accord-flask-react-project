@@ -8,6 +8,7 @@ import EditChannelModal from './EditChannelModal'
 const ChannelsNavBar = () => {
     const dispatch = useDispatch();
     const { serverId } = useParams();
+    const sessionUser = useSelector(state => state.session.user);
 
     const channels = useSelector(state => state.channels)
     console.log("CHANNELS", channels.channel)
@@ -19,10 +20,7 @@ const ChannelsNavBar = () => {
         dispatch(loadChannels(serverId));
     }, [dispatch])
 
-    // const onDelete = async(e, id) => {
-    //     e.preventDefault()
-    //     // need live chat to get channel id from useParams
-    // }
+
 
     return (
         <div>
@@ -36,6 +34,8 @@ const ChannelsNavBar = () => {
                         <EditChannelModal channel={channel}/>
                     </ul>
                 ))}
+                {/* {sessionUser?.id === } */}
+                <button type="submit">Delete Server</button>
             </div>
         </div>
     )
