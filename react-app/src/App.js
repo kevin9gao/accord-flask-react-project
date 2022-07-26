@@ -80,11 +80,6 @@ function App() {
           <ChannelChat />
         </ProtectedRoute>
 
-        {/* <ProtectedRoute path='/channels/:serverId' exact={true}>
-          <SingleServer />
-          {/* <CreateChannelForm /> */}
-        {/* </ProtectedRoute> */}
-
       </Switch>
     </BrowserRouter>
   );
