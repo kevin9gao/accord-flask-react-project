@@ -64,9 +64,9 @@ function App() {
           <h1>My Home Page</h1>
         </ProtectedRoute>
         <ProtectedRoute path='/channels/@me' exact={true}>
-          <Chat />
+          {/* <Chat /> */}
           <PrivateServer />
-          <ServersNavBar />
+          {/* <ServersNavBar /> */}
         </ProtectedRoute>
         <ProtectedRoute path='/channels/:serverId' exact={true}>
           <ServersNavBar />

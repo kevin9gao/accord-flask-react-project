@@ -48,3 +48,8 @@ def delete_channel(server_id, id):
     db.session.delete(channel)
     db.session.commit()
     return channel.to_dict()
+
+
+@channel_routes.route("/@me/<int:messages_id>", methods=['GET', 'POST'])
+def direct_messages(messages_id):
+    pass

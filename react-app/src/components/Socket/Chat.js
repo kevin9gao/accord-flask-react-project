@@ -25,7 +25,7 @@ const Chat = () => {
     return (() => {
       socket.disconnect()
     }, [])
-  })
+  }, [])
 
   const updateChatInput = e => {
     setChatInput(e.target.value);
