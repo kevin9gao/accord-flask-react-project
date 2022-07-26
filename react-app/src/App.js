@@ -15,7 +15,6 @@ import { loadServers } from './store/servers';
 import ChannelsNavBar from './components/Channels/ChannelsNavBar';
 import CreateServerModal from './components/Servers/CreateServerModal';
 import PrivateServer from './components/PrivateServer';
-import SingleServer from './components/Servers/SingleServer';
 import ServersNavBar from './components/Servers/ServersNavbar';
 
 function App() {
@@ -69,10 +68,12 @@ function App() {
         <ProtectedRoute path='/channels/:serverId' exact={true}>
           <ChannelsNavBar />
         </ProtectedRoute>
-        <ProtectedRoute path='/channels/:serverId' exact={true}>
+
+        {/* <ProtectedRoute path='/channels/:serverId' exact={true}>
           <SingleServer />
           {/* <CreateChannelForm /> */}
-        </ProtectedRoute>
+        {/* </ProtectedRoute> */}
+
       </Switch>
     </BrowserRouter>
   );

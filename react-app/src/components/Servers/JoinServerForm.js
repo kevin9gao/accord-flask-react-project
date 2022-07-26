@@ -16,7 +16,7 @@ const JoinServerForm = ({ server, hideForm }) => {
 
     const payload = {
       user_id: user.id,
-      server_id: serverId
+      server_id: Number(serverId)
     }
 
     // console.log('payload in SingleServer component: ', payload)

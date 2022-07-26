@@ -20,12 +20,12 @@ export default function ServerDiscover() {
 
     return (
         <div>
+            <h2>Click on a Server to Join!</h2>
             {serversArray && serversArray.map(server => {
                 return (server && (
                     <div key={server.id}>
                         <JoinServerModal server={server} />
                     </div>
-                    /* add NavLink for the server */
                 )
                 )
             }

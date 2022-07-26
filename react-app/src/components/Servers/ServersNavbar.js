@@ -8,13 +8,14 @@ import { deleteServer } from "../../store/servers";
 export default function ServersNavBar() {
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user);
-  // const userServers = useSelector(state => state.servers['user-servers']);
-  const userServers = useSelector(state => state.servers);
+  const userServers = useSelector(state => state.servers['user-servers']);
+  // const userServers = useSelector(state => state.servers);
   const sessionUser = useSelector(state => state.session.user);
 
 
+
 useEffect(() => {
-    if (user) dispatch(loadServers(user.id));
+    if (user) dispatch(loadSingleUserServers(user.id));
   }, [dispatch])
 
   const deleteServ = async (id) => {
@@ -24,11 +25,10 @@ useEffect(() => {
   if (user) {
     return (
       <div>
+        <h2>Logged in user: {user.username}</h2>
         Server Navbar
         <CreateServerModal />
-        {/* {Object.values(servers).map(server => (
-          <h3>{server.name}</h3>
-        ))} */}
+
         {userServers && Object.values(userServers)?.map(server => (
         <div>
           <h3>{server.name}</h3>
