@@ -35,7 +35,7 @@ const EditServerForm = ({ server, hideForm }) => {
         }
 
         const editedServer = await dispatch(editServer(payload));
-        if (editServer) reset();
+        if (editedServer) reset();
         setHasSubmitted(false);
         hideForm();
     }
