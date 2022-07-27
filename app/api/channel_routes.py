@@ -52,4 +52,5 @@ def delete_channel(server_id, id):
 
 @channel_routes.route("/@me/<int:convo_id>", methods=['GET', 'POST'])
 def direct_messages(convo_id):
+    message = 
     pass

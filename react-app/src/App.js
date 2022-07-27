@@ -17,6 +17,7 @@ import CreateServerModal from './components/Servers/CreateServerModal';
 import PrivateServer from './components/PrivateServer';
 import ServersNavBar from './components/Servers/ServersNavbar';
 import ServerMainPage from './components/Servers/ServerMainPage';
+import DmNavBar from './components/Dms/DmNavBar';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -55,7 +56,7 @@ function App() {
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <ServersNavBar />
-          <UsersList/>
+          {/* <UsersList/> */}
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
@@ -65,6 +66,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/channels/@me' exact={true}>
           <PrivateServer />
+        </ProtectedRoute>
+        <ProtectedRoute path='/channels/@me/:convoId'>
+          <DmNavBar />
         </ProtectedRoute>
         <ProtectedRoute path='/channels/:serverId' exact={true}>
           <ServersNavBar />
