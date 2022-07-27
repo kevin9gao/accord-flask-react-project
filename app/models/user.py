@@ -30,6 +30,8 @@ class User(db.Model, UserMixin):
         }
 
     servers_owned = db.relationship("Server", back_populates="owner")
+    dms_received = db.relationship("DirectMessage", back_populates="recipient")
+    dm_convo = db.relationship("DMConversation", back_populates="sender")
     servers_joined = db.relationship("Server",
         secondary=members,
         back_populates='server_members'
