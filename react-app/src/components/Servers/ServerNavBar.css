@@ -1,0 +1,16 @@
+.server.navbar {
+    height: 100%;
+    background-color: rgb(103, 102, 120);
+    width: 4.5%;
+}
+
+.server-img {
+    height: 80px;
+    width: 80px;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.server-name {
+    visibility: hidden;
+}

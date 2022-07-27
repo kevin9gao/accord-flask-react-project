@@ -4,6 +4,7 @@ import { NavLink, useParams } from 'react-router-dom';
 import { loadChannels } from '../../store/channels';
 import CreateChannelModal from './CreateChannelModal'
 import EditChannelModal from './EditChannelModal'
+import "./ChannelNavBar.css"
 
 
 const ChannelsNavBar = () => {
