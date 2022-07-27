@@ -9,11 +9,15 @@ const DmChat = () => {
     const [messages, setMessages] = useState([]);
     const [chatInput, setChatInput] = useState('');
 
+    const user = useSelector(state => state.session.user)
+
+
 
     useEffect(() => {
         // create websocket
         socket = io();
 
+        if (socket && channel) socket.emit('join', {'username': username, })
         //listen for chat events
         socket.on('chat', chat => {
             // when receive a chat, add to messages state var
@@ -40,9 +44,6 @@ const DmChat = () => {
         //clear input field after message is sent
         setChatInput('');
     }
-
-
-    const user = useSelector(state => state.session.user);
 
     return (
         <div>

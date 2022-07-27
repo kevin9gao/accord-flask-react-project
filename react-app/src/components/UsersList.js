@@ -26,7 +26,11 @@ function UsersList() {
     return (
       <div>
         <button onClick={() => setChat(true)} key={user.id}>
-          {user.username}
+          <div>
+            <NavLink to={`/channels/@me/${messagesId}`}>
+              <li key={user.id}>{user.username}</li>
+            </NavLink>
+          </div>
           {/* <NavLink to={`/users/${user.id}`}>{user.username}</NavLink> */}
         </button>
       </div>

@@ -10,14 +10,7 @@ const PrivateServer = () => {
   return (
     <div>
       <ServersNavBar />
-<<<<<<< HEAD
-<<<<<<< HEAD
       <DmNavBar />
-=======
->>>>>>> f13e05d80ddbddd5aa235068a8eecff877287609
-=======
-      <DmNavBar />
->>>>>>> main
     </div>
   );
 }
