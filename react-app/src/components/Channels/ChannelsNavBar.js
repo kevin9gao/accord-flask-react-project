@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
 import { io } from 'socket.io-client';
@@ -7,6 +7,9 @@ import { loadChannels } from '../../store/channels';
 import ChannelChat from '../LiveChat/ChannelChat';
 import CreateChannelModal from './CreateChannelModal'
 import EditChannelModal from './EditChannelModal'
+import { io } from 'socket.io-client';
+import ChannelChat from '../LiveChat/ChannelChat';
+
 
 let socket;
 
@@ -52,6 +55,21 @@ const ChannelsNavBar = () => {
 
     // const leaveRoom = (room) => {
     // }
+
+
+
+    let previous;
+    // const onChannelClick = (channelName) => {
+    //     if(room !== channelName) {
+    //         previous = room
+    //     }
+    //     <ChannelChat room={room} setRoom={setRoom} previousChannel={previous}/>
+    // }
+
+    // const onChannelClick = () => {
+    //     <ChannelChat/>
+    // }
+
 
     return (
         <div>

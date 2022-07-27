@@ -4,7 +4,7 @@ const ADD = '/channels/ADD';
 const EDIT = '/channels/EDIT';
 const REMOVE = '/channels/REMOVE';
 
-const load = list => ({
+const load = (list) => ({
   type: LOAD,
   list
 })
@@ -24,14 +24,15 @@ const remove = channelId => ({
   channelId
 })
 
-export const loadChannels= (serverId) => async dispatch => {
-  console.log("INSIDE THUNK")
+
+
+
+
+export const loadChannels = (serverId) => async dispatch => {
   const res = await fetch(`/api/channels/${serverId}`);
-  console.log("serverId inside thunk", serverId)
-  console.log("AFTER RES", res)
+
   if (res.ok) {
     const list = await res.json();
-    console.log("after res.ok, list", list)
     dispatch(load(list));
   }
 }
@@ -51,7 +52,6 @@ export const createChannel = payload => async dispatch => {
 }
 
 export const editChannel = payload => async dispatch => {
-  console.log("PAYLOAD FROM THUNK ", payload)
   const res = await fetch(`/api/channels/${payload.server_id}/${payload.id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },

@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux';
 import { io } from 'socket.io-client';
 import { useParams } from 'react-router-dom';
 
-let socket;
 
+let socket;
 const ChannelChat = () => {
   const [messages, setMessages] = useState([]);
   const [chatInput, setChatInput] = useState('');
