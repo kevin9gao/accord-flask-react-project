@@ -1,17 +1,28 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
+import { io } from 'socket.io-client';
+
 import { loadChannels } from '../../store/channels';
+import ChannelChat from '../LiveChat/ChannelChat';
 import CreateChannelModal from './CreateChannelModal'
 import EditChannelModal from './EditChannelModal'
+
+let socket;
 
 const ChannelsNavBar = () => {
     const dispatch = useDispatch();
     const { serverId } = useParams();
+    socket = io();
 
     const allChannels = useSelector(state => state.channels)
+    // console.log("channelsSELECTOR", allChannels)
     const allChannelsArr = Object.values(allChannels)
-    console.log('channelsArr', allChannelsArr)
+    const user = useSelector(state => state.session.user);
+    const id = 5;
+    const channel = allChannels[id]
+    console.log(channel)
+    // console.log('channelsArr', allChannelsArr)
 
     const channels = allChannelsArr.filter(channel => {
         return channel['server_id'] === Number(serverId);
@@ -19,7 +30,28 @@ const ChannelsNavBar = () => {
 
     useEffect(() => {
         dispatch(loadChannels(serverId));
-    }, [dispatch])
+    }, [dispatch]);
+
+
+    // socket.on('connect', () => {
+    //     socket.send("I am connected");
+    // });
+
+    // socket.on('message', data => {
+    //     console.log(`message received:" ${data}`);
+    // });
+
+    const room = (room) => {
+        if (room) {
+            socket.emit('leave', { username: user.username, channel: channel });
+            socket.emit('join', {username: user.username, channel: channel })
+        } else {
+            socket.emit('join', {username: user.username, channel: channel })
+        }
+      }
+
+    // const leaveRoom = (room) => {
+    // }
 
     return (
         <div>
@@ -33,8 +65,9 @@ const ChannelsNavBar = () => {
                 {channels && channels.map(channel => (
                     <ul>
                         <NavLink to={`/channels/${serverId}/${channel.id}`}>
-                            <li key={channel.id}>{channel.name}</li>
+                            <li key={channel.id} onClick={room(channel)}>{channel.name}</li>
                         </NavLink>
+                        {/* <ChannelChat /> */}
                         <EditChannelModal channel={channel}/>
                     </ul>
                 ))}

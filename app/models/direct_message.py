@@ -24,3 +24,11 @@ class DMConversation(db.Model):
 
     direct_messages = db.relationship("DirectMessage", back_populates="dm_conversation")
     sender = db.relationship("User", back_populates="dm_convo")
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'sender_id': self.sender_id,
+            'created_at': self.created_at,
+            'updated_at': self.updated_at
+    }
