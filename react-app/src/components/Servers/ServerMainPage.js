@@ -1,6 +1,5 @@
 import React from "react";
 import ChannelsNavBar from "../Channels/ChannelsNavBar";
-import ChannelChat from "../LiveChat/ChannelChat";
 
 const ServerMainPage = () => {
   return (

@@ -56,58 +56,6 @@ const ChannelsNavBar = () => {
 
     let room;
 
-    allChannelsArr.forEach(channel => {
-        channel.onClick = () => {
-            let newRoom = channel;
-            if (newRoom == room) {
-                console.log("You are already in the room.");
-            } else {
-                leaveRoom(channel);
-                joinRoom(newRoom);
-            }
-        }
-    });
-
-    const leaveRoom = (channel) => {
-        socket.emit('leave', {"username": user.username, "channel": channel})
-    }
-
-    const joinRoom = (newRoom) => {
-        socket.emit('join', { 'username': user.username, "channel": newRoom})
-    }
-
-
-    // const leaveRoom = (room) => {
-    // }
-
-
-    // const [ room, setRoom ] = useState('');
-    // let previous;
-    // const onChannelClick = (channelName) => {
-    //     if(room !== channelName) {
-    //         previous = room
-    //     }
-        // <ChannelChat room={room} setRoom={setRoom} previousChannel={previous}/>
-    // }
-
-    // const onChannelClick = () => {
-    //     <ChannelChat/>
-    // }
-
-      const channelComponents = channels.map(channel => {
-        return (
-            <div>
-            <ul>
-                {/* <button onClick={() => onChannelClick(channel.name)}> */}
-                    <NavLink to={`/channels/${serverId}/${channel.id}`}>
-                        <li key={channel.id} onClick={() => setChannelRoom(true)}>{channel.name}</li>
-                    </NavLink>
-                {/* </button> */}
-                <EditChannelModal channel={channel}/>
-            </ul>
-            </div>
-        )
-      })
     return (
         <div>
             <div>
