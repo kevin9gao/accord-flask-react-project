@@ -25,6 +25,7 @@ def disconnect():
   print('-------------DISCONNECTED--------------')
 
 
+# Live Chat
 @socketio.on('chat')
 def handle_chat(data):
   print('-------------DATA--------------\n',
@@ -57,3 +58,21 @@ def on_leave(data):
   channel = data['channel']
   leave_room(channel)
   send(username + ' has left the channel.', to=channel)
+
+
+# Direct Message
+@socketio.on("dm_chat")
+def on_dm_chat(data):
+  emit('dm_chat', data, to=data['channel'])
+
+@socketio.on("dm_join")
+def on_dm_join(data):
+  username = data['username']
+  dm = data['dm']
+  join_room(dm)
+
+@socketio.on("dm_leave")
+def on_dm_leave(data):
+  username = data['username']
+  dm = data['dm']
+  leave_room(dm)

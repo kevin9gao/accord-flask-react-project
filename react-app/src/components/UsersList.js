@@ -37,10 +37,17 @@ function UsersList() {
   return (
     <>
       <h1>User List: </h1>
-      <ul>{userComponents}</ul>
+      <div>{users && users.map(user => (
+        <ul key={user.id}>
+          <div onClick={() => setChat(true)}>
+            {/* <NavLink to={`/channels/@me/${convoId}`}> */}
+              <li key={user.id}>{user.username}</li>
+            {/* </NavLink> */}
+          </div>
+        </ul>
+      ))}
+      </div>
       {chat && <DmChat />}
-
-
     </>
   );
 }
