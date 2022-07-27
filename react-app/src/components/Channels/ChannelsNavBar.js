@@ -12,6 +12,9 @@ const ChannelsNavBar = () => {
     const dispatch = useDispatch();
     const { serverId } = useParams();
     const [room, setRoom] = useState('')
+    const [onChannel, setOnChannel] = useState(false)
+    const [messages, setMessages] = useState([]);
+
     // const [room, setRoom] = useState('')
 
     const allChannels = useSelector(state => state.channels)
@@ -40,6 +43,7 @@ const ChannelsNavBar = () => {
     //     <ChannelChat/>
     // }
 
+    console.log("ONCHANNEL VALUE". onChannel)
 
     return (
         <div>
@@ -52,14 +56,18 @@ const ChannelsNavBar = () => {
             <div>
                 {channels && channels.map(channel => (
                     <ul>
-                        <div onClick={()=> setRoom(channel.name)}>
+                        <div onClick={()=> {
+                            setOnChannel(true)
+                            setMessages([])
+                            }}>
                             <NavLink to={`/channels/${serverId}/${channel.id}`}>
                                 <li key={channel.id}>{channel.name}</li>
                             </NavLink>
                         </div>
-                        <EditChannelModal channel={channel}/>
+                        <EditChannelModal channel={channel} />
                     </ul>
                 ))}
+                { onChannel && <ChannelChat messages={messages} setMessages={setMessages} />}
 
             </div>
         </div>

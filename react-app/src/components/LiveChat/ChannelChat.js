@@ -5,8 +5,8 @@ import { io } from 'socket.io-client';
 
 
 let socket;
-const ChannelChat = () => {
-  const [messages, setMessages] = useState([]);
+const ChannelChat = ({messages, setMessages, channels}) => {
+  // const [messages, setMessages] = useState([]);
   const [chatInput, setChatInput] = useState('');
   const { channelId, serverId } = useParams()
 
@@ -17,6 +17,7 @@ const ChannelChat = () => {
   const channel = Object.values(allChannels).filter(channel => {
     return channel['id'] === Number(channelId)
   })
+
 
   useEffect(() => {
 
@@ -29,10 +30,14 @@ const ChannelChat = () => {
       setMessages(messages => [...messages, chat]);
     })
 
+    socket.emit('join', { username: user.username, channel: channel })
+
     //when component unmounts, disconnect
     return (() => {
       // socket.removeAllListeners()
       socket.disconnect()
+      socket.emit('leave', { username: user.username, channel: channel })
+
     })
   }, [])
 
@@ -44,7 +49,7 @@ const ChannelChat = () => {
     e.preventDefault();
 
     //emit a message
-    socket.emit('chat', { username: user.username, msg: chatInput });
+    socket.emit('chat', { username: user.username, msg: chatInput, channel:channel });
 
     //clear input field after message is sent
     setChatInput('');
