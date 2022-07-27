@@ -1,13 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
 import { loadChannels } from '../../store/channels';
 import CreateChannelModal from './CreateChannelModal'
 import EditChannelModal from './EditChannelModal'
+import { io } from 'socket.io-client';
+import ChannelChat from '../LiveChat/ChannelChat';
+
 
 const ChannelsNavBar = () => {
     const dispatch = useDispatch();
     const { serverId } = useParams();
+    const [room, setRoom] = useState('')
+    // const [room, setRoom] = useState('')
 
     const allChannels = useSelector(state => state.channels)
     const allChannelsArr = Object.values(allChannels)
@@ -21,6 +26,21 @@ const ChannelsNavBar = () => {
         dispatch(loadChannels(serverId));
     }, [dispatch])
 
+
+
+    let previous;
+    // const onChannelClick = (channelName) => {
+    //     if(room !== channelName) {
+    //         previous = room
+    //     }
+    //     <ChannelChat room={room} setRoom={setRoom} previousChannel={previous}/>
+    // }
+
+    // const onChannelClick = () => {
+    //     <ChannelChat/>
+    // }
+
+
     return (
         <div>
             <div>
@@ -32,9 +52,11 @@ const ChannelsNavBar = () => {
             <div>
                 {channels && channels.map(channel => (
                     <ul>
-                        <NavLink to={`/channels/${serverId}/${channel.id}`}>
-                            <li key={channel.id}>{channel.name}</li>
-                        </NavLink>
+                        <div onClick={()=> setRoom(channel.name)}>
+                            <NavLink to={`/channels/${serverId}/${channel.id}`}>
+                                <li key={channel.id}>{channel.name}</li>
+                            </NavLink>
+                        </div>
                         <EditChannelModal channel={channel}/>
                     </ul>
                 ))}

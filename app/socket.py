@@ -1,5 +1,6 @@
 import os
-from flask_socketio import SocketIO, emit, join_room, leave_room
+from flask_socketio import SocketIO, emit, join_room, leave_room, send
+from app.models import Channel, db
 
 
 if os.environ.get('FLASK_ENV') == 'production':
@@ -11,8 +12,11 @@ else:
 
 socketio = SocketIO(cors_allowed_origins=origins)
 
+
+
 @socketio.on('chat')
 def handle_chat(data):
+  print(data)
   emit('chat', data, broadcast=True)
 
 @socketio.on('join')
