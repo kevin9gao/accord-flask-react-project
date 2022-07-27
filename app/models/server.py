@@ -9,7 +9,7 @@ members = db.Table(
 
 
 class Server(db.Model):
-    __tablename__= 'servers'
+    __tablename__ = 'servers'
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(40), nullable=False, unique=True)
