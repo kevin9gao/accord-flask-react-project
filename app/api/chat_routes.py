@@ -1,5 +1,6 @@
 from flask import Blueprint, request
 from app.models import LiveChatMessage, DirectMessage, db
+from app.forms.chat_form import ChatForm
 
 chat_routes = Blueprint('chat', __name__)
 
@@ -9,10 +10,21 @@ def get_live_chat_messages(channel_id):
   return {'chat_history': [message.to_dict() for message in chat_messages]}
 
 
-# @chat_routes.route('/live_chat/<int:id>', methods=['POST'])
+@chat_routes.route('/live_chat/<int:channel_id>', methods=['POST'])
+def post_live_chat_message():
+  form = ChatForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+  if form.validate_on_submit():
+    message = LiveChatMessage(channel_id=form.data['channel_id'],
+                              username=form.data['username'],
+                              message_body=form.data['message_body'],
+                              created_at=form.data['created_at'])
+    db.session.add(message)
+    db.session.commit()
+    return message.to_dict()
 
 
-# @chat_routes.route('/dms/<int:id>', methods=['GET'])
+# @chat_routes.route('/dms/<int:dm_id>', methods=['GET'])
 
 
-# @chat_routes.route('/dms/<int:id>', methods=['POST'])
+# @chat_routes.route('/dms/<int:dm_id>', methods=['POST'])
