@@ -61,8 +61,8 @@ const ChannelsNavBar = () => {
                         <EditChannelModal channel={channel}/>
                     </ul>
                 ))}
+                <ChannelChat />
             </div>
-            {channelRoom && <ChannelChat />}
         </div>
     )
 }

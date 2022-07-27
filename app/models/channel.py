@@ -1,5 +1,6 @@
 from .db import db
 
+
 class Channel(db.Model):
     __tablename__ = "channels"
 
@@ -15,3 +16,4 @@ class Channel(db.Model):
         }
 
     server = db.relationship("Server", back_populates="channels")
+    messages = db.relationship('LiveChatMessage', back_populates='channel')
