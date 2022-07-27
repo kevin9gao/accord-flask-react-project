@@ -14,3 +14,8 @@
     justify-content: center;
     align-content: center;
 }
+
+.close-button {
+    background-color: transparent;
+    border: none;
+}

@@ -4,8 +4,6 @@ import { NavLink, useParams } from 'react-router-dom';
 import { loadChannels } from '../../store/channels';
 import CreateChannelModal from './CreateChannelModal'
 import EditChannelModal from './EditChannelModal'
-import { io } from 'socket.io-client';
-import ChannelChat from '../LiveChat/ChannelChat';
 
 
 const ChannelsNavBar = () => {
@@ -25,20 +23,6 @@ const ChannelsNavBar = () => {
     useEffect(() => {
         dispatch(loadChannels(serverId));
     }, [dispatch])
-
-
-
-    let previous;
-    // const onChannelClick = (channelName) => {
-    //     if(room !== channelName) {
-    //         previous = room
-    //     }
-    //     <ChannelChat room={room} setRoom={setRoom} previousChannel={previous}/>
-    // }
-
-    // const onChannelClick = () => {
-    //     <ChannelChat/>
-    // }
 
 
     return (

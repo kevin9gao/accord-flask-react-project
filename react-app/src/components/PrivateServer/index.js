@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import DmNavBar from "../Dms/DmNavBar";
 import ServersNavBar from "../Servers/ServersNavbar";
-import Chat from "../Socket/Chat";
 
 
 const PrivateServer = () => {
