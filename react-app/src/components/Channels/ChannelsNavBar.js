@@ -36,7 +36,7 @@ const ChannelsNavBar = () => {
             </div>
             <div>
                 {channels && channels.map(channel => (
-                    <ul>
+                    <ul key={channel.id}>
                         <div onClick={()=> setRoom(channel.name)}>
                             <NavLink to={`/channels/${serverId}/${channel.id}`}>
                                 <li key={channel.id}>{channel.name}</li>

@@ -22,7 +22,7 @@ export default function ServersNavBar() {
 useEffect(() => {
    if (user) dispatch(loadSingleUserServers(sessionUser.id));
   }, [dispatch])
-  
+
 
   const deleteServ = async (id) => {
     await dispatch(deleteServer(id))
@@ -36,7 +36,7 @@ useEffect(() => {
         <CreateServerModal />
 
         {userServersArr && userServersArr.map(server => (
-        <div>
+        <div key={server.id}>
           <NavLink to={`/channels/${server.id}`}>
             <h3>{server.name}</h3>
           </NavLink>
@@ -48,7 +48,7 @@ useEffect(() => {
               </div>
             )
           }
-      </div>
+        </div>
         ))}
       </div>
     );
