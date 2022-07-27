@@ -15,8 +15,8 @@ socketio = SocketIO(cors_allowed_origins=origins)
 
 @socketio.on('chat')
 def handle_chat(data):
-  # emit('chat', data, broadcast=True)
-  send({username: data['user'], msg: data['msg'], channel: data['channel']}, to=data['channel'])
+  emit('chat', data, broadcast=True)
+  # send({username: data['user'], msg: data['msg'], channel: data['channel']}, to=data['channel'])
 
 
 # @socketio.on('message')

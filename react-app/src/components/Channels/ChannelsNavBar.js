@@ -7,8 +7,7 @@ import { loadChannels } from '../../store/channels';
 import ChannelChat from '../LiveChat/ChannelChat';
 import CreateChannelModal from './CreateChannelModal'
 import EditChannelModal from './EditChannelModal'
-import { io } from 'socket.io-client';
-import ChannelChat from '../LiveChat/ChannelChat';
+
 
 
 let socket;
@@ -43,34 +42,65 @@ const ChannelsNavBar = () => {
     // socket.on('message', data => {
     //     console.log(`message received:" ${data}`);
     // });
+    const [ channelRoom, setChannelRoom ] = useState(false);
 
-    const room = (room) => {
-        if (room) {
-            socket.emit('leave', { username: user.username, channel: channel });
-            socket.emit('join', {username: user.username, channel: channel })
-        } else {
-            socket.emit('join', {username: user.username, channel: channel })
-        }
-      }
+    // const room = (channel) => {
+    //     let newRoom = channel;
+    //     if (newRoom === channel) {
+    //         console.log('You are already in the room');
+    //     } else {
+    //         socket.emit('leave', { username: user.username, channel: channel });
+    //         socket.emit('join', {username: user.username, channel: newRoom })
+    //     }
+    //   }
+
+    // let room;
+
+    // allChannels.forEach(channel => {
+    //     channel.onClick = () => {
+    //         let newRoom = channel;
+    //         if (newRoom == room) {
+    //             console.log("You are already in the room.");
+    //         } else {
+    //             leaveRoom(channel);
+    //             joinRoom(newRoom);
+    //         }
+    //     }
+    // });
+
+
 
     // const leaveRoom = (room) => {
     // }
 
 
-
+    const [ room, setRoom ] = useState('');
     let previous;
-    // const onChannelClick = (channelName) => {
-    //     if(room !== channelName) {
-    //         previous = room
-    //     }
-    //     <ChannelChat room={room} setRoom={setRoom} previousChannel={previous}/>
-    // }
+    const onChannelClick = (channelName) => {
+        if(room !== channelName) {
+            previous = room
+        }
+        // <ChannelChat room={room} setRoom={setRoom} previousChannel={previous}/>
+    }
 
     // const onChannelClick = () => {
     //     <ChannelChat/>
     // }
 
-
+      const channelComponents = channels.map(channel => {
+        return (
+            <div>
+            <ul>
+                {/* <button onClick={() => onChannelClick(channel.name)}> */}
+                    <NavLink to={`/channels/${serverId}/${channel.id}`}>
+                        <li key={channel.id} onClick={() => setChannelRoom(true)}>{channel.name}</li>
+                    </NavLink>
+                {/* </button> */}
+                <EditChannelModal channel={channel}/>
+            </ul>
+            </div>
+        )
+      })
     return (
         <div>
             <div>
@@ -79,18 +109,19 @@ const ChannelsNavBar = () => {
             <div>
                 <CreateChannelModal />
             </div>
-            <div>
+            {/* <div>
                 {channels && channels.map(channel => (
                     <ul>
                         <NavLink to={`/channels/${serverId}/${channel.id}`}>
                             <li key={channel.id} onClick={() => room(channel)}>{channel.name}</li>
                         </NavLink>
-                        {/* <ChannelChat /> */}
+                     
                         <EditChannelModal channel={channel}/>
                     </ul>
                 ))}
-
-            </div>
+            </div> */}
+            <div>{channels && channelComponents}</div>
+            {channelRoom && <ChannelChat />}
         </div>
     )
 }
