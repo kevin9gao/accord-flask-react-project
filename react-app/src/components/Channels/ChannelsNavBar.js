@@ -53,11 +53,12 @@ const ChannelsNavBar = () => {
             </div>
             <div>
                 {channels && channels.map(channel => (
-                    <ul>
-                        <NavLink to={`/channels/${serverId}/${channel.id}`}>
-                            <li key={channel.id} onClick={() => setChannelRoom(true)}>{channel.name}</li>
-                        </NavLink>
-                     
+                    <ul key={channel.id}>
+                        <div onClick={()=> setRoom(channel.name)}>
+                            <NavLink to={`/channels/${serverId}/${channel.id}`}>
+                                <li key={channel.id}>{channel.name}</li>
+                            </NavLink>
+                        </div>
                         <EditChannelModal channel={channel}/>
                     </ul>
                 ))}
