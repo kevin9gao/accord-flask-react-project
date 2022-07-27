@@ -3,3 +3,4 @@ from .user import User
 from .server import Server
 from .channel import Channel
 from .direct_message import DirectMessage, DMConversation
+from .live_chat import LiveChatMessage
