@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { io } from 'socket.io-client';
+import { useParams } from 'react-router-dom';
+
 
 let socket;
 
@@ -8,7 +10,7 @@ let socket;
 const DmChat = () => {
     const [messages, setMessages] = useState([]);
     const [chatInput, setChatInput] = useState('');
-
+    const { messagesId } = useParams();
     const user = useSelector(state => state.session.user)
 
 
@@ -17,7 +19,7 @@ const DmChat = () => {
         // create websocket
         socket = io();
 
-        if (socket && channel) socket.emit('join', {'username': username, })
+        if (socket & messagesId ) socket.emit('on_dm_join', {'username': user.username, })
         //listen for chat events
         socket.on('chat', chat => {
             // when receive a chat, add to messages state var
@@ -27,6 +29,7 @@ const DmChat = () => {
         //when component unmounts, disconnect
         return (() => {
             // socket.removeAllListeners()
+            socket.emit('on_dm_leave', { username: user.username,})
             socket.disconnect()
         })
     }, [])
@@ -39,7 +42,7 @@ const DmChat = () => {
         e.preventDefault();
 
         //emit a message
-        socket.emit('chat', { user: user.username, msg: chatInput });
+        socket.emit('on_dm_chat', { user: user.username, msg: chatInput });
 
         //clear input field after message is sent
         setChatInput('');

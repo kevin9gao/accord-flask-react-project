@@ -41,7 +41,7 @@ def handle_chat(data):
 #   # emit('chat', data, broadcast=True)
 #   send(username, msg, channel, to=data['channel'])
 
-
+# LIVE CHAT
 @socketio.on('join')
 def on_join(data):
   print(f'-------------JOINED DATA {data["channel"]}--------------')
@@ -57,3 +57,21 @@ def on_leave(data):
   channel = data['channel']
   leave_room(channel)
   send(username + ' has left the channel.', to=channel)
+
+
+#  DIRECT MESSAGES 
+@socketio.on("dm_chat")
+def on_dm_chat(data):
+  emit('chat', data, to=data['channel'])
+
+@socketio.on("dm_join")
+def on_dm_join(data):
+  username = data['username']
+  join_room(dm)
+
+@socketio.on("dm_leave")
+def on_dm_leave(data):
+  username = data['username']
+  leave_room(dm)
+
+

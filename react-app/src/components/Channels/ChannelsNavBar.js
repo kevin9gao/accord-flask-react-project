@@ -43,19 +43,6 @@ const ChannelsNavBar = () => {
     //     console.log(`message received:" ${data}`);
     // });
     const [ channelRoom, setChannelRoom ] = useState(false);
-
-    // const room = (channel) => {
-    //     let newRoom = channel;
-    //     if (newRoom === channel) {
-    //         console.log('You are already in the room');
-    //     } else {
-    //         socket.emit('leave', { username: user.username, channel: channel });
-    //         socket.emit('join', {username: user.username, channel: newRoom })
-    //     }
-    //   }
-
-    let room;
-
     return (
         <div>
             <div>
@@ -64,18 +51,17 @@ const ChannelsNavBar = () => {
             <div>
                 <CreateChannelModal />
             </div>
-            {/* <div>
+            <div>
                 {channels && channels.map(channel => (
                     <ul>
                         <NavLink to={`/channels/${serverId}/${channel.id}`}>
-                            <li key={channel.id} onClick={() => room(channel)}>{channel.name}</li>
+                            <li key={channel.id} onClick={() => setChannelRoom(true)}>{channel.name}</li>
                         </NavLink>
                      
                         <EditChannelModal channel={channel}/>
                     </ul>
                 ))}
-            </div> */}
-            <div>{channels && channelComponents}</div>
+            </div>
             {channelRoom && <ChannelChat />}
         </div>
     )
