@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
 import { loadChannels } from '../../store/channels';
+import ChannelChat from '../LiveChat/ChannelChat';
 import CreateChannelModal from './CreateChannelModal'
 import EditChannelModal from './EditChannelModal'
 import "./ChannelNavBar.css"
@@ -45,7 +46,7 @@ const ChannelsNavBar = () => {
                         <EditChannelModal channel={channel}/>
                     </ul>
                 ))}
-
+                <ChannelChat />
             </div>
         </div>
     )
