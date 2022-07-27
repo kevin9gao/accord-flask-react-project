@@ -5,10 +5,15 @@ import { io } from 'socket.io-client';
 
 
 let socket;
+
 const ChannelChat = () => {
   const [messages, setMessages] = useState([]);
   const [chatInput, setChatInput] = useState('');
   const { channelId, serverId } = useParams()
+
+  console.log('channelId', channelId)
+  console.log('serverId', serverId)
+
 
   // const channelRoom = useSelector(state => state.channel['room'])
   const user = useSelector(state => state.session.user);
@@ -16,12 +21,15 @@ const ChannelChat = () => {
 
   const channel = Object.values(allChannels).filter(channel => {
     return channel['id'] === Number(channelId)
-  })
+  })[0]
+
 
   useEffect(() => {
-
     // create websocket
     socket = io();
+
+    // console.log('channel IN CHANNELCHAT: ', channel.id)
+    if (socket && channel) socket.emit('join', { username: user.username, channel: channel.id })
 
     //listen for chat events
     socket.on('chat', chat => {
@@ -32,9 +40,12 @@ const ChannelChat = () => {
     //when component unmounts, disconnect
     return (() => {
       // socket.removeAllListeners()
+      socket.emit('leave', { username: user.username, channel: channel?.id })
       socket.disconnect()
+      setMessages([]);
     })
-  }, [])
+  }, [channelId])
+
 
   const updateChatInput = e => {
     setChatInput(e.target.value);
@@ -44,7 +55,7 @@ const ChannelChat = () => {
     e.preventDefault();
 
     //emit a message
-    socket.emit('chat', { username: user.username, msg: chatInput });
+    socket.emit('chat', { username: user.username, msg: chatInput, channel: channel?.id });
 
     //clear input field after message is sent
     setChatInput('');

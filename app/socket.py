@@ -1,4 +1,5 @@
 import os
+from flask import request
 from flask_socketio import SocketIO, emit, join_room, leave_room, send
 from app.models import Channel, db
 
@@ -15,7 +16,9 @@ socketio = SocketIO(cors_allowed_origins=origins, logger=True, engineio_logger=T
 
 @socketio.event
 def connect():
+  sock = request.sid
   print('-------------CONNECTED--------------')
+  print('-------------CURRENTLY IN ', sock, '--------------')
 
 @socketio.event
 def disconnect():
@@ -24,19 +27,33 @@ def disconnect():
 
 @socketio.on('chat')
 def handle_chat(data):
-  print(data)
-  emit('chat', data, broadcast=True)
+  print('-------------DATA--------------\n',
+        'data:', data,
+        '\n-------------DATA-------------')
+  emit('chat', data, to=data['channel'])
+
+# @socketio.on('chat')
+# def handle_chat(data):
+#   print(data)
+#   username = data['username']
+#   msg = data['msg']
+#   channel = data['channel']
+#   # emit('chat', data, broadcast=True)
+#   send(username, msg, channel, to=data['channel'])
+
 
 @socketio.on('join')
 def on_join(data):
-    username = data['username']
-    channel = data['channel_name']
-    join_room(channel)
-    send(username + ' has entered the channel.', to=channel)
+  print(f'-------------JOINED DATA {data["channel"]}--------------')
+  username = data['username']
+  channel = data['channel']
+  join_room(channel)
+  send(username + ' has entered the channel.', to=channel)
 
 @socketio.on('leave')
 def on_leave(data):
-    username = data['username']
-    channel = data['channel_name']
-    leave_room(channel)
-    send(username + ' has left the channel.', to=channel)
+  print(f'-------------LEFT DATA {data["channel"]}--------------')
+  username = data['username']
+  channel = data['channel']
+  leave_room(channel)
+  send(username + ' has left the channel.', to=channel)
