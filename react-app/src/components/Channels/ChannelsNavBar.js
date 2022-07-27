@@ -54,34 +54,41 @@ const ChannelsNavBar = () => {
     //     }
     //   }
 
-    // let room;
+    let room;
 
-    // allChannels.forEach(channel => {
-    //     channel.onClick = () => {
-    //         let newRoom = channel;
-    //         if (newRoom == room) {
-    //             console.log("You are already in the room.");
-    //         } else {
-    //             leaveRoom(channel);
-    //             joinRoom(newRoom);
-    //         }
-    //     }
-    // });
+    allChannelsArr.forEach(channel => {
+        channel.onClick = () => {
+            let newRoom = channel;
+            if (newRoom == room) {
+                console.log("You are already in the room.");
+            } else {
+                leaveRoom(channel);
+                joinRoom(newRoom);
+            }
+        }
+    });
 
+    const leaveRoom = (channel) => {
+        socket.emit('leave', {"username": user.username, "channel": channel})
+    }
+
+    const joinRoom = (newRoom) => {
+        socket.emit('join', { 'username': user.username, "channel": newRoom})
+    }
 
 
     // const leaveRoom = (room) => {
     // }
 
 
-    const [ room, setRoom ] = useState('');
-    let previous;
-    const onChannelClick = (channelName) => {
-        if(room !== channelName) {
-            previous = room
-        }
+    // const [ room, setRoom ] = useState('');
+    // let previous;
+    // const onChannelClick = (channelName) => {
+    //     if(room !== channelName) {
+    //         previous = room
+    //     }
         // <ChannelChat room={room} setRoom={setRoom} previousChannel={previous}/>
-    }
+    // }
 
     // const onChannelClick = () => {
     //     <ChannelChat/>

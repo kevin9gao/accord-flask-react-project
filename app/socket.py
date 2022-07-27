@@ -12,11 +12,10 @@ else:
 socketio = SocketIO(cors_allowed_origins=origins)
 
 
-
 @socketio.on('chat')
 def handle_chat(data):
-  emit('chat', data, broadcast=True)
-  # send({username: data['user'], msg: data['msg'], channel: data['channel']}, to=data['channel'])
+  # emit('chat', data, broadcast=True)
+  send({username: data['user'], msg: data['msg'], channel: data['channel']}, to=data['channel'])
 
 
 # @socketio.on('message')
@@ -31,7 +30,7 @@ def on_join(data):
     join_room(data["channel"])
     # print("------!!!!-")
     # print f'{data['channel']}
-    send(data['username'] + ' has entered the channel.', channel=data['channel'])
+    send({data['username'] + ' has entered the channel.'}, channel=data['channel'])
 
 @socketio.on('leave')
 def on_leave(data):
@@ -40,4 +39,4 @@ def on_leave(data):
     leave_room(data["channel"])
     # print("-------")
     # print f'{data['channel']}
-    send(data['username'] + ' has left the channel.', channel=data['channel'])
+    send({data['username'] + ' has left the channel.'}, channel=data['channel'])
