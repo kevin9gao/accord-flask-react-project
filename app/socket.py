@@ -14,23 +14,23 @@ else:
 socketio = SocketIO(cors_allowed_origins=origins, logger=True, engineio_logger=True)
 
 
-@socketio.event
-def connect():
-  sock = request.sid
-  print('-------------CONNECTED--------------')
-  print('-------------CURRENTLY IN ', sock, '--------------')
+# @socketio.event
+# def connect():
+#   sock = request.sid
+#   print('-------------CONNECTED--------------')
+#   print('-------------CURRENTLY IN ', sock, '--------------')
 
-@socketio.event
-def disconnect():
-  print('-------------DISCONNECTED--------------')
+# @socketio.event
+# def disconnect():
+#   print('-------------DISCONNECTED--------------')
 
 
 # Live Chat
 @socketio.on('chat')
 def handle_chat(data):
-  print('-------------DATA--------------\n',
-        'data:', data,
-        '\n-------------DATA-------------')
+  # print('-------------DATA--------------\n',
+  #       'data:', data,
+  #       '\n-------------DATA-------------')
   emit('chat', data, to=data['channel'])
 
 # @socketio.on('chat')
@@ -45,7 +45,7 @@ def handle_chat(data):
 
 @socketio.on('join')
 def on_join(data):
-  print(f'-------------JOINED DATA {data["channel"]}--------------')
+  # print(f'-------------JOINED DATA {data["channel"]}--------------')
   username = data['username']
   channel = data['channel']
   join_room(channel)
@@ -53,7 +53,7 @@ def on_join(data):
 
 @socketio.on('leave')
 def on_leave(data):
-  print(f'-------------LEFT DATA {data["channel"]}--------------')
+  # print(f'-------------LEFT DATA {data["channel"]}--------------')
   username = data['username']
   channel = data['channel']
   leave_room(channel)

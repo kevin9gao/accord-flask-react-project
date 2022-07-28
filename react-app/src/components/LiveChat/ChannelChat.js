@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { io } from 'socket.io-client';
+import { sendLiveChatMessage } from '../../store/chat';
 
 
 let socket;
@@ -9,7 +10,10 @@ let socket;
 const ChannelChat = () => {
   const [messages, setMessages] = useState([]);
   const [chatInput, setChatInput] = useState('');
+  const [validationErrors, setValidationErrors] = useState([]);
+
   const { channelId, serverId } = useParams()
+  const dispatch = useDispatch();
 
   console.log('channelId', channelId)
   console.log('serverId', serverId)
@@ -23,6 +27,13 @@ const ChannelChat = () => {
     return channel['id'] === Number(channelId)
   })[0]
 
+
+  useEffect(() => {
+    const errors = [];
+    if (chatInput.length === 0) errors.push("Message body cannot be empty.");
+
+    setValidationErrors(errors);
+  }, [chatInput]);
 
   useEffect(() => {
     // create websocket
@@ -51,14 +62,25 @@ const ChannelChat = () => {
     setChatInput(e.target.value);
   }
 
-  const sendChat = e => {
+  const sendChat = async (e) => {
     e.preventDefault();
 
-    //emit a message
-    socket.emit('chat', { username: user.username, msg: chatInput, channel: channel?.id });
+    if (validationErrors.length === 0) {
+      //emit a message
+      socket.emit('chat', { username: user.username, msg: chatInput, channel: channel?.id });
 
-    //clear input field after message is sent
-    setChatInput('');
+      const payload = {
+        channel_id: channel?.id,
+        username: user.username,
+        message_body: chatInput,
+        created_at: new Date()
+      };
+      console.log("Frontend Component, payload", payload)
+      await dispatch(sendLiveChatMessage(payload));
+
+      //clear input field after message is sent
+      setChatInput('');
+    }
   }
 
 
@@ -71,15 +93,20 @@ const ChannelChat = () => {
           </div>
         ))}
       </div>
-      <form
-        onSubmit={sendChat}
-      >
+      <form onSubmit={sendChat}>
+        {validationErrors.length > 0 && (
+          <ul>
+            {validationErrors.map(error => (
+              <li key={error}>{error}</li>
+            ))}
+          </ul>
+        )}
         <input
           value={chatInput}
           onChange={updateChatInput}
         />
         <button
-          // onClick={}
+        // onClick={}
         >Send</button>
       </form>
     </div>
