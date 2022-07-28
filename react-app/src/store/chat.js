@@ -27,7 +27,7 @@ export const sendLiveChatMessage = payload => async dispatch => {
 
   console.log('hitting sendLiveChatMessage thunk', payload);
 
-  const res = await fetch('/api/chat/live_chat/', {
+  const res = await fetch('/api/chat/live_chat', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
