@@ -1,5 +1,5 @@
 const LOAD = '/chat/LOAD';
-const SEND = '/chat/SEND';
+const SEND_LC = '/chat/SEND_LC';
 
 const load = list => ({
   type: LOAD,
@@ -7,7 +7,7 @@ const load = list => ({
 })
 
 const send = message => ({
-  type: SEND,
+  type: SEND_LC,
   message
 })
 
@@ -17,6 +17,7 @@ export const loadLiveChatHistory = (channelId) => async dispatch => {
   if (res.ok) {
     const list = await res.json();
     dispatch(load(list));
+    return list;
   }
 }
 
@@ -55,6 +56,7 @@ export default function chatReducer(state = {}, action) {
       // store chat history in live_chat_history or dm_history based on which key is in action
       if (action.list['live_chat_history']) {
         const chatHistory = action.list['live_chat_history'];
+        newState['live-chat-history'] = {};
         chatHistory.forEach(message => {
           newState['live-chat-history'][message.id] = message;
         })
@@ -67,12 +69,10 @@ export default function chatReducer(state = {}, action) {
 
       return newState;
 
-    case SEND:
+    case SEND_LC:
       newState = {...state};
       console.log('IN REDUCER', action, action.type)
-      if (action.message.type === 'live-chat') {
-        newState['live-chat-history'][action.message.id] = action.message;
-      } else newState['dm-history'][action.message.id] = action.message;
+      newState['live-chat-history'][action.message.id] = action.message;
 
       return newState;
 

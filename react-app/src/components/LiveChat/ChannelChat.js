@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { io } from 'socket.io-client';
-import { sendLiveChatMessage } from '../../store/chat';
+import { loadLiveChatHistory, sendLiveChatMessage } from '../../store/chat';
 
 
 let socket;
@@ -12,6 +12,9 @@ const ChannelChat = () => {
   const [chatInput, setChatInput] = useState('');
   const [validationErrors, setValidationErrors] = useState([]);
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const chatHistoryObj = useSelector(state => state['chat']['live-chat-history']);
+  const chatHistory = chatHistoryObj ? Object.values(chatHistoryObj) : null;
+  console.log('chatHistory useSelector: ', chatHistory);
 
 
   const { channelId, serverId } = useParams()
@@ -37,7 +40,9 @@ const ChannelChat = () => {
     setValidationErrors(errors);
   }, [chatInput]);
 
-  useEffect(() => {
+  useEffect(async () => {
+    await dispatch(loadLiveChatHistory(channelId));
+
     // create websocket
     socket = io();
 
@@ -78,7 +83,7 @@ const ChannelChat = () => {
       const date = isoTime.slice(0, 10);
       const time = isoTime.slice(12,19);
       const combined = date + ' ' + time
-  
+
       console.log(combined)
 
       const payload = {
@@ -101,9 +106,9 @@ const ChannelChat = () => {
   return (user && (
     <div>
       <div>
-        {messages.map((message, idx) => (
+        {chatHistory && chatHistory.map((message, idx) => (
           <div key={idx}>
-            {`${message.username}: ${message.msg}`}
+            {`${message.username}: ${message.message_body ? message.message_body : message.msg}`}
           </div>
         ))}
       </div>
