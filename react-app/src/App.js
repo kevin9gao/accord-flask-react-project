@@ -17,13 +17,15 @@ import CreateServerModal from './components/Servers/CreateServerModal';
 import PrivateServer from './components/PrivateServer';
 import ServersNavBar from './components/Servers/ServersNavbar';
 import ServerMainPage from './components/Servers/ServerMainPage';
+import DmNavBar from './components/Dms/DmNavBar';
+import DmChat from './components/Dms/Dms';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -55,7 +57,7 @@ function App() {
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <ServersNavBar />
-          <UsersList/>
+          {/* <UsersList/> */}
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
@@ -64,13 +66,20 @@ function App() {
           <h1>My Home Page</h1>
         </ProtectedRoute>
         <ProtectedRoute path='/channels/@me' exact={true}>
-          <PrivateServer />
+          <ServersNavBar />
+          <DmNavBar />
+        </ProtectedRoute>
+        <ProtectedRoute path='/channels/@me/:userId'>
+          {/* <DmNavBar /> */}
+          <ServersNavBar />
+          <DmNavBar />
+          <DmChat />
         </ProtectedRoute>
         <ProtectedRoute path='/channels/:serverId' exact={true}>
           <ServersNavBar />
           <ServerMainPage />
         </ProtectedRoute>
-        <ProtectedRoute path='/channels/:serverId/:channelId'>
+        <ProtectedRoute path='/channels/:serverId/:channelId' exact={true}>
           <ServersNavBar />
           <ChannelsNavBar />
         </ProtectedRoute>

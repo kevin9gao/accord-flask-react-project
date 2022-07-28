@@ -1,5 +1,8 @@
 const LOAD = '/chat/LOAD';
 const SEND_LC = '/chat/SEND_LC';
+const SEND = '/chat/SEND';
+const LOADDM = '/dm/LOADDM'
+const SAVEDM = '/dm/SAVEDM'
 
 const load = list => ({
   type: LOAD,
@@ -10,6 +13,17 @@ const send = message => ({
   type: SEND_LC,
   message
 })
+const loadDM = list => ({
+  type: LOADDM,
+  list
+})
+
+const saveDM = message => ({
+  type: SAVEDM,
+  message
+})
+
+
 
 export const loadLiveChatHistory = (channelId) => async dispatch => {
   const res = await fetch(`/api/chat/live_chat/${channelId}`);
@@ -45,6 +59,15 @@ export const sendLiveChatMessage = payload => async dispatch => {
   }
 }
 
+export const loadDMHistory = (convoId) => async dispatch => {
+    const res = await fetch(`/api//chat/dms/${convoId}`);
+
+    if (res.ok) {
+        const list = await res.json()
+        dispatch(loadDM(list))
+    }
+}
+
 let newState;
 
 
@@ -75,6 +98,16 @@ export default function chatReducer(state = {}, action) {
       newState['live-chat-history'][action.message.id] = action.message;
 
       return newState;
+
+
+    case LOADDM:
+        newState = {...state}
+        const dmHistory = action.list['dm_messages'];
+        newState['dm-messages'] = {};
+        dmHistory.forEach(message => {
+            newState['dm-messages'][message.id] = message
+        })
+        return newState;
 
     default:
       return state;

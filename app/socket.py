@@ -25,6 +25,7 @@ socketio = SocketIO(cors_allowed_origins=origins, logger=True, engineio_logger=T
 #   print('-------------DISCONNECTED--------------')
 
 
+# Live Chat
 @socketio.on('chat')
 def handle_chat(data):
   # print('-------------DATA--------------\n',
@@ -57,3 +58,27 @@ def on_leave(data):
   channel = data['channel']
   leave_room(channel)
   send(username + ' has left the channel.', to=channel)
+
+
+# Direct Message
+@socketio.on("dm_chat")
+def on_dm_chat(data):
+  emit('dm_chat', data, to=data['recipient'])
+
+@socketio.on("dm_join")
+def on_dm_join(data):
+  username = data['username']
+  sender = data['sender']
+  recipient = data['recipient']
+  join_room(recipient)
+  join_room(sender)
+  send(username + ' has entered the room.', to=recipient)
+
+@socketio.on("dm_leave")
+def on_dm_leave(data):
+  username = data['username']
+  sender = data['sender']
+  recipient = data['recipient']
+  leave_room(recipient)
+  leave_room(sender)
+  send(username + ' has left the room.', to=recipient)
