@@ -67,9 +67,9 @@ function App() {
         <ProtectedRoute path='/channels/@me' exact={true}>
           <PrivateServer />
         </ProtectedRoute>
-        <ProtectedRoute path='/channels/@me/:convoId'>
+        {/* <ProtectedRoute path='/channels/@me/:convoId'>
           <DmNavBar />
-        </ProtectedRoute>
+        </ProtectedRoute> */}
         <ProtectedRoute path='/channels/:serverId' exact={true}>
           <ServersNavBar />
           <ServerMainPage />

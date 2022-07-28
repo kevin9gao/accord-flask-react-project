@@ -70,6 +70,7 @@ def on_dm_join(data):
   username = data['username']
   dm = data['dm']
   join_room(dm)
+  send(username + ' has entered the channel.', to=dm)
 
 @socketio.on("dm_leave")
 def on_dm_leave(data):

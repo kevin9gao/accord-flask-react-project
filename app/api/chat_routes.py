@@ -27,13 +27,25 @@ def post_live_chat_message():
     return message.to_dict()
 
 
-# @chat_routes.route('/dms/<int:dm_id>', methods=['GET'])
-# def get_dms(dm_id):
-#   dm_messages = DMConversation.query.filter(DMConversation.id == dm_id).all()
-#   return {'dm_history': [message.to_dict() for message in dm_messages]}
+@chat_routes.route('/dms/<int:convo_id>', methods=['GET'])
+def get_dms(convo_id):
+  dm_convo = DMConversation.query.filter(DMConversation.id == convo_id).all()
+  dm_messages = dm_convo.direct_messages
+  print('message history in backend', dm_messages)
+  return {'dm_history': [message.to_dict() for message in dm_messages]}
 
 
-# @chat_routes.route('/dms/<int:dm_id>', methods=['POST'])
-# def post_dm_messages(dm_id):
-#   form = DMForm()
-#   form['csrf_token'].data = request.cookies['csrf_token']
+@chat_routes.route('/dms/<int:convo_id>', methods=['POST'])
+def post_dm_messages(convo_id):
+  form = DMForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+  if form.validate_on_submit():
+    message = DirectMessage (
+      recipient_id=form.data['recipient_id'],
+      dm_convo_id=form.data['dm_convo_id'],
+      message_body =form.data['message_body'],
+      created_at=form.data['created_at']
+    )
+    db.session.add(message)
+    db.session.commit()
+    print("backend from post dm", message)

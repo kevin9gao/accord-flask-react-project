@@ -22,7 +22,7 @@ const DmChat = () => {
         // create websocket
         socket = io();
 
-        if(socket) socket.emit("dm_join", {'username': user.username})
+        if(socket && user) socket.emit("dm_join", {'username': user.username})
 
         //listen for chat events
         socket.on('chat', chat => {
