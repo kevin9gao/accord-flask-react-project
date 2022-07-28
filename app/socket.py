@@ -63,22 +63,20 @@ def on_leave(data):
 # Direct Message
 @socketio.on("dm_chat")
 def on_dm_chat(data):
-  emit('dm_chat', data, to=data['recipient'])
+  recipient = data['recipient']
+  message = data['msg']
+  emit('dm_chat', message, room=recipient)
 
 @socketio.on("dm_join")
 def on_dm_join(data):
   username = data['username']
-  sender = data['sender']
   recipient = data['recipient']
   join_room(recipient)
-  join_room(sender)
   send(username + ' has entered the room.', to=recipient)
 
 @socketio.on("dm_leave")
 def on_dm_leave(data):
   username = data['username']
-  sender = data['sender']
   recipient = data['recipient']
   leave_room(recipient)
-  leave_room(sender)
   send(username + ' has left the room.', to=recipient)

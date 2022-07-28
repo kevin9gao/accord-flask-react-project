@@ -25,16 +25,20 @@ const DmChat = () => {
         }
         fetchData();
     }, [])
+    
+    const sender = sessionUser;
 
     const recipient = users.filter(user => {
         return user.id === Number(recipientId)
     })
+    const joinedRoom = sender.id + recipient.id
+    console.log(joinedRoom)
 
     useEffect(() => {
         // create websocket
         socket = io();
 
-        if (socket && recipient && sessionUser) socket.emit("dm_join", {username: sessionUser.username, recipient: recipientId, sender:sessionUser.id })
+        if (socket && recipient && sessionUser) socket.emit("dm_join", {username: sessionUser.username, recipient: recipientId })
 
         //listen for chat events
         socket.on('dm_chat', chat => {
@@ -45,7 +49,7 @@ const DmChat = () => {
         //when component unmounts, disconnect
         return (() => {
             // socket.removeAllListeners()
-            socket.emit('dm_leave', {username: sessionUser.username, recipient: recipientId, sender:sessionUser.id});
+            socket.emit('dm_leave', {username: sessionUser.username, recipient: recipientId });
             socket.disconnect();
             setMessages([]);
         })
@@ -59,7 +63,7 @@ const DmChat = () => {
         e.preventDefault();
 
         //emit a message
-        if(recipient && sessionUser) socket.emit('dm_chat', { user: sessionUser.username, msg: chatInput,'recipient': recipientId, sender:sessionUser.id });
+        if(recipient && sessionUser) socket.emit('dm_chat', { user: sessionUser.username, msg: chatInput, recipient: recipientId });
 
         //clear input field after message is sent
         setChatInput('');

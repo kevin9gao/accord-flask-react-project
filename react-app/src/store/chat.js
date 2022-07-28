@@ -59,13 +59,27 @@ export const sendLiveChatMessage = payload => async dispatch => {
   }
 }
 
-export const loadDMHistory = (convoId) => async dispatch => {
-    const res = await fetch(`/api//chat/dms/${convoId}`);
+export const loadDMHistory = (userId) => async dispatch => {
+    const res = await fetch(`/api//chat/dms/${userId}`);
 
     if (res.ok) {
         const list = await res.json()
         dispatch(loadDM(list))
     }
+}
+
+export const sendDmMessage = (payload) => async dispatch => {
+  const res = await fetch(`/api/chat/dms/${payload.recipient_id}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify()
+  });
+
+  if (res.ok) {
+    const message = res.json();
+    dispatch(saveDM(message));
+    return message;
+  }
 }
 
 let newState;
