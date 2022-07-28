@@ -1,8 +1,16 @@
-/* .discover-background {
-    background-color: #495057;
+.discover-background {
+    background-color: #6c757d;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    margin-left: 10rem;
+    color: white;
 }
 
-.discover-right1{
+.discover-right1 {
     height: 50%;
     background-image: url("https://wallpaperaccess.com/full/1217368.jpg");
     background-position: center;
@@ -11,6 +19,11 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    margin-left: 16rem;
+    /* border-radius: 3%;
+    margin-right: 1%;
+    margin-left: 1%;
+    margin-top: 1%; */
 }
 
 .discover-right1>h1 {
@@ -32,7 +45,7 @@
     flex-direction: column;
 }
 
-.discover-right2{
+/* .discover-right2{
     height: 50%;
     background-image: url("https://images5.alphacoders.com/863/863325.jpg");
     background-position: center;
@@ -51,30 +64,46 @@
     align-items: center;
     align-content: center;
     align-self: center;
+} */
+
+.discover-background {
+    background-color: #6c757d;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    margin-left: 10rem;
+    color: white;
 }
 
 .discover {
-    background-color: #343a40;
-    margin-right: 90%;
-    height: 100%;
+    background-color: #495057;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    flex-wrap: wrap;
+    align-items: center;
+    left: 0;
+    height: 100%;
+    width: 16rem;
 }
 
 .discover>h2 {
     color: white;
-    margin-left: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .discover-options {
-    margin-left: 20%;
     display: flex;
     flex-direction: column;
-    background-color: red;
+    align-items: center;
+    text-decoration: none;
+    color: white;
 }
-
-.discover-options::after{
+    /* .discover-options::after{
     background: #b6a6ca;
     border-radius: 50px;
     transform: sacleY(0);
