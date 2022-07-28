@@ -13,7 +13,7 @@ const DmChat = () => {
     const [chatInput, setChatInput] = useState('');
     const [users, setUsers] = useState([]);
     const { userId } = useParams();
-    let recipientId = userId
+    let recipientId = Number(userId)
 
     const sessionUser = useSelector(state => state.session.user);
 
@@ -34,11 +34,20 @@ const DmChat = () => {
     const joinedRoom = sender.id + recipient.id
     console.log(joinedRoom)
 
+    console.log('sender ID: ', sessionUser.id);
+    console.log('recipientId: ', recipientId);
+    const joinedId = [sessionUser.id, recipientId].sort();
+    const roomId = `${joinedId[0]}-${joinedId[1]}`;
+    console.log('joining the two IDs: ', roomId);
+
     useEffect(() => {
         // create websocket
         socket = io();
 
-        if (socket && recipient && sessionUser) socket.emit("dm_join", {username: sessionUser.username, recipient: recipientId })
+
+        // if (socket && recipient && sessionUser) socket.emit("dm_join", {username: sessionUser.username, recipient: recipientId, sender:sessionUser.id })
+        if (socket && recipient && sessionUser) socket.emit("dm_join", {username: sessionUser.username, dm_room_id: roomId })
+
 
         //listen for chat events
         socket.on('dm_chat', chat => {
@@ -63,7 +72,7 @@ const DmChat = () => {
         e.preventDefault();
 
         //emit a message
-        if(recipient && sessionUser) socket.emit('dm_chat', { user: sessionUser.username, msg: chatInput, recipient: recipientId });
+        if(recipient && sessionUser) socket.emit('dm_chat', { user: sessionUser.username, msg: chatInput, dm_room_id: roomId });
 
         //clear input field after message is sent
         setChatInput('');
