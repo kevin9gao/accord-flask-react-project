@@ -73,11 +73,19 @@ const ChannelChat = () => {
       //emit a message
       socket.emit('chat', { username: user.username, msg: chatInput, channel: channel?.id });
 
+      const dateTime = new Date();
+      const isoTime = dateTime.toISOString();
+      const date = isoTime.slice(0, 10);
+      const time = isoTime.slice(12,19);
+      const combined = date + ' ' + time
+  
+      console.log(combined)
+
       const payload = {
         channel_id: channel?.id,
         username: user.username,
         message_body: chatInput,
-        created_at: new Date()
+        created_at: combined
       };
       console.log("Frontend Component, payload", payload)
       await dispatch(sendLiveChatMessage(payload));

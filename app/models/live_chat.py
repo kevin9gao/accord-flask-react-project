@@ -12,12 +12,12 @@ class LiveChatMessage(db.Model):
   created_at = db.Column(db.DateTime, nullable=False, server_default=func.now())
 
   def to_dict(self):
-    return {
-      'id': self.id,
-      'channel_id': self.channel_id,
-      'username': self.username,
-      'message_body': self.message_body,
-      'created_at': self.created_at
-    }
+      return {
+          'id': self.id,
+          'channel_id': self.channel_id,
+          'username': self.username,
+          'message_body': self.message_body,
+          'created_at': self.created_at
+      }
 
   channel = db.relationship('Channel', back_populates='messages')
