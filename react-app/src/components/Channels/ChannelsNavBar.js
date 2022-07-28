@@ -12,6 +12,21 @@ const ChannelsNavBar = () => {
     const { serverId } = useParams();
     const [room, setRoom] = useState('')
     // const [room, setRoom] = useState('')
+    const user = useSelector(state => state?.session?.user);
+    const serversObj = useSelector(state => state['servers']['user-servers']);
+    const userServersArr = serversObj ? Object.values(serversObj) : null
+
+    // const servers = userServersArr?.filter(server => {
+    //     return server['owner_id'] === user.id;
+    // });
+    
+    // console.log(servers)
+    // for (let key in userServersArr) {
+    //     if (userServersArr[key]['owner_id'] == user.id) {
+    //         return true;
+    //     }
+    //     return false;
+    // }
 
     const allChannels = useSelector(state => state.channels)
     const allChannelsArr = Object.values(allChannels)
@@ -31,9 +46,9 @@ const ChannelsNavBar = () => {
             <div>
                 Channels NavBar
             </div>
-            <div>
-                <CreateChannelModal />
-            </div>
+                <div>
+                    <CreateChannelModal />
+                </div>
             <div>
                 {channels && channels.map(channel => (
                     <ul key={channel.id}>
