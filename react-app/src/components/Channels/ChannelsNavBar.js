@@ -6,6 +6,7 @@ import ChannelChat from '../LiveChat/ChannelChat';
 import CreateChannelModal from './CreateChannelModal'
 import EditChannelModal from './EditChannelModal'
 
+import './ChannelsNavBar.css';
 
 const ChannelsNavBar = () => {
     const dispatch = useDispatch();
@@ -27,7 +28,7 @@ const ChannelsNavBar = () => {
 
 
     return (
-        <div>
+        <div className='channels-container'>
             <div>
                 Channels NavBar
             </div>
