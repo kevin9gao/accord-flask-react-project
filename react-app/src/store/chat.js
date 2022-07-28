@@ -60,7 +60,7 @@ export const sendLiveChatMessage = payload => async dispatch => {
 }
 
 export const loadDMHistory = (userId) => async dispatch => {
-    const res = await fetch(`/api//chat/dms/${userId}`);
+    const res = await fetch(`/api/chat/dms/${userId}`);
 
     if (res.ok) {
         const list = await res.json()
@@ -69,10 +69,11 @@ export const loadDMHistory = (userId) => async dispatch => {
 }
 
 export const sendDmMessage = (payload) => async dispatch => {
-  const res = await fetch(`/api/chat/dms/${payload.recipient_id}`, {
+  console.log('INSIDE THUNK send', payload)
+  const res = await fetch(`/api/chat/dms`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify()
+    body: JSON.stringify(payload)
   });
 
   if (res.ok) {
@@ -122,6 +123,11 @@ export default function chatReducer(state = {}, action) {
             newState['dm-messages'][message.id] = message
         })
         return newState;
+    
+    case SAVEDM:
+        newState = {...state};
+        newState['dm-messages'][action.message.id] = action.message
+        return newState
 
     default:
       return state;
