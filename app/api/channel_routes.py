@@ -50,7 +50,6 @@ def delete_channel(server_id, id):
     return channel.to_dict()
 
 
-@channel_routes.route("/@me/<int:convo_id>", methods=['GET', 'POST'])
-def direct_messages(convo_id):
-    message = 
-    pass
+# @channel_routes.route("/@me/<int:convo_id>", methods=['GET', 'POST'])
+# def direct_messages(convo_id):
+#     pass
