@@ -1,7 +1,6 @@
 from flask import Blueprint, request
 from app.models import LiveChatMessage, DirectMessage, db
 from app.forms.chat_form import ChatForm
-import datetime from datetime
 
 chat_routes = Blueprint('chat', __name__)
 
