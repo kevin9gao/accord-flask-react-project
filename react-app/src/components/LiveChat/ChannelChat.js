@@ -11,6 +11,8 @@ const ChannelChat = () => {
   const [messages, setMessages] = useState([]);
   const [chatInput, setChatInput] = useState('');
   const [validationErrors, setValidationErrors] = useState([]);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+
 
   const { channelId, serverId } = useParams()
   const dispatch = useDispatch();
@@ -65,6 +67,8 @@ const ChannelChat = () => {
   const sendChat = e => {
     e.preventDefault();
 
+    setHasSubmitted(true);
+
     if (validationErrors.length === 0) {
       //emit a message
       socket.emit('chat', { username: user.username, msg: chatInput, channel: channel?.id });
@@ -77,6 +81,8 @@ const ChannelChat = () => {
       };
 
       dispatch(sendLiveChatMessage(payload));
+
+      setHasSubmitted(false);
 
       //clear input field after message is sent
       setChatInput('');
@@ -96,7 +102,7 @@ const ChannelChat = () => {
       <form
         onSubmit={sendChat}
       >
-        {validationErrors.length > 0 && (
+        {hasSubmitted && validationErrors.length > 0 && (
           <ul>
             {validationErrors.map(error => (
               <li key={error}>{error}</li>
