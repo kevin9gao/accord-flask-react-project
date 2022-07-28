@@ -101,10 +101,10 @@ export default function chatReducer(state = {}, action) {
 
     case LOADDM:
         newState = {...state}
-        const dmHistory = action.list['dm_history'];
-        newState['dm-history'] = {};
+        const dmHistory = action.list['dm_messages'];
+        newState['dm-messages'] = {};
         dmHistory.forEach(message => {
-            newState['dm-history'][message.id] = message
+            newState['dm-messages'][message.id] = message
         })
         return newState;
 

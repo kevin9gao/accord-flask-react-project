@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from app.forms.dm_form import DMForm
-from app.models import LiveChatMessage, DirectMessage, db, DMConversation
+from app.models import LiveChatMessage, DirectMessage, db, User
 from app.forms.chat_form import ChatForm
 
 chat_routes = Blueprint('chat', __name__)
@@ -27,25 +27,22 @@ def post_live_chat_message():
     return message.to_dict()
 
 
-@chat_routes.route('/dms/<int:convo_id>', methods=['GET'])
-def get_dms(convo_id):
-  dm_convo = DMConversation.query.filter(DMConversation.id == convo_id).all()
-  dm_messages = dm_convo.direct_messages
-  print('message history in backend', dm_messages)
-  return {'dm_history': [message.to_dict() for message in dm_messages]}
+@chat_routes.route('/dms/<int:user_id>', methods=['GET'])
+def get_dms(user_id):
+  sender = User.query.filter(User.id == user_id).all()
+  messages_sent = sender['messages_sent']
+  return {'dm_messages': [message.to_dict() for message in messages_sent]}
 
-
-@chat_routes.route('/dms/<int:convo_id>', methods=['POST'])
-def post_dm_messages(convo_id):
+@chat_routes.route('/dms/<int:user_id>', methods=['POST'])
+def post_dm_messages(user_id):
   form = DMForm()
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
     message = DirectMessage (
+      sender_id=form.data['sender_id'],
       recipient_id=form.data['recipient_id'],
-      dm_convo_id=form.data['dm_convo_id'],
       message_body =form.data['message_body'],
       created_at=form.data['created_at']
     )
     db.session.add(message)
     db.session.commit()
-    print("backend from post dm", message)

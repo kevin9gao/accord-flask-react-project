@@ -12,9 +12,7 @@ function UsersList() {
   const [chat, setChat] = useState(false)
 
   const sessionUser = useSelector(state => state.session.user);
-  const dmConvos = useSelector(state => state.chat)
-  // const recipient = Object.values(dmConvos)[0].recipient_id
-  // const convoId = Object.values(dmConvos)[0].dm_convo_id
+
 
   useEffect(() => {
     async function fetchData() {
@@ -25,22 +23,19 @@ function UsersList() {
     fetchData();
   }, []);
 
-//   useEffect(() => {
-//     dispatch(loadDMHistory(convoId));
-// }, [dispatch])
 
 
-  const userComponents = users?.map((user) => {
-    return (
-      <div>
-        <button onClick={() => setChat(true)} key={user?.id}>
-          {user?.username}
-          {/* <NavLink to={`/users/${user.id}`}>{user.username}</NavLink> */}
-        </button>
-      </div>
+  // const userComponents = users?.map((user) => {
+  //   return (
+  //     <div>
+  //       <button onClick={() => setChat(true)} key={user?.id}>
+  //         {user?.username}
+  //         <NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
+  //       </button>
+  //     </div>
 
-    );
-  });
+  //   );
+  // });
 
   return (
     <>
@@ -48,14 +43,14 @@ function UsersList() {
       <div>{users && users.map(user => (
         <ul key={user.id}>
           <div onClick={() => setChat(true)}>
-            <NavLink to={`/channels/@me/user1`}>
+            <NavLink to={`/channels/@me/${user.id}`}>
               <li key={user.id}>{user.username}</li>
             </NavLink>
           </div>
         </ul>
       ))}
       </div>
-      {chat && <DmChat />}
+      {/* {chat && <DmChat />} */}
     </>
   );
 }

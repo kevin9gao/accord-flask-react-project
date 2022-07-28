@@ -11,4 +11,13 @@ class DirectMessage(db.Model):
     message_body = db.Column(db.String(1000), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, server_default=func.now())
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'sender_id': self.sender_id,
+            'recipient_id': self.recipient_id,
+            'message_body': self.message_body,
+            'created_at': self.created_at,
+        }
+
     sender = db.relationship("User", back_populates="messages_sent")

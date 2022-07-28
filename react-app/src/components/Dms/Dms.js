@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { io } from 'socket.io-client';
 
@@ -7,25 +7,37 @@ let socket;
 
 
 const DmChat = () => {
+    const dispatch = useDispatch();
+
     const [messages, setMessages] = useState([]);
     const [chatInput, setChatInput] = useState('');
-    const { convoId } = useParams();
+    const [users, setUsers] = useState([]);
+    const { userId } = useParams();
+    let recipientId = userId
 
-    const user = useSelector(state => state.session.user);
-    // const dmConversations = useSelector(state => state.conversations)
+    const sessionUser = useSelector(state => state.session.user);
 
-    // const convo = Object.values(dmConversations).filter(conversation => {
-    //     return conversation['id'] = Number(convoId);
-    // });
+    useEffect(() => {
+        async function fetchData() {
+            const response = await fetch('/api/users/');
+            const responseData = await response.json();
+            setUsers(responseData.users);
+        }
+        fetchData();
+    }, [])
+
+    const recipient = users.filter(user => {
+        return user.id === Number(recipientId)
+    })
 
     useEffect(() => {
         // create websocket
         socket = io();
 
-        if(socket && user) socket.emit("dm_join", {'username': user.username})
+        if (socket && recipient && sessionUser) socket.emit("dm_join", {username: sessionUser.username, recipient: recipientId, sender:sessionUser.id })
 
         //listen for chat events
-        socket.on('chat', chat => {
+        socket.on('dm_chat', chat => {
             // when receive a chat, add to messages state var
             setMessages(messages => [...messages, chat]);
         })
@@ -33,11 +45,11 @@ const DmChat = () => {
         //when component unmounts, disconnect
         return (() => {
             // socket.removeAllListeners()
-            socket.emit('dm_leave', {'username': user.username});
+            socket.emit('dm_leave', {username: sessionUser.username, recipient: recipientId, sender:sessionUser.id});
             socket.disconnect();
-            setMessages('');
+            setMessages([]);
         })
-    }, [convoId])
+    }, [recipientId])
 
     const updateChatInput = e => {
         setChatInput(e.target.value);
@@ -47,7 +59,7 @@ const DmChat = () => {
         e.preventDefault();
 
         //emit a message
-        socket.emit('dm_chat', { user: user.username, msg: chatInput });
+        if(recipient && sessionUser) socket.emit('dm_chat', { user: sessionUser.username, msg: chatInput,'recipient': recipientId, sender:sessionUser.id });
 
         //clear input field after message is sent
         setChatInput('');
@@ -57,7 +69,7 @@ const DmChat = () => {
     return (
         <div>
             <div>
-                {messages.map((message, idx) => (
+                {messages && messages.map((message, idx) => (
                     <div key={idx}>
                         {`${message.user}: ${message.msg}`}
                     </div>
