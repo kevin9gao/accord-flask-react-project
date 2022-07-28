@@ -64,7 +64,7 @@ const ChannelChat = () => {
     setChatInput(e.target.value);
   }
 
-  const sendChat = e => {
+  const sendChat = async (e) => {
     e.preventDefault();
 
     setHasSubmitted(true);
@@ -79,8 +79,8 @@ const ChannelChat = () => {
         message_body: chatInput,
         created_at: new Date()
       };
-
-      dispatch(sendLiveChatMessage(payload));
+      console.log("Frontend Component, payload", payload)
+      await dispatch(sendLiveChatMessage(payload));
 
       setHasSubmitted(false);
 
