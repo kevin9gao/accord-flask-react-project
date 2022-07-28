@@ -23,11 +23,11 @@ export const loadLiveChatHistory = (channelId) => async dispatch => {
 export const sendLiveChatMessage = payload => async dispatch => {
 
   // add type key to payload object so that the reducer can discern if live chat or dm
-  payload['type'] = 'live-chat';
+  // payload['type'] = 'live-chat';
 
-  console.log('hitting sendLiveChatMessage thunk');
+  console.log('hitting sendLiveChatMessage thunk', payload);
 
-  const res = await fetch(`/api/chat/live_chat/`, {
+  const res = await fetch('/api/chat/live_chat', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
@@ -69,7 +69,7 @@ export default function chatReducer(state = {}, action) {
 
     case SEND:
       newState = {...state};
-
+      console.log('IN REDUCER', action, action.type)
       if (action.message.type === 'live-chat') {
         newState['live-chat-history'][action.message.id] = action.message;
       } else newState['dm-history'][action.message.id] = action.message;

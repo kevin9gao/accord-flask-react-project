@@ -62,7 +62,7 @@ const ChannelChat = () => {
     setChatInput(e.target.value);
   }
 
-  const sendChat = e => {
+  const sendChat = async (e) => {
     e.preventDefault();
 
     if (validationErrors.length === 0) {
@@ -75,8 +75,8 @@ const ChannelChat = () => {
         message_body: chatInput,
         created_at: new Date()
       };
-
-      dispatch(sendLiveChatMessage(payload));
+      console.log("Frontend Component, payload", payload)
+      await dispatch(sendLiveChatMessage(payload));
 
       //clear input field after message is sent
       setChatInput('');
@@ -93,9 +93,7 @@ const ChannelChat = () => {
           </div>
         ))}
       </div>
-      <form
-        onSubmit={sendChat}
-      >
+      <form onSubmit={sendChat}>
         {validationErrors.length > 0 && (
           <ul>
             {validationErrors.map(error => (
