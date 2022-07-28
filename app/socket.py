@@ -71,7 +71,6 @@ def on_dm_join(data):
   sender = data['sender']
   recipient = data['recipient']
   join_room(recipient)
-  join_room(sender)
   send(username + ' has entered the room.', to=recipient)
 
 @socketio.on("dm_leave")
@@ -80,5 +79,4 @@ def on_dm_leave(data):
   sender = data['sender']
   recipient = data['recipient']
   leave_room(recipient)
-  leave_room(sender)
   send(username + ' has left the room.', to=recipient)
