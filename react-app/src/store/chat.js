@@ -70,7 +70,7 @@ export const loadDMHistory = (userId) => async dispatch => {
 
 export const sendDmMessage = (payload) => async dispatch => {
   console.log('INSIDE THUNK send', payload)
-  const res = await fetch(`/api/chat/dms`, {
+  const res = await fetch(`/api/chat/dms/`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)

@@ -34,8 +34,8 @@ def get_dms(user_id):
   messages_sent = sender['messages_sent']
   return {'dm_messages': [message.to_dict() for message in messages_sent]}
 
-@chat_routes.route('/dms/', methods=['GET','POST'])
-def post_dm_messages(user_id):
+@chat_routes.route('/dms', methods=['GET','POST'])
+def post_dm_messages():
   print('HITTING BACKEND ROUTE!!!!')
   form = DMForm()
   form['csrf_token'].data = request.cookies['csrf_token']
