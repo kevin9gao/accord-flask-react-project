@@ -32,6 +32,7 @@ const ChannelsNavBar = () => {
             <div>
                 Channels NavBar
             </div>
+            {/* <h1>Any other fillers we want on the main page of a server</h1> */}
             <div>
                 <CreateChannelModal />
             </div>

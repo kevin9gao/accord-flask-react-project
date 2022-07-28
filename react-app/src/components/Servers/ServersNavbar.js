@@ -35,8 +35,10 @@ export default function ServersNavBar() {
         <div className="display-user">
           <h2>{user.username}</h2>
         </div>
-        Server Navbar
-        <CreateServerModal />
+        <div className="server-navbar">
+          Server Navbar
+          <CreateServerModal />
+        </div>
 
         {userServersArr && userServersArr.map(server => (
           <div className="servers-box" key={server.id}>
