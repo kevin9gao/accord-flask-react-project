@@ -9,6 +9,7 @@ import { NavLink, useHistory } from "react-router-dom";
 export default function ServersNavBar() {
   const dispatch = useDispatch();
   const history = useHistory();
+
   const user = useSelector(state => state.session.user);
   const userServers = useSelector(state => state.servers['user-servers']);
   // console.log(userServers)
