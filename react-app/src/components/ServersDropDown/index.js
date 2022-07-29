@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteServer, leaveServer } from "../../store/servers";
+import { deleteServer, leaveServer, loadSingleUserServers } from "../../store/servers";
 import EditServerModal from "../Servers/EditServerModal";
 
 const ServerNameDropDown = ({ server }) => {
 
     const user = useSelector(state => state.session.user)
+    // const userServers = useSelector(state => state?.servers['user-servers'])
     const [ showMenu, setShowMenu ] = useState(false);
     const dispatch = useDispatch();
 
@@ -16,13 +17,6 @@ const ServerNameDropDown = ({ server }) => {
 
     useEffect(() => {
         if (!showMenu) return;
-        // const closeMenu = () => {
-        //     setShowMenu(false);
-        // }
-
-        // document.addEventListener('click', closeMenu);
-
-        // return () => document.removeEventListener('click', closeMenu);
     }, [showMenu]);
 
     const deleteServ = async (id) => {
