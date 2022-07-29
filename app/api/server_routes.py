@@ -69,5 +69,16 @@ def join_server(id):
         db.session.add(user)
         db.session.commit()
         # print('user.servers_joined', user.servers_joined)
-        print('LIST COMPREHENSION RESULT:', {'user-servers': [server.to_dict() for server in user.servers_joined]})
+        return {'servers': [server.to_dict() for server in user.servers_joined]}
+
+@server_routes.route('/<int:id>/leave', methods=['POST'])
+def leave_server(id):
+    form = JoinServerForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        user = User.query.get(form.data['user_id'])
+        server = Server.query.get(form.data['server_id'])
+        user.servers_joined.remove(server)
+        db.session.add(user)
+        db.session.commit()
         return {'servers': [server.to_dict() for server in user.servers_joined]}

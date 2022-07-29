@@ -12,7 +12,9 @@ function UsersList() {
   const [chat, setChat] = useState(false)
 
   const sessionUser = useSelector(state => state.session.user);
-
+  const usersList = users?.filter(user => {
+    return (user.id !== sessionUser.id)
+  })
 
   useEffect(() => {
     async function fetchData() {
@@ -28,7 +30,7 @@ function UsersList() {
   return (
     <>
       <h1>User List: </h1>
-      <div>{users && users.map(user => (
+      <div>{usersList && usersList.map(user => (
         <ul key={user.id}>
           <div onClick={() => setChat(true)}>
             <NavLink to={`/channels/@me/${user.id}`}>

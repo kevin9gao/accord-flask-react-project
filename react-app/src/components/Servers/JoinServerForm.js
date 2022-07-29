@@ -25,14 +25,18 @@ const JoinServerForm = ({ server, hideForm, setAlreadyJoined, alreadyJoined }) =
   }, [alreadyJoinedServer])
 
   const handleJoin = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
 
-    if (!alreadyJoined) {
+    if (!user) {
+      history.push('/sign-up')
+    } else {
 
-      const payload = {
-        user_id: user.id,
-        server_id: Number(serverId)
-      }
+      if (!alreadyJoined) {
+
+        const payload = {
+          user_id: user.id,
+          server_id: Number(serverId)
+        }
 
 
       await dispatch(joinServer(payload));

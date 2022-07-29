@@ -9,9 +9,15 @@ export default function ServerDiscover() {
     const dispatch = useDispatch();
 
     const servers = useSelector(state => state.servers)
-    // console.log("server", servers)
+
+    const userServers = servers ? servers['user-servers'] : null
+    const userServersArr = userServers ? Object.values(userServers) : null
+    // console.log(userServersArr)
     const serversArray = servers ? Object.values(servers) : null
     // console.log("server array",serversArray)
+  
+    serversArray?.pop();
+    // console.log(serversArray)
 
     useEffect(() => {
         dispatch(serverActions.loadServers());

@@ -6,14 +6,14 @@ function DemoUser() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const handleDemoUser = (e) => {
+  const handleDemoUser = async (e) => {
     e.preventDefault();
 
     const email = 'demo@aa.io';
     const password = 'password';
 
-    dispatch(sessionActions.login(email, password ));
-    history.push(`/discover`)
+    await dispatch(sessionActions.login(email, password ));
+    history.push('/channels/@me')
 
   }
 
