@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadServers, loadSingleUserServers } from "../../store/servers";
 import CreateServerModal from "./CreateServerModal";
 import EditServerModal from "./EditServerModal";
-import { deleteServer } from "../../store/servers";
+import { leaveServer, deleteServer } from "../../store/servers";
 import { NavLink } from "react-router-dom";
 
 export default function ServersNavBar() {
@@ -28,6 +28,17 @@ useEffect(() => {
     await dispatch(deleteServer(id))
   }
 
+  const leaveServ = async(id) => {
+    // e.preventDefault();
+
+    const payload = {
+      user_id: user?.id,
+      server_id: id
+    }
+    console.log('FRONTEND, payload', payload)
+    await dispatch(leaveServer(payload))
+  }
+
   if (user) {
     return (
       <div>
@@ -44,7 +55,8 @@ useEffect(() => {
             (
               <div>
                 <EditServerModal server={server} />
-                <button type="submit" onClick={(id)=> deleteServ(server.id)}>Delete Server</button>
+                <button type="submit" onClick={()=> deleteServ(server.id)}>Delete Server</button>
+                <button onClick={() => leaveServ(server.id)}>Leave Server</button>
               </div>
             )
           }
