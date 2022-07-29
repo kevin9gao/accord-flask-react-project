@@ -12,29 +12,29 @@ const JoinServerForm = ({ server, hideForm }) => {
   // console.log('serverId: ', serverId)
 
   const handleJoin = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
 
     const payload = {
-      user_id: user.id,
+      user_id: user?.id,
       server_id: Number(serverId)
     }
 
     // console.log('payload in SingleServer component: ', payload)
-
-    await dispatch(joinServer(payload));
-    hideForm()
-    return <Redirect to={`/channels/${serverId}`} />
+    if (!user) {
+      history.push('/sign-up')
+    }
+    else {
+      await dispatch(joinServer(payload));
+      hideForm()
+      return <Redirect to={`/channels/${serverId}`} />
+    }
   }
 
   return (
     <div>
       <h1>Join {server.name} Server</h1>
       {/* {!(server.id in userServers) && ( */}
-        <button
-          onClick={handleJoin}
-        >
-          Join
-        </button>
+        <button onClick={() => handleJoin()}>Join</button>
       {/* )} */}
     </div>
   );
