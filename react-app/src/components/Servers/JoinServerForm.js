@@ -52,13 +52,11 @@ const JoinServerForm = ({ server, hideForm, setAlreadyJoined, alreadyJoined }) =
     <div>
       <h1>Join {server.name} Server</h1>
       {alreadyJoined && component}
-      {/* {!(server.id in userServers) && ( */}
-        <button
-          onClick={handleJoin}
-        >
-          Join
-        </button>
-      {/* )} */}
+      {!alreadyJoined && (
+        <button onClick={handleJoin}> Join </button>
+      )}
+
+
     </div>
   );
 }
