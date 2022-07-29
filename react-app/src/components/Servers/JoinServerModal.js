@@ -5,6 +5,9 @@ import JoinServerForm from './JoinServerForm';
 
 function JoinServerModal({ server }) {
     const [showModal, setShowModal] = useState(false);
+    const [alreadyJoined, setAlreadyJoined] = useState(false)
+
+ 
 
     return (
         <>
@@ -15,7 +18,7 @@ function JoinServerModal({ server }) {
             </button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <JoinServerForm server={server} hideForm={() => setShowModal(false)} />
+                    <JoinServerForm server={server} hideForm={() => setShowModal(false)} setAlreadyJoined={setAlreadyJoined} alreadyJoined={alreadyJoined} />
                 </Modal>
             )}
         </>
