@@ -14,6 +14,8 @@ export default function ServerDiscover() {
     const serversArray = servers ? Object.values(servers) : null
     // console.log("server array",serversArray)
 
+    serversArray?.pop();
+
     useEffect(() => {
         dispatch(serverActions.loadServers());
     }, [dispatch])

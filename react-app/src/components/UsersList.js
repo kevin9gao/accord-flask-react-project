@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import DmChat from './Dms/Dms';
 
+import './UsersList.css'
 
 function UsersList() {
   const [users, setUsers] = useState([]);
@@ -35,13 +36,17 @@ function UsersList() {
   });
 
   return (
-    <>
-      <h1>User List: </h1>
-      <ul>{userComponents}</ul>
-      {chat && <DmChat />}
+    <div className='user-list-container'>
+      <div className='user-box'>
+        <h3>User List: </h3>
+        <div>
+          <ul className='user-list'>{userComponents}</ul>
+          {chat && <DmChat />}
+        </div>
+      </div>
 
 
-    </>
+    </div>
   );
 }
 

@@ -4,11 +4,10 @@ import { useSelector } from "react-redux";
 import DmNavBar from "../Dms/DmNavBar";
 import ServersNavBar from "../Servers/ServersNavbar";
 
-
 const PrivateServer = () => {
 
   return (
-    <div>
+    <div className="container">
       <ServersNavBar />
       <DmNavBar />
     </div>
