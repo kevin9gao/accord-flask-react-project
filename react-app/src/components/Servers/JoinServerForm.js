@@ -30,7 +30,6 @@ const JoinServerForm = ({ server, hideForm, setAlreadyJoined, alreadyJoined }) =
     if (!user) {
       history.push('/sign-up')
     } else {
-
       if (!alreadyJoined) {
 
         const payload = {
@@ -42,8 +41,10 @@ const JoinServerForm = ({ server, hideForm, setAlreadyJoined, alreadyJoined }) =
       await dispatch(joinServer(payload));
       hideForm()
       return <Redirect to={`/channels/${serverId}`} />
+      }
     }
   }
+
 
   let component = (
   <div>
@@ -52,6 +53,7 @@ const JoinServerForm = ({ server, hideForm, setAlreadyJoined, alreadyJoined }) =
   </div>
   )
 
+
   return (
     <div>
       <h1>Join {server.name} Server</h1>
@@ -59,8 +61,6 @@ const JoinServerForm = ({ server, hideForm, setAlreadyJoined, alreadyJoined }) =
       {!alreadyJoined && (
         <button onClick={handleJoin}> Join </button>
       )}
-
-
     </div>
   );
 }
