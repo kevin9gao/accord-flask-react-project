@@ -65,22 +65,31 @@
     align-items: center;
 }
 
+.server-card {
+    display: block;
+}
+
+.server-photo {
+    height: 200px;
+    width: 200px;
+}
+
+/*
 .discover-options-grid {
     background-color: red;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
     max-height: 100%;
-    /* gap: 1rem; */
-}
+     gap: 1rem; } */
 
-.discover-options {
+/* .discover-options {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-decoration: none;
     color: white;
-}
+} */
 
 /*
 IF I WANT BORDER RADIUS
