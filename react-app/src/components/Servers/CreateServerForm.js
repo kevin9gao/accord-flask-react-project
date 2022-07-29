@@ -13,6 +13,7 @@ const CreateServerForm = ({ hideForm }) => {
     const serversArray = Object.values(servers);
 
     const [name, setName] = useState("");
+    const [serverPicUrl, setServerPicUrl] = useState("");
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const [validationErrors, setValidationErrors] = useState([]);
 
@@ -31,7 +32,8 @@ const CreateServerForm = ({ hideForm }) => {
 
         const payload = {
             name,
-            owner_id: owner.id
+            owner_id: owner.id,
+            server_pic_url: serverPicUrl
         };
 
         const createdServer = await dispatch(createServer(payload));
@@ -65,10 +67,16 @@ const CreateServerForm = ({ hideForm }) => {
                 <p>Your server is where you and your friends hang out. Make yours and start talking.</p>
                 <label>SERVER NAME</label>
                 <input
-                    placeholder={`${owner.username}'s server`}
+                    placeholder={`${owner.username}'s Server`}
                     type="text"
                     value={name}
                     onChange={e => setName(e.target.value)}
+                />
+                <input
+                    placeholder={'URL to Server Picture'}
+                    type="text"
+                    value={serverPicUrl}
+                    onChange={e => setServerPicUrl(e.target.value)}
                 />
                 <div>
                     <button type="submit">Create</button>

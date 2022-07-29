@@ -6,3 +6,4 @@ from wtforms.validators import DataRequired
 class EditServerForm(FlaskForm):
     name = StringField('Server name', validators=[DataRequired()])
     owner_id = IntegerField('Owner ID', validators=[DataRequired()])
+    server_pic_url = StringField('Server Pic URL')
