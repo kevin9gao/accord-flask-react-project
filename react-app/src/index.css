@@ -19,3 +19,18 @@
     background-color: transparent;
     border: none;
 }
+
+.button {
+    background-color: red;
+}
+
+/* .button::after {
+    background: #b6a6ca;
+    border-radius: 50px;
+    transform: sacleY(0);
+    transition: transform 0.3s ease;
+}
+
+.button:hover::after {
+    transform: scaleY(1);
+} */
