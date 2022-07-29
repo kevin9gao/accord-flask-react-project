@@ -9,8 +9,8 @@ const PrivateServer = () => {
 
   return (
     <div>
-      <ServersNavBar />
-      <DmNavBar />
+      {/* <ServersNavBar />
+      <DmNavBar /> */}
     </div>
   );
 }

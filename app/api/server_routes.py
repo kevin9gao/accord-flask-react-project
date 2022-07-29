@@ -12,7 +12,7 @@ server_routes = Blueprint('servers', __name__)
 def all_servers():
     # print("HITTING BACKEND ROUTE")
     servers = Server.query.all()
-    
+
     # print("backend ROUTE", servers)
     return {'servers': [server.to_dict() for server in servers]}
 

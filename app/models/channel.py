@@ -16,4 +16,4 @@ class Channel(db.Model):
         }
 
     server = db.relationship("Server", back_populates="channels")
-    messages = db.relationship('LiveChatMessage', back_populates='channel')
+    messages = db.relationship('LiveChatMessage', back_populates='channel', cascade="all, delete")
