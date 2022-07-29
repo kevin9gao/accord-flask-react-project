@@ -137,15 +137,18 @@ const DmChat = () => {
     return (
         <div>
             <div>
-                {dmHistory && dmHistory?.map((message, idx) => (
-                    <div key={idx}>
-                        {`${message.sender_id === sessionUser.id ?
-                            sessionUser?.username :
-                            recipient?.username}: ${message.message_body ?
-                                                message?.message_body :
-                                                message?.msg}`}
-                    </div>
-                ))}
+                {sessionUser && (
+                    dmHistory && dmHistory?.map((message, idx) => (
+                        <div key={idx}>
+                            {`${message.sender_id === sessionUser.id ?
+                                sessionUser?.username :
+                                recipient?.username}: ${message.message_body ?
+                                                    message?.message_body :
+                                                    message?.msg}`}
+                        </div>
+                    ))
+
+                )}
                 {/* {messages && messages.map((message, idx) => (
                     <div key={idx}>
                         {`${message.user}: ${message.msg}`}
