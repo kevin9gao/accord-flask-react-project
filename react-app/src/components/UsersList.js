@@ -25,18 +25,6 @@ function UsersList() {
 
 
 
-  // const userComponents = users?.map((user) => {
-  //   return (
-  //     <div>
-  //       <button onClick={() => setChat(true)} key={user?.id}>
-  //         {user?.username}
-  //         <NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
-  //       </button>
-  //     </div>
-
-  //   );
-  // });
-
   return (
     <>
       <h1>User List: </h1>
