@@ -36,11 +36,11 @@ const JoinServerForm = ({ server, hideForm, setAlreadyJoined, alreadyJoined }) =
           user_id: user.id,
           server_id: Number(serverId)
         }
-
-
-      await dispatch(joinServer(payload));
-      hideForm()
-      return <Redirect to={`/channels/${serverId}`} />
+        
+        
+        await dispatch(joinServer(payload));
+        hideForm()
+        return <Redirect to={`/channels/${serverId}`} />
       }
     }
   }

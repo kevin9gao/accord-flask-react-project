@@ -11,6 +11,7 @@ const EditServerModal = ({ server }) => {
             
             <div>
                 <button onClick={()=> setShowModal(true)}>Edit Server</button>
+                <i className="fa-solid fa-pen-to-square"></i>
             </div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
