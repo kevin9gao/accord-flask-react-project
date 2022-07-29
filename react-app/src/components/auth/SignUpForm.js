@@ -16,11 +16,17 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signup(username, email, password));
-      if (data) {
-        setErrors(data)
-      }
+      setErrors([]);
+      return dispatch(signup(username, email, password))
+        .catch(async (res) => {
+          const data = await res.json();
+          if (data && data.errors) setErrors(data.errors);
+      })
+      // const data = await dispatch(signup(username, email, password));
+      // if (data) {
+      //   setErrors(data)
     }
+    return setErrors(['Repeat password field must be the same as the Password field.']);
   };
 
   const updateUsername = (e) => {
