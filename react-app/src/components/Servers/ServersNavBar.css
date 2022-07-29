@@ -12,6 +12,7 @@
     padding: 0;
     position: fixed;
     color: white;
+    align-items: center;
 }
 
 .server-navbar {
