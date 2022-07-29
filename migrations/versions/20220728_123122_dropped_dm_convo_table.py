@@ -1,7 +1,7 @@
 """dropped dm convo table
 
 Revision ID: 06806c451452
-Revises: 
+Revises:
 Create Date: 2022-07-28 12:31:22.374524
 
 """
@@ -50,7 +50,6 @@ def upgrade():
     sa.Column('server_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['server_id'], ['servers.id'], ),
     sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('name')
     )
     op.create_table('members',
     sa.Column('users', sa.Integer(), nullable=False),
