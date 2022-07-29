@@ -65,8 +65,12 @@
     align-items: center;
 }
 
-.discover-options-container {
+.discover-options-grid {
     background-color: red;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    /* gap: 1rem; */
+    height: 100%;
 }
 
 .discover-options {
@@ -77,12 +81,36 @@
     color: white;
 }
 
+/*
+IF I WANT BORDER RADIUS
 .discover-options>button {
     background-color: aqua;
     padding: 1rem;
     border: 1px solid orange;
     border-radius: .5em;
     font-size: 1.25rem;
+}
+*/
+
+/*
+IF I WANT BORDER SHADOW
+*/
+.discover-options>button {
+    background-color: aqua;
+    padding: 1rem;
+    /*
+    border: 1px solid orange;
+    */
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.25rem;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2);
+}
+
+
+.discover-options>button:hover, .discover-options>button:focus {
+    background-color: green;
+    transition: all 1s ease;
 }
 
     /* .discover-options::after{
@@ -94,57 +122,4 @@
 
 .discover-options:hover::after {
     transform: scaleY(1);
-} */
-
-
-/* .discover-page-container {
-    margin-left: 10rem;
-    margin-top: 0;
-    top: 0;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-.discover-page-box {
-    margin-left: 16rem;
-    background-color: #6c757d;
-    height: 100%;
-    margin-top: 0;
-}
-
-.discover-page {
-    height: 50%;
-    color: white;
-    background-image: url("https://wallpaperaccess.com/full/1217368.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100% auto;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin-left: 16rem;
-    border-radius: 3%;
-    margin-right: 1%;
-    margin-left: 1%;
-    margin-top: 1%;
-}
-
-.discover-page>h1 {
-    color: white;
-    text-shadow: 4px 4px 4px black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    align-self: center;
-}
-
-.discover-page>h2 {
-    color: white;
-    text-shadow: 4px 4px 4px black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
 } */

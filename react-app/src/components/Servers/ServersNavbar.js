@@ -45,14 +45,14 @@ export default function ServersNavBar() {
             <NavLink className={'servers'} to={`/channels/${server.id}`}>
               <h3>{server.name}</h3>
             </NavLink>
-            {/* {sessionUser?.id === server.owner_id &&
+            {sessionUser?.id === server.owner_id &&
             (
               <div>
                 <EditServerModal server={server} />
                 <button type="submit" onClick={(id)=> deleteServ(server.id)}>Delete Server</button>
               </div>
             )
-          } */}
+          }
           </div>
         ))}
       </div>
