@@ -50,7 +50,6 @@ def upgrade():
     sa.Column('server_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['server_id'], ['servers.id'], ),
     sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('name')
     )
     op.create_table('members',
     sa.Column('users', sa.Integer(), nullable=False),
