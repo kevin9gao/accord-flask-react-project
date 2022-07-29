@@ -20,7 +20,15 @@ export default function ServerDiscover() {
 
 
     return (
-        <div className="discover-background">
+        <div className="discover-container">
+            <div className="discover-upper">
+                <h1>
+                    Find your community on Accord
+                </h1>
+                <h2>
+                    From gaming, to music, to learning, there's a place for you.
+                </h2>
+            </div>
             <div className="discover">
                 <h2>Discover</h2>
                 <div className="discover-options">
