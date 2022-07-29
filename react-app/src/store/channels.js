@@ -83,7 +83,7 @@ export default function channelsReducer(state = {}, action) {
     case LOAD:
       newState = {};
       const channelsList = action.list['channels']
-      console.log("inside reducer", channelsList)
+      // console.log("inside reducer", channelsList)
       channelsList.forEach(channel => {
         newState[channel.id] = channel
       })

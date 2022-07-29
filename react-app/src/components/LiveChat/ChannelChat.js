@@ -14,14 +14,14 @@ const ChannelChat = () => {
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const chatHistoryObj = useSelector(state => state['chat']['live-chat-history']);
   const chatHistory = chatHistoryObj ? Object.values(chatHistoryObj) : null;
-  console.log('chatHistory useSelector: ', chatHistory);
+  // console.log('chatHistory useSelector: ', chatHistory);
 
 
   const { channelId, serverId } = useParams()
   const dispatch = useDispatch();
 
-  console.log('channelId', channelId)
-  console.log('serverId', serverId)
+  // console.log('channelId', channelId)
+  // console.log('serverId', serverId)
 
 
   // const channelRoom = useSelector(state => state.channel['room'])
@@ -84,7 +84,7 @@ const ChannelChat = () => {
       const time = isoTime.slice(12,19);
       const combined = date + ' ' + time
 
-      console.log(combined)
+      // console.log(combined)
 
       const payload = {
         channel_id: channel?.id,
@@ -92,7 +92,7 @@ const ChannelChat = () => {
         message_body: chatInput,
         created_at: combined
       };
-      console.log("Frontend Component, payload", payload)
+      // console.log("Frontend Component, payload", payload)
       await dispatch(sendLiveChatMessage(payload));
 
       setHasSubmitted(false);

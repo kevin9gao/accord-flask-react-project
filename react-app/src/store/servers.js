@@ -47,30 +47,30 @@ export const loadSingleUserServers = (userId) => async dispatch => {
 
   if (res.ok) {
     const list = await res.json();
-    console.log("LIST OF SERVERS JOINED FROM THUNK", list)
+    // console.log("LIST OF SERVERS JOINED FROM THUNK", list)
     dispatch(loadSingleUser(list));
   }
 }
 
 export const createServer = payload => async dispatch => {
-  console.log("INSIDE createSERVERS THUNK")
+  // console.log("INSIDE createSERVERS THUNK")
   const res = await fetch(`/api/servers/`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
   });
-  console.log("RES in THUNK", res)
+  // console.log("RES in THUNK", res)
 
   if (res.ok) {
     const server = await res.json();
-    console.log("INSIDE THUNK RES.OK", server)
+    // console.log("INSIDE THUNK RES.OK", server)
     dispatch(add(server));
     return server;
   }
 }
 
 export const joinServer = payload => async dispatch => {
-  console.log('payload in joinserver thunk: ', payload)
+  // console.log('payload in joinserver thunk: ', payload)
   const res = await fetch(`/api/servers/${payload.server_id}/join`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -80,7 +80,7 @@ export const joinServer = payload => async dispatch => {
 
   if (res.ok) {
     const list = await res.json();
-    console.log('res.ok, list: ', list)
+    // console.log('res.ok, list: ', list)
     dispatch(loadSingleUser(list));
     return list;
   }
@@ -95,7 +95,7 @@ export const editServer = payload => async dispatch => {
 
   if (res.ok) {
     const server = await res.json();
-    console.log("EDITED SERVER FROM THUNK", server)
+    // console.log("EDITED SERVER FROM THUNK", server)
     dispatch(edit(server));
   }
 }
@@ -116,7 +116,7 @@ export default function serversReducer(state = {}, action) {
   switch (action.type) {
     case LOAD:
       newState = {...state};
-      console.log("NEWSTATE FROM LOAD ONLY", newState)
+      // console.log("NEWSTATE FROM LOAD ONLY", newState)
       const serversList = action.list['servers']
       serversList.forEach(server => {
         newState[server.id] = server
@@ -129,11 +129,11 @@ export default function serversReducer(state = {}, action) {
       // instantiate 'user-servers' key in newState.servers so that userServers can be normalized
       newState['user-servers'] = {};
       // instantiate 'user-servers' key in newState.servers so that userServers can be normalized
-      console.log("INSIDE REDUCER", action, action.type, action.list)
+      // console.log("INSIDE REDUCER", action, action.type, action.list)
       userServers.forEach(server => {
         newState['user-servers'][server.id] = server;
       })
-      
+
 
       return newState;
 

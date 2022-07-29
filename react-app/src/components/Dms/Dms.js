@@ -19,7 +19,7 @@ const DmChat = () => {
     let recipientId = Number(userId)
 
     const sessionUser = useSelector(state => state.session.user);
-    console.log('users', users)
+    // console.log('users', users)
     const recipient = users?.filter(user => {
         return user.id === recipientId
     })[0];
@@ -29,16 +29,13 @@ const DmChat = () => {
     const dmHistoryObj = useSelector(state => state['chat']['dm-messages']);
     const dmHistory = dmHistoryObj ? Object.values(dmHistoryObj) : null;
 
-    const privateHistory = dmHistory?.filter(message => {
-        return (message['sender_id'] === sessionUser.id || message['recipient_id'] === sessionUser.id) &&
-                (message['sender_id'] === recipientId || message['recipient_id'] === recipientId)
-    })
-    dmHistory?.forEach(message => {
-        console.log('inside dmHistory',  (message['sender_id'] === sessionUser.id || message['recipient_id'] === sessionUser.id) &&
-        (message['sender_id'] === recipientId || message['recipieint_id'] === recipientId))
-    })
+    // const privateHistory = dmHistory?.filter(message => {
+    //     return (message['sender_id'] === sessionUser.id || message['recipient_id'] === sessionUser.id) &&
+    //             (message['sender_id'] === recipientId || message['recipient_id'] === recipientId)
+    // })
 
-    // console.log('DM HISTORY', dmHistoryObj)
+
+    console.log('DM HISTORY', dmHistory)
 
     // console.log("PRIVATE HISTORY", privateHistory)
 
@@ -50,8 +47,8 @@ const DmChat = () => {
         }
         fetchData();
     }, [])
-    
-    
+
+
 
     const sender = sessionUser;
 
@@ -60,41 +57,42 @@ const DmChat = () => {
     // })
 
 
-    console.log('sender ID: ', sessionUser.id);
-    console.log('recipientId: ', recipientId);
+    // putting the sessionUser id and recipient id into a combined string to make a unique room
+    // console.log('sender ID: ', sessionUser.id);
+    // console.log('recipientId: ', recipientId);
     const joinedId = [sessionUser.id, recipientId].sort();
     const roomId = `${joinedId[0]}-${joinedId[1]}`;
-    console.log('joining the two IDs: ', roomId);
+    // console.log('joining the two IDs: ', roomId);
 
     useEffect(() => {
-        
         const errors = [];
         if (chatInput.length === 0) errors.push("Message body cannot be empty.");
-    
+
         setValidationErrors(errors);
-      }, [chatInput]);
+    }, [chatInput]);
 
 
     useEffect(async () => {
-        await dispatch(loadDMHistory(sessionUser.id));
+        await dispatch(loadDMHistory(sessionUser.id, recipientId));
         // create websocket
         socket = io();
 
 
         // if (socket && recipient && sessionUser) socket.emit("dm_join", {username: sessionUser.username, recipient: recipientId, sender:sessionUser.id })
-        if (socket && recipientId && sessionUser) socket.emit("dm_join", {username: sessionUser.username, dm_room_id: roomId })
+        if (socket && recipientId && sessionUser) socket.emit("dm_join", { username: sessionUser.username, dm_room_id: roomId })
 
 
         //listen for chat events
         socket.on('dm_chat', chat => {
             // when receive a chat, add to messages state var
             setMessages(messages => [...messages, chat]);
+            console.log('chat in socket.on(dm_chat):', chat)
         })
 
         //when component unmounts, disconnect
         return (() => {
             // socket.removeAllListeners()
-            socket.emit('dm_leave', {username: sessionUser.username, recipient: recipientId });
+            socket.emit('dm_leave', { username: sessionUser.username, recipient: recipientId });
             socket.disconnect();
             setMessages([]);
         })
@@ -104,18 +102,18 @@ const DmChat = () => {
         setChatInput(e.target.value);
     }
 
-    const sendChat = async(e) => {
+    const sendChat = async (e) => {
         e.preventDefault();
         setHasSubmitted(true);
 
-        if (validationErrors.length === 0 ) {
+        if (validationErrors.length === 0) {
             //emit a message
-            if(recipientId && sessionUser) socket.emit('dm_chat', { user: sessionUser.username, msg: chatInput, dm_room_id: roomId });
+            if (recipientId && sessionUser) socket.emit('dm_chat', { username: sessionUser.username, msg: chatInput, dm_room_id: roomId });
 
             const dateTime = new Date();
             const isoTime = dateTime.toISOString();
             const date = isoTime.slice(0, 10);
-            const time = isoTime.slice(12,19);
+            const time = isoTime.slice(12, 19);
             const combined = date + ' ' + time
 
             const payload = {
@@ -139,9 +137,13 @@ const DmChat = () => {
     return (
         <div>
             <div>
-                {privateHistory && privateHistory.map((message, idx) => (
+                {dmHistory && dmHistory.map((message, idx) => (
                     <div key={idx}>
-                        {`${message.sender_id === sessionUser.id ? sessionUser.username : recipient.username}: ${message.message_body ? message.message_body : message.msg}`}
+                        {`${message.sender_id === sessionUser.id ?
+                            sessionUser.username :
+                            recipient.username}: ${message.message_body ?
+                                                message.message_body :
+                                                message.msg}`}
                     </div>
                 ))}
                 {/* {messages && messages.map((message, idx) => (

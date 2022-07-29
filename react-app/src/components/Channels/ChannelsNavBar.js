@@ -19,7 +19,7 @@ const ChannelsNavBar = () => {
     // const servers = userServersArr?.filter(server => {
     //     return server['owner_id'] === user.id;
     // });
-    
+
     // console.log(servers)
     // for (let key in userServersArr) {
     //     if (userServersArr[key]['owner_id'] == user.id) {
@@ -30,7 +30,7 @@ const ChannelsNavBar = () => {
 
     const allChannels = useSelector(state => state.channels)
     const allChannelsArr = Object.values(allChannels)
-    console.log('channelsArr', allChannelsArr)
+    // console.log('channelsArr', allChannelsArr)
 
     const channels = allChannelsArr.filter(channel => {
         return channel['server_id'] === Number(serverId);

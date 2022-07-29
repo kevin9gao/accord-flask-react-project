@@ -8,8 +8,8 @@ const JoinServerForm = ({ server, hideForm }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const userServers = useSelector(state => state.servers['user-servers']);
-  console.log('userServers: ', userServers)
-  console.log('serverId: ', serverId)
+  // console.log('userServers: ', userServers)
+  // console.log('serverId: ', serverId)
 
   const handleJoin = async (e) => {
     e.preventDefault();

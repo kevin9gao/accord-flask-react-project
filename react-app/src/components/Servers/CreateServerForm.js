@@ -40,8 +40,8 @@ const CreateServerForm = ({ hideForm }) => {
             server_id: createdServer.id
         }
         await dispatch(joinServer(joinServerPayload))
-        console.log("FRONTEND ROUTE, createdserver", createdServer)
-        console.log('createserver component, owner: ', owner);
+        // console.log("FRONTEND ROUTE, createdserver", createdServer)
+        // console.log('createserver component, owner: ', owner);
         if (createdServer) reset();
         setHasSubmitted(false);
         hideForm();

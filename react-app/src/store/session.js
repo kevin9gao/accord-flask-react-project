@@ -30,7 +30,7 @@ export const authenticate = () => async (dispatch) => {
 }
 
 export const login = (email, password) => async (dispatch) => {
-  console.log('hitting login thunk')
+  // console.log('hitting login thunk')
 
   const response = await fetch('/api/auth/login', {
     method: 'POST',
@@ -43,10 +43,10 @@ export const login = (email, password) => async (dispatch) => {
     })
   });
 
-  console.log('login thunk response: ', response)
+  // console.log('login thunk response: ', response)
 
   if (response.ok) {
-    console.log('RESPONSE.OK', response.ok)
+    // console.log('RESPONSE.OK', response.ok)
     const data = await response.json();
     dispatch(setUser(data))
     return null;
