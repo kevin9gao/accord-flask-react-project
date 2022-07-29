@@ -65,10 +65,7 @@ useEffect(() => {
           }
         </div>
         ))}
-        {/* <div>
-          <button>
-            <NavLink to={'/discover'}>Explore</NavLink></button>
-        </div> */}
+
       </div>
     );
   } else return null;

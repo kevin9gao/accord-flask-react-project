@@ -7,7 +7,7 @@ function JoinServerModal({ server }) {
     const [showModal, setShowModal] = useState(false);
     const [alreadyJoined, setAlreadyJoined] = useState(false)
 
- 
+
 
     return (
         <>
@@ -16,6 +16,7 @@ function JoinServerModal({ server }) {
             >
                 {server.name}
             </button>
+            <img src={server.server_pic_url}/>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <JoinServerForm server={server} hideForm={() => setShowModal(false)} setAlreadyJoined={setAlreadyJoined} alreadyJoined={alreadyJoined} />

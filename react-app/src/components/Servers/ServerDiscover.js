@@ -15,7 +15,7 @@ export default function ServerDiscover() {
     // console.log(userServersArr)
     const serversArray = servers ? Object.values(servers) : null
     // console.log("server array",serversArray)
-  
+
     serversArray?.pop();
     // console.log(serversArray)
 
@@ -29,8 +29,10 @@ export default function ServerDiscover() {
             <h2>Click on a Server to Join!</h2>
             {serversArray && serversArray.map(server => {
                 return (server && (
-                    <div key={server.id}>
-                        <JoinServerModal server={server} />
+                    <div>
+                        <div key={server.id}>
+                            <JoinServerModal server={server} />
+                        </div>
                     </div>
                 )
                 )
