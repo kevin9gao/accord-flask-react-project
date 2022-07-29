@@ -25,7 +25,8 @@ def create_server():
     if form.validate_on_submit():
         print("HITTING BACKEND ROUTE IF STATEMENT")
         server = Server(name=form.data['name'],
-                        owner_id=form.data['owner_id'])
+                        owner_id=form.data['owner_id'],
+                        server_pic_url=form.data['server_pic_url'])
         db.session.add(server)
         db.session.commit()
         print("backend ROUTE", server.to_dict())
@@ -41,6 +42,7 @@ def edit_server(id):
         data = request.json
         server.name = data['name']
         server.owner_id = data['owner_id']
+        server.server_pic_url = form.data['server_pic_url']
         db.session.commit()
         return server.to_dict()
 

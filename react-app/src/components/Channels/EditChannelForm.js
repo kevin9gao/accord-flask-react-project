@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 import { editChannel, deleteChannel } from "../../store/channels";
 
-const EditChannelForm = ({hideForm, channel}) => {
+const EditChannelForm = ({hideForm, channel, setChannelExists}) => {
     const dispatch = useDispatch();
     const { serverId } = useParams();
-
+    const history = useHistory()
     const channels = useSelector(state => state.channels);
     const channelsArr = Object.values(channels);
 
@@ -53,6 +53,8 @@ const EditChannelForm = ({hideForm, channel}) => {
         e.preventDefault()
         await dispatch(deleteChannel(serverId, channel.id));
         hideForm()
+        setChannelExists('false')
+        history.push(`/channels/${serverId}`)
     };
 
     return (
