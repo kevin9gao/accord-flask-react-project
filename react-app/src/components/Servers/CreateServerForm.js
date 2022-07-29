@@ -33,7 +33,7 @@ const CreateServerForm = ({ hideForm }) => {
         const payload = {
             name,
             owner_id: owner.id,
-            server_pic_url: serverPicUrl
+            server_pic_url: !!serverPicUrl ? serverPicUrl : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZa82uPbc_oNLQh2TxnFsvEQaO4qQTQs14mg&usqp=CAU'
         };
 
         const createdServer = await dispatch(createServer(payload));

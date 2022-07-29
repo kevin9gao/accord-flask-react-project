@@ -113,7 +113,7 @@ const ChannelChat = () => {
           </div>
         ))}
       </div>
-      <form
+      <form className='channel-chat-form'
         onSubmit={sendChat}
       >
         {hasSubmitted && validationErrors.length > 0 && (
@@ -123,11 +123,11 @@ const ChannelChat = () => {
             ))}
           </ul>
         )}
-        <input
+        <input className='channel-chat-input'
           value={chatInput}
           onChange={updateChatInput}
         />
-        <button
+        <button className='channel-chat-button'
         // onClick={}
         >Send</button>
       </form>

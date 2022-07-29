@@ -1,0 +1,36 @@
+.channels-container {
+    background-color: #495057;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 16rem;
+    align-items: center;
+}
+
+.display-user {
+    background-color: green;
+    display: flex;
+    justify-content: center;
+
+    position: fixed;
+    bottom: 0;
+}
+
+.channels-navbar {
+    font-size: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.channels {
+    /* background-color: purple; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+}

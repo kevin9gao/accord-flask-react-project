@@ -1,0 +1,66 @@
+.servers-container {
+    position: absolute;
+    left: 0;
+    background-color: #343a40;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* use icons to fit width */
+    /* width: 4rem; */
+    width: 10rem;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    color: white;
+    align-items: center;
+}
+
+.server-navbar {
+    font-size: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.display-user {
+    background-color: green;
+    display: flex;
+    justify-content: center;
+
+    position: fixed;
+    bottom: 0;
+}
+
+/* .servers-box {
+    background-color: red;
+} */
+
+
+.servers {
+    /* background-color: purple; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+}
+
+/* .servers:after {
+    background-color: green;
+    transform: scaleY(0);
+    transition: transform 0.3s ease
+}
+.servers:hover:after {
+    transform: scaleY(1);
+} */
+
+.servers:hover {
+    background-color: green;
+    color: white;
+    /* transform: scaleY(0); */
+    transition: all 1s ease;
+}
+
+/* .servers:hover:after {
+    transform: scaleY(1);
+} */
