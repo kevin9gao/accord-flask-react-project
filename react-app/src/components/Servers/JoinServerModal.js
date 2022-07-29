@@ -8,7 +8,7 @@ function JoinServerModal({ server }) {
 
     return (
         <>
-            <button className='button'
+            <button
                 onClick={() => setShowModal(true)}
             >
                 {server.name}

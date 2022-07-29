@@ -31,7 +31,7 @@ export default function ServerDiscover() {
             </div>
             <div className="discover">
                 <h2>Discover</h2>
-                <div className="discover-options">
+                <div className="discover-options-container">
                     {serversArray && serversArray.map(server => {
                         return (server && (
                             <div className="discover-options" key={server.id}>

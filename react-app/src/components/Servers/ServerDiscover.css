@@ -21,7 +21,7 @@
     justify-content: center;
     flex-direction: column;
     margin-left: 16rem;
-    border-radius: 3%;
+    border-radius: 1rem;
     margin-right: 1%;
     margin-left: 1%;
     margin-top: 1%;
@@ -48,13 +48,14 @@
 
 .discover {
     /* background-color: #495057; */
+    /*
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     left: 0;
     height: 100%;
-    width: 16rem;
+    */
 }
 
 .discover>h2 {
@@ -64,6 +65,10 @@
     align-items: center;
 }
 
+.discover-options-container {
+    background-color: red;
+}
+
 .discover-options {
     display: flex;
     flex-direction: column;
@@ -71,6 +76,15 @@
     text-decoration: none;
     color: white;
 }
+
+.discover-options>button {
+    background-color: aqua;
+    padding: 1rem;
+    border: 1px solid orange;
+    border-radius: .5em;
+    font-size: 1.25rem;
+}
+
     /* .discover-options::after{
     background: #b6a6ca;
     border-radius: 50px;
