@@ -11,34 +11,38 @@ const ChannelsNavBar = () => {
     const dispatch = useDispatch();
     const { serverId } = useParams();
     const [room, setRoom] = useState('')
-    // const [room, setRoom] = useState('')
+    const [channelExists, setChannelExists] = useState(true)
+
+    let { channelId } = useParams();
+
+
     const user = useSelector(state => state?.session?.user);
     const serversObj = useSelector(state => state['servers']['user-servers']);
     const userServersArr = serversObj ? Object.values(serversObj) : null
 
-    // const servers = userServersArr?.filter(server => {
-    //     return server['owner_id'] === user.id;
-    // });
-
-    // console.log(servers)
-    // for (let key in userServersArr) {
-    //     if (userServersArr[key]['owner_id'] == user.id) {
-    //         return true;
-    //     }
-    //     return false;
-    // }
 
     const allChannels = useSelector(state => state.channels)
     const allChannelsArr = Object.values(allChannels)
-    // console.log('channelsArr', allChannelsArr)
 
     const channels = allChannelsArr.filter(channel => {
         return channel['server_id'] === Number(serverId);
     })
 
+    console.log("CHANNELSID FOR THIS SERVER", channelId)
+
+
     useEffect(() => {
         dispatch(loadChannels(serverId));
     }, [dispatch])
+
+
+    useEffect(() => {
+        if(!channelId) {
+            setChannelExists(false)
+        } else {
+            setChannelExists(true)
+        }
+    }, [channelId])
 
 
     return (
@@ -57,10 +61,10 @@ const ChannelsNavBar = () => {
                                 <li key={channel.id}>{channel.name}</li>
                             </NavLink>
                         </div>
-                        <EditChannelModal channel={channel}/>
+                        <EditChannelModal channel={channel} setChannelExists={setChannelExists}/>
                     </ul>
                 ))}
-                <ChannelChat />
+                { channelExists && (<ChannelChat />)}
             </div>
         </div>
     )
