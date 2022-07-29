@@ -96,7 +96,7 @@ const DmChat = () => {
             socket.disconnect();
             setMessages([]);
         })
-    }, [recipientId])
+    }, [recipientId, messages])
 
     const updateChatInput = e => {
         setChatInput(e.target.value);
@@ -137,13 +137,13 @@ const DmChat = () => {
     return (
         <div>
             <div>
-                {dmHistory && dmHistory.map((message, idx) => (
+                {dmHistory && dmHistory?.map((message, idx) => (
                     <div key={idx}>
                         {`${message.sender_id === sessionUser.id ?
-                            sessionUser.username :
-                            recipient.username}: ${message.message_body ?
-                                                message.message_body :
-                                                message.msg}`}
+                            sessionUser?.username :
+                            recipient?.username}: ${message.message_body ?
+                                                message?.message_body :
+                                                message?.msg}`}
                     </div>
                 ))}
                 {/* {messages && messages.map((message, idx) => (
