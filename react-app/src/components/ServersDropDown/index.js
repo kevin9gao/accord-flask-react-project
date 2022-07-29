@@ -16,7 +16,6 @@ const ServerNameDropDown = ({ server }) => {
 
     useEffect(() => {
         if (!showMenu) return;
-        
         // const closeMenu = () => {
         //     setShowMenu(false);
         // }
@@ -56,10 +55,16 @@ const ServerNameDropDown = ({ server }) => {
                     {user?.id === server?.owner_id && (
                         <div>
                             <EditServerModal server={server} />  
-                            <button type="submit" onClick={()=> deleteServ(server.id)}>Delete Server</button>
+                            <div>
+                                <button type="submit" onClick={()=> deleteServ(server.id)}>Delete Server</button>
+                                <i className="fa-solid fa-trash-can"></i>
+                            </div>
                         </div>
                     )}
-                    <button onClick={() => leaveServ(server.id)}>Leave Server</button>
+                    <div>
+                        <button onClick={() => leaveServ(server.id)}>Leave Server</button>
+                        <i className="fa-solid fa-arrow-right-from-bracket"></i>
+                    </div>
                 </div>
             )}
         </>

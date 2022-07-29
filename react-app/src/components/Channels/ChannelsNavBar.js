@@ -58,7 +58,6 @@ const ChannelsNavBar = () => {
     return (
         <div>
             <div>
-                Channels NavBar
                 <ServerNameDropDown server={server} />
             </div>
                 <div>
