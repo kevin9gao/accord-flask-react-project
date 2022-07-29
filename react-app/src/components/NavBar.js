@@ -34,9 +34,16 @@ const NavBar = () => {
       <ul className='navigation'>
         <div>
           <div>
-            <NavLink to='/channels/@me' exact={true} activeClassName='active'>
+            {user && (
+              <NavLink to='/channels/@me' exact={true} activeClassName='active'>
               ACCORD
-            </NavLink>
+              </NavLink>
+            )}
+            {!user && (
+              <NavLink to='/' exact={true} activeClassName='active'>
+                ACCORD
+              </NavLink>
+            )}
           </div>
           <div>
             {/* <NavLink to='/users' exact={true} activeClassName='active'>
