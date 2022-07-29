@@ -5,7 +5,7 @@ import CreateServerModal from "./CreateServerModal";
 import EditServerModal from "./EditServerModal";
 import { leaveServer, deleteServer } from "../../store/servers";
 import { NavLink, useHistory } from "react-router-dom";
-
+import './ServersNavBar.css';
 export default function ServersNavBar() {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -17,12 +17,12 @@ export default function ServersNavBar() {
   const sessionUser = useSelector(state => state.session.user);
   const userServersArr = userServers ? Object.values(userServers) : null
 
-// useEffect(()=> {
-//   dispatch(loadServers)
-// }, [dispatch])
+  // useEffect(()=> {
+  //   dispatch(loadServers)
+  // }, [dispatch])
 
-useEffect(() => {
-   if (user) dispatch(loadSingleUserServers(sessionUser.id));
+  useEffect(() => {
+    if (user) dispatch(loadSingleUserServers(sessionUser.id));
   }, [dispatch])
 
 
@@ -44,17 +44,21 @@ useEffect(() => {
 
   if (user) {
     return (
-      <div>
-        <h2>Logged in user: {user.username}</h2>
-        Server Navbar
-        <CreateServerModal />
+      <div className="servers-container">
+        <div className="display-user">
+          <h2>{user.username}</h2>
+        </div>
+        <div className="server-navbar">
+          Server Navbar
+          <CreateServerModal />
+        </div>
 
         {userServersArr && userServersArr.map(server => (
-        <div key={server.id}>
-          <NavLink to={`/channels/${server.id}`}>
-            <h3>{server.name}</h3>
-          </NavLink>
-          {sessionUser?.id === server.owner_id &&
+          <div className="servers-box" key={server.id}>
+            <NavLink className={'servers'} to={`/channels/${server.id}`}>
+              <h3>{server.name}</h3>
+            </NavLink>
+            {sessionUser?.id === server.owner_id &&
             (
               <div>
                 <EditServerModal server={server} />
@@ -63,12 +67,9 @@ useEffect(() => {
               </div>
             )
           }
-        </div>
+          </div>
         ))}
-        {/* <div>
-          <button>
-            <NavLink to={'/discover'}>Explore</NavLink></button>
-        </div> */}
+
       </div>
     );
   } else return null;
