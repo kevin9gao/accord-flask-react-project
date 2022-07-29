@@ -34,7 +34,7 @@ const ServerNameDropDown = ({ server }) => {
         await dispatch(leaveServer(payload))
       }
     
-    console.log(server)
+    // console.log(server)
 
     return (
         <>

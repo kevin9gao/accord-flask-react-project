@@ -34,7 +34,7 @@ const NavBar = () => {
       <ul className='navigation'>
         <div>
           <div>
-            <NavLink to='/' exact={true} activeClassName='active'>
+            <NavLink to='/channels/@me' exact={true} activeClassName='active'>
               ACCORD
             </NavLink>
           </div>
