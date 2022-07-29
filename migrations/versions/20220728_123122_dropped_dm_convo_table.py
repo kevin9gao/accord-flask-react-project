@@ -1,7 +1,7 @@
 """dropped dm convo table
 
 Revision ID: 06806c451452
-Revises: 
+Revises:
 Create Date: 2022-07-28 12:31:22.374524
 
 """

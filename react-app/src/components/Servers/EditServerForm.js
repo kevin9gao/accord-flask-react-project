@@ -11,9 +11,10 @@ const EditServerForm = ({ server, hideForm }) => {
     const servers = useSelector(state => state.servers);
     const serversArray = Object.values(servers);
 
-    const [ editName, setEditName ] = useState(server.name);
-    const [ hasSubmitted, setHasSubmitted ] = useState(false);
-    const [ validationErrors, setValidationErrors ] = useState([]);
+    const [editName, setEditName] = useState(server.name);
+    const [editServerPicUrl, setEditServerPicUrl] = useState(server.server_pic_url);
+    const [hasSubmitted, setHasSubmitted] = useState(false);
+    const [validationErrors, setValidationErrors] = useState([]);
 
     useEffect(() => {
         const errors = [];
@@ -31,7 +32,8 @@ const EditServerForm = ({ server, hideForm }) => {
         const payload = {
             id: server.id,
             name: editName,
-            owner_id: owner.id
+            owner_id: owner.id,
+            server_pic_url: serverPicUrl
         }
         // console.log("payload in COMPONENT", payload )
 
@@ -48,23 +50,29 @@ const EditServerForm = ({ server, hideForm }) => {
     return (
         <>
             <form onSubmit={onSubmit}>
-            {hasSubmitted && validationErrors.length > 0 && (
-                <ul>
-                    {validationErrors.map(error => (
-                        <li key={error}>{error}</li>
-                    ))}
-                </ul>
-            )}
-            <h3>Edit Server</h3>
-            <label>SERVER NAME</label>
-            <input
-                type="text"
-                value={editName}
-                onChange={e => setEditName(e.target.value)}
-            />
-            <div>
-                <button type="submit">Submit</button>
-            </div>
+                {hasSubmitted && validationErrors.length > 0 && (
+                    <ul>
+                        {validationErrors.map(error => (
+                            <li key={error}>{error}</li>
+                        ))}
+                    </ul>
+                )}
+                <h3>Edit Server</h3>
+                <label>SERVER NAME</label>
+                <input
+                    type="text"
+                    value={editName}
+                    onChange={e => setEditName(e.target.value)}
+                />
+                <input
+                    placeholder={'A different picture URL'}
+                    type="text"
+                    value={editServerPicUrl}
+                    onChange={e => setEditServerPicUrl(e.target.value)}
+                />
+                <div>
+                    <button type="submit">Submit</button>
+                </div>
             </form>
         </>
     )
