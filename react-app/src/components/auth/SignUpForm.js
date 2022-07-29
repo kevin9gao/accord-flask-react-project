@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signup } from '../../store/session';
+import LoginFormDiscoverModal from './LoginFormDiscoverModal';
 import './SignUp.css';
 
 const SignUpForm = () => {
@@ -46,7 +47,7 @@ const SignUpForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/discover' />;
   }
 
   return (
@@ -111,6 +112,9 @@ const SignUpForm = () => {
           </div>
         </div>
       </form>
+      <div>Already have an account?
+        <LoginFormDiscoverModal />
+      </div>
     </div>
   );
 };

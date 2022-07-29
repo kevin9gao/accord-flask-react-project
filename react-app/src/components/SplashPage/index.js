@@ -5,9 +5,9 @@ import './index.css'
 function SplashPage() {
     const user = useSelector(state => state.session.user);
 
-    if (user) {
-        return <Redirect to='/channels/@me' />
-    }
+    // if (user) {
+    //     return <Redirect to='/channels/@me' />
+    // }
 
     return (
         <div className='splash-page'>

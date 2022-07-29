@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 import { login } from '../../store/session';
 
-const LoginForm = () => {
+const LoginFormDiscover = () => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -16,7 +16,7 @@ const LoginForm = () => {
     if (data) {
       setErrors(data);
     }
-    history.push('/channels/@me');
+    history.push('/discover');
   };
 
   const updateEmail = (e) => {
@@ -62,4 +62,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default LoginFormDiscover;
