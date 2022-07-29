@@ -38,7 +38,7 @@ function UsersList() {
   return (
     <div className='user-list-container'>
       <div className='user-box'>
-        <h3>User List: </h3>
+        <div>User List:</div>
         <div>
           <ul className='user-list'>{userComponents}</ul>
           {chat && <DmChat />}

@@ -16,6 +16,7 @@
 }
 
 .server-navbar {
+    font-size: 1.25rem;
     display: flex;
     flex-direction: column;
     align-items: center;
