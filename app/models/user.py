@@ -26,7 +26,7 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
         }
 
     servers_owned = db.relationship("Server", back_populates="owner")

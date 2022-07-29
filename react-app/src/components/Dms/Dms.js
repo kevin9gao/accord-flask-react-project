@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { io } from 'socket.io-client';
-import { sendDmMessage } from '../../store/chat';
+import { loadDMHistory, sendDmMessage } from '../../store/chat';
 
 let socket;
 
@@ -19,6 +19,28 @@ const DmChat = () => {
     let recipientId = Number(userId)
 
     const sessionUser = useSelector(state => state.session.user);
+    console.log('users', users)
+    const recipient = users?.filter(user => {
+        return user.id === recipientId
+    })[0];
+
+    console.log('recipient', recipient)
+
+    const dmHistoryObj = useSelector(state => state['chat']['dm-messages']);
+    const dmHistory = dmHistoryObj ? Object.values(dmHistoryObj) : null;
+
+    const privateHistory = dmHistory?.filter(message => {
+        return (message['sender_id'] === sessionUser.id || message['recipient_id'] === sessionUser.id) &&
+                (message['sender_id'] === recipientId || message['recipient_id'] === recipientId)
+    })
+    dmHistory?.forEach(message => {
+        console.log('inside dmHistory',  (message['sender_id'] === sessionUser.id || message['recipient_id'] === sessionUser.id) &&
+        (message['sender_id'] === recipientId || message['recipieint_id'] === recipientId))
+    })
+
+    // console.log('DM HISTORY', dmHistoryObj)
+
+    // console.log("PRIVATE HISTORY", privateHistory)
 
     useEffect(() => {
         async function fetchData() {
@@ -29,13 +51,13 @@ const DmChat = () => {
         fetchData();
     }, [])
     
+    
+
     const sender = sessionUser;
 
-    const recipient = users.filter(user => {
-        return user.id === Number(recipientId)
-    })
-
-    console.log('frontend, recipient', recipient)
+    // const recipient = users.filter(user => {
+    //     return user.id === Number(recipientId)
+    // })
 
 
     console.log('sender ID: ', sessionUser.id);
@@ -45,6 +67,7 @@ const DmChat = () => {
     console.log('joining the two IDs: ', roomId);
 
     useEffect(() => {
+        
         const errors = [];
         if (chatInput.length === 0) errors.push("Message body cannot be empty.");
     
@@ -52,13 +75,14 @@ const DmChat = () => {
       }, [chatInput]);
 
 
-    useEffect(() => {
+    useEffect(async () => {
+        await dispatch(loadDMHistory(sessionUser.id));
         // create websocket
         socket = io();
 
 
         // if (socket && recipient && sessionUser) socket.emit("dm_join", {username: sessionUser.username, recipient: recipientId, sender:sessionUser.id })
-        if (socket && recipient && sessionUser) socket.emit("dm_join", {username: sessionUser.username, dm_room_id: roomId })
+        if (socket && recipientId && sessionUser) socket.emit("dm_join", {username: sessionUser.username, dm_room_id: roomId })
 
 
         //listen for chat events
@@ -86,7 +110,7 @@ const DmChat = () => {
 
         if (validationErrors.length === 0 ) {
             //emit a message
-            if(recipient && sessionUser) socket.emit('dm_chat', { user: sessionUser.username, msg: chatInput, dm_room_id: roomId });
+            if(recipientId && sessionUser) socket.emit('dm_chat', { user: sessionUser.username, msg: chatInput, dm_room_id: roomId });
 
             const dateTime = new Date();
             const isoTime = dateTime.toISOString();
@@ -115,11 +139,16 @@ const DmChat = () => {
     return (
         <div>
             <div>
-                {messages && messages.map((message, idx) => (
+                {privateHistory && privateHistory.map((message, idx) => (
+                    <div key={idx}>
+                        {`${message.sender_id === sessionUser.id ? sessionUser.username : recipient.username}: ${message.message_body ? message.message_body : message.msg}`}
+                    </div>
+                ))}
+                {/* {messages && messages.map((message, idx) => (
                     <div key={idx}>
                         {`${message.user}: ${message.msg}`}
                     </div>
-                ))}
+                ))} */}
             </div>
 
             <form
