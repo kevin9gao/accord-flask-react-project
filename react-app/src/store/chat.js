@@ -40,7 +40,7 @@ export const sendLiveChatMessage = payload => async dispatch => {
   // add type key to payload object so that the reducer can discern if live chat or dm
   // payload['type'] = 'live-chat';
 
-  console.log('hitting sendLiveChatMessage thunk', payload);
+  // console.log('hitting sendLiveChatMessage thunk', payload);
 
   const res = await fetch('/api/chat/live_chat', {
     method: 'POST',
@@ -48,27 +48,57 @@ export const sendLiveChatMessage = payload => async dispatch => {
     body: JSON.stringify(payload)
   });
 
-  console.log('sendLiveChatMessage thunk res: ', res);
+  // console.log('sendLiveChatMessage thunk res: ', res);
 
   if (res.ok) {
     const message = await res.json();
-    console.log('sendLiveChatMessage res.ok, message: ', message);
+    // console.log('sendLiveChatMessage res.ok, message: ', message);
     dispatch(send(message));
-    console.log('after sendLiveChatMessage dispatch');
+    // console.log('after sendLiveChatMessage dispatch');
     return message;
   }
 }
 
-export const loadDMHistory = (userId) => async dispatch => {
-  console.log("LOAD DM HISTORY", userId)
-    const res = await fetch(`/api/chat/dms/${userId}`);
-    console.log("AFTER RES, res", res)
-    if (res.ok) {
-        const list = await res.json()
-        console.log("RES.OK, list", list)
-        dispatch(loadDM(list))
-        return list;
-    }
+export const loadDMHistory = (senderId, recipientId) => async dispatch => {
+  // console.log("LOAD DM HISTORY", senderId, recipientId)
+
+  // fetching all the dms the sender & recipient have sent to anyone
+  const senderRes = await fetch(`/api/chat/dms/${senderId}`);
+  // console.log("loadDMHistory thunk, senderRes before senderRes.ok:", senderRes)
+  const recipientRes = await fetch(`/api/chat/dms/${recipientId}`);
+  // console.log("loadDMHistory thunk, recipientRes before recipientRes.ok:", recipientRes)
+
+  if (senderRes.ok && recipientRes.ok) {
+    const senderList = await senderRes.json()
+    // console.log('loadDMHistory thunk, senderList', senderList)
+    // console.log('loadDMHistory thunk, senderList.dm_messages', senderList.dm_messages)
+    const recipientList = await recipientRes.json()
+    // console.log('loadDMHistory thunk, recipientList', recipientList)
+
+    // all the dms the sender has sent to the recipient
+    const sendList = senderList.dm_messages.filter(message => {
+      return message['recipient_id'] === recipientId;
+    })
+    // console.log('loadDMHistory thunk, sendList', sendList)
+
+    // all the dms the recipient has sent to the sender
+    const recList = recipientList.dm_messages.filter(message => {
+      return message['recipient_id'] === senderId;
+    })
+    // console.log('loadDMHistory thunk, recList', recList)
+
+    // spreading the dm objects into a list array, then sorting that list by dm id
+    const list = [...sendList, ...recList];
+    list.sort((a, b) => {
+      return a.id - b.id;
+    })
+    // console.log('list', list);
+
+    // the argument passed into the action here has to be structured like this because the
+    // reducer is expecting action.list['dm_messages']
+    dispatch(loadDM({ 'dm_messages': list }));
+    return list;
+  }
 }
 
 export const sendDmMessage = (payload) => async dispatch => {
@@ -93,7 +123,7 @@ let newState;
 export default function chatReducer(state = {}, action) {
   switch (action.type) {
     case LOAD:
-      newState = {...state};
+      newState = { ...state };
 
       // store chat history in live_chat_history or dm_history based on which key is in action
       const chatHistory = action.list['live_chat_history'];
@@ -105,7 +135,7 @@ export default function chatReducer(state = {}, action) {
       return newState;
 
     case SEND_LC:
-      newState = {...state};
+      newState = { ...state };
       console.log('IN REDUCER', action, action.type)
       newState['live-chat-history'][action.message.id] = action.message;
 
@@ -113,22 +143,22 @@ export default function chatReducer(state = {}, action) {
 
 
     case LOADDM:
-        newState = {...state}
-        const dmHistory = action.list['dm_messages'];
-        if (!newState['dm-messages']) newState['dm-messages'] = {};
-        console.log('REDUCER', action, action.list)
-        dmHistory.forEach(message => {
-            newState['dm-messages'][message.id] = message
-        })
-        return newState;
-    
+      newState = {}
+      const dmHistory = action.list['dm_messages'];
+      if (!newState['dm-messages']) newState['dm-messages'] = {};
+      console.log('REDUCER', action, action.list)
+      dmHistory.forEach(message => {
+        newState['dm-messages'][message.id] = message
+      })
+      return newState;
+
     case SAVEDM:
-      
-        newState = {...state};
-        console.log('IN REDUCER', action, action.type)
-        // if (!newState['dm-messages'])  newState['dm-messages'] = {};
-        newState['dm-messages'][action.message.id] = action.message
-        return newState
+
+      newState = { ...state };
+      console.log('IN REDUCER', action, action.type)
+      // if (!newState['dm-messages'])  newState['dm-messages'] = {};
+      newState['dm-messages'][action.message.id] = action.message
+      return newState
 
     default:
       return state;
