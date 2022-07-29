@@ -19,9 +19,11 @@ const EditServerForm = ({ server, hideForm }) => {
     useEffect(() => {
         const errors = [];
         if (!editName) errors.push("Server name cannot be empty");
-        if (serversArray.map(server => server.name).includes(editName)) errors.push("Server name must be unique");
+        if (serversArray.filter(otherServer => otherServer.id !== server.id).map(server => server.name).includes(editName)) {
+            errors.push("Server name must be unique");
+        }
         setValidationErrors(errors);
-    }, [editName]);
+    }, [editName, editServerPicUrl]);
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -33,7 +35,7 @@ const EditServerForm = ({ server, hideForm }) => {
             id: server.id,
             name: editName,
             owner_id: owner.id,
-            server_pic_url: serverPicUrl
+            server_pic_url: editServerPicUrl
         }
         // console.log("payload in COMPONENT", payload )
 
