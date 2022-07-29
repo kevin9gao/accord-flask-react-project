@@ -41,7 +41,8 @@ const ChannelChat = () => {
   }, [chatInput]);
 
   useEffect(async () => {
-    await dispatch(loadLiveChatHistory(channelId));
+
+    if(channelId) await dispatch(loadLiveChatHistory(channelId));
 
     // create websocket
     socket = io();

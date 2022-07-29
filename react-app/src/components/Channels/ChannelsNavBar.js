@@ -33,7 +33,7 @@ const ChannelsNavBar = () => {
 
     useEffect(() => {
         dispatch(loadChannels(serverId));
-    }, [dispatch])
+    }, [dispatch, serverId])
 
 
     useEffect(() => {
