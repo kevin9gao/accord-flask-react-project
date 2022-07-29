@@ -1,0 +1,126 @@
+.discover-container {
+    background-color: #495057;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    margin-left: 10rem;
+    color: white;
+}
+
+.discover-upper {
+    height: 50%;
+    color: white;
+    background-image: url("https://wallpaperaccess.com/full/1217368.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 16rem;
+    border-radius: 1rem;
+    margin-right: 1%;
+    margin-left: 1%;
+    margin-top: 1%;
+}
+
+.discover-upper>h1 {
+    color: white;
+    text-shadow: 4px 4px 4px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+}
+
+.discover-upper>h2 {
+    color: white;
+    text-shadow: 4px 4px 4px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.discover {
+    /* background-color: #495057; */
+    /*
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    height: 100%;
+    */
+}
+
+.discover>h2 {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.discover-options-grid {
+    background-color: red;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
+    max-height: 100%;
+    /* gap: 1rem; */
+}
+
+.discover-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+}
+
+/*
+IF I WANT BORDER RADIUS
+.discover-options>button {
+    background-color: aqua;
+    padding: 1rem;
+    border: 1px solid orange;
+    border-radius: .5em;
+    font-size: 1.25rem;
+}
+*/
+
+/*
+IF I WANT BORDER SHADOW
+*/
+.discover-options>button {
+    background-color: aqua;
+    padding: 1rem;
+    /*
+    border: 1px solid orange;
+    */
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.25rem;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2);
+}
+
+
+.discover-options>button:hover, .discover-options>button:focus {
+    background-color: green;
+    transition: all 1s ease;
+}
+
+    /* .discover-options::after{
+    background: #b6a6ca;
+    border-radius: 50px;
+    transform: sacleY(0);
+    transition: transform 0.3s ease;
+}
+
+.discover-options:hover::after {
+    transform: scaleY(1);
+} */

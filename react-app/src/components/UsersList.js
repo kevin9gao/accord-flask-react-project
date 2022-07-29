@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { loadDMHistory } from '../store/chat';
 import DmChat from './Dms/Dms';
 
+import './UsersList.css'
 
 function UsersList() {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ function UsersList() {
 
 
   return (
+<<<<<<< HEAD
     <>
       <h1>User List: </h1>
       <div>{usersList && usersList.map(user => (
@@ -42,6 +44,19 @@ function UsersList() {
       </div>
       {/* {chat && <DmChat />} */}
     </>
+=======
+    <div className='user-list-container'>
+      <div className='user-box'>
+        <div>User List:</div>
+        <div>
+          <ul className='user-list'>{userComponents}</ul>
+          {chat && <DmChat />}
+        </div>
+      </div>
+
+
+    </div>
+>>>>>>> erik-user-list
   );
 }
 
