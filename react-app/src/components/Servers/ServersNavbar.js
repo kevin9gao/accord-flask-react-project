@@ -24,20 +24,20 @@ useEffect(() => {
   }, [dispatch])
 
 
-  const deleteServ = async (id) => {
-    await dispatch(deleteServer(id))
-  }
+  // const deleteServ = async (id) => {
+  //   await dispatch(deleteServer(id))
+  // }
 
-  const leaveServ = async(id) => {
-    // e.preventDefault();
+  // const leaveServ = async(id) => {
+  //   // e.preventDefault();
 
-    const payload = {
-      user_id: user?.id,
-      server_id: id
-    }
-    console.log('FRONTEND, payload', payload)
-    await dispatch(leaveServer(payload))
-  }
+  //   const payload = {
+  //     user_id: user?.id,
+  //     server_id: id
+  //   }
+  //   console.log('FRONTEND, payload', payload)
+  //   await dispatch(leaveServer(payload))
+  // }
 
   if (user) {
     return (
@@ -54,9 +54,9 @@ useEffect(() => {
           {sessionUser?.id === server.owner_id &&
             (
               <div>
-                <EditServerModal server={server} />
-                <button type="submit" onClick={()=> deleteServ(server.id)}>Delete Server</button>
-                <button onClick={() => leaveServ(server.id)}>Leave Server</button>
+                {/* <EditServerModal server={server} /> */}
+                {/* <button type="submit" onClick={()=> deleteServ(server.id)}>Delete Server</button> */}
+                {/* <button onClick={() => leaveServ(server.id)}>Leave Server</button> */}
               </div>
             )
           }

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
 import { loadChannels } from '../../store/channels';
 import ChannelChat from '../LiveChat/ChannelChat';
+import ServerNameDropDown from '../ServersDropDown';
 import CreateChannelModal from './CreateChannelModal'
 import EditChannelModal from './EditChannelModal'
 
@@ -16,17 +17,15 @@ const ChannelsNavBar = () => {
     const serversObj = useSelector(state => state['servers']['user-servers']);
     const userServersArr = serversObj ? Object.values(serversObj) : null
 
-    // const servers = userServersArr?.filter(server => {
-    //     return server['owner_id'] === user.id;
-    // });
+    let server = userServersArr?.filter(server => {
+        return (server.id === Number(serverId))
+    })
 
-    // console.log(servers)
-    // for (let key in userServersArr) {
-    //     if (userServersArr[key]['owner_id'] == user.id) {
-    //         return true;
-    //     }
-    //     return false;
-    // }
+    // console.log(server ? server[0] : null)
+
+    server = server ? server[0] : null
+    
+    console.log(server)
 
     const allChannels = useSelector(state => state.channels)
     const allChannelsArr = Object.values(allChannels)
@@ -45,6 +44,7 @@ const ChannelsNavBar = () => {
         <div>
             <div>
                 Channels NavBar
+                <ServerNameDropDown server={server} />
             </div>
                 <div>
                     <CreateChannelModal />
