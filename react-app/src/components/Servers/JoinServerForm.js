@@ -30,7 +30,6 @@ const JoinServerForm = ({ server, hideForm, setAlreadyJoined, alreadyJoined }) =
     if (!user) {
       history.push('/sign-up')
     } else {
-
       if (!alreadyJoined) {
 
         const payload = {
@@ -46,12 +45,14 @@ const JoinServerForm = ({ server, hideForm, setAlreadyJoined, alreadyJoined }) =
     }
   }
 
+
   let component = (
   <div>
     <div>You've already joined this server </div>
     <button onClick={()=> hideForm()}>Close</button>
   </div>
   )
+
 
   return (
     <div>
@@ -60,8 +61,6 @@ const JoinServerForm = ({ server, hideForm, setAlreadyJoined, alreadyJoined }) =
       {!alreadyJoined && (
         <button onClick={handleJoin}> Join </button>
       )}
-
-
     </div>
   );
 }

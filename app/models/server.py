@@ -14,7 +14,7 @@ class Server(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(40), nullable=False, unique=True)
     owner_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    server_pic_url = db.Column(db.String(255), nullable=True)
+    server_pic_url = db.Column(db.String(1000), nullable=True)
 
 
     def to_dict(self):
