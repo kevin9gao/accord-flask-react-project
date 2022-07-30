@@ -60,20 +60,22 @@ const EditServerForm = ({ server, hideForm }) => {
                     </ul>
                 )}
                 <h3>Edit Server</h3>
-                <label>SERVER NAME</label>
+                <label className="create-server-label">SERVER NAME</label>
                 <input
+                    className="create-server-input"
                     type="text"
                     value={editName}
                     onChange={e => setEditName(e.target.value)}
                 />
                 <input
+                    className="create-server-input"
                     placeholder={'A different picture URL'}
                     type="text"
                     value={editServerPicUrl}
                     onChange={e => setEditServerPicUrl(e.target.value)}
                 />
-                <div>
-                    <button type="submit">Submit</button>
+                <div className="create-server-bottom-div">
+                    <button className="create-server-submit-btn" type="submit">Edit Server</button>
                 </div>
             </form>
         </>

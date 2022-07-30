@@ -58,7 +58,7 @@ body {
     /* display: flex; */
     /* justify-content: center; */
     color: white;
-    height: 15rem;
+    height: fit-content;
     width: 29rem;
     box-shadow: none;
 }
@@ -68,3 +68,5 @@ form {
     flex-direction: column;
     height: 100%;
 }
+
+

@@ -11,7 +11,7 @@ const CreateServerModal = () => {
 
     return (
         <div>
-            <div className='create-server-div'>
+            <div id='modal-content create-server-div'>
                 <button id='create-server' onClick={() => setShowModal(true)}>
                     <i className="fa-solid fa-circle-plus"></i>
                 </button>
