@@ -188,6 +188,8 @@ button.edit-channel-btn {
     position: fixed;
     bottom: 0;
     width: 256px;
+    left: 8rem;
+
 }
 
 .channel-username {

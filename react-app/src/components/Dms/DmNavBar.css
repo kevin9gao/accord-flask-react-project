@@ -3,6 +3,7 @@
   color: white;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   height: 96vh;
   margin: 0;
   padding: 0;
@@ -10,3 +11,16 @@
   align-items: center;
   margin-left: 8vw;
 }
+
+.direct-messages {
+  text-transform: uppercase;
+  font-size: 13px;
+  color:lightgray;
+  text-align: left;
+  margin-top: 2rem;
+  margin-left: -5.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 0.5px solid lightgrey;
+  padding-bottom: 10px;
+}
+
