@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadServers } from '../../store/servers';
+import './ServersNavBar.css';
 
 import { Modal } from '../../context/Modal';
 import CreateServerForm from './CreateServerForm';
@@ -10,8 +11,10 @@ const CreateServerModal = () => {
 
     return (
         <div>
-            <div>
-                <button onClick={() => setShowModal(true)}>Create Server</button>
+            <div className='create-server-div'>
+                <button id='create-server' onClick={() => setShowModal(true)}>
+                    <i className="fa-solid fa-circle-plus"></i>
+                </button>
             </div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>

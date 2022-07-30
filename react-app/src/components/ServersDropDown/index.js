@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteServer, leaveServer, loadSingleUserServers } from "../../store/servers";
 import EditServerModal from "../Servers/EditServerModal";
 
+import '../Channels/ChannelsNavBar.css';
 const ServerNameDropDown = ({ server }) => {
 
     const user = useSelector(state => state.session.user)
@@ -34,34 +35,38 @@ const ServerNameDropDown = ({ server }) => {
         await dispatch(leaveServer(payload))
       }
     
-    console.log(server)
+    // console.log(server)
+
+    useEffect(() => {
+        setShowMenu(false);
+    }, [server?.id])
 
     return (
-        <>
-            <h3>{server && (
+        <div className="channel-server-div">
+            <h3 className="channel-server-name">{server && (
                 server?.name
             )}</h3>
-            <button onClick={() => setShowMenu(!showMenu)}>
+            <button className="dropdown-button" onClick={() => setShowMenu(!showMenu)}>
                 <i className="fa-solid fa-angle-down"></i>
             </button>
             {showMenu && (
-                <div>
+                <div className="dropdown-container">
                     {user?.id === server?.owner_id && (
                         <div>
                             <EditServerModal server={server} />  
-                            <div>
-                                <button type="submit" onClick={()=> deleteServ(server.id)}>Delete Server</button>
+                            <div className="dropdown-delete-div">
+                                <button className="drp-server-btn" id="dropdown-delete" type="submit" onClick={()=> deleteServ(server.id)}>Delete Server</button>
                                 <i className="fa-solid fa-trash-can"></i>
                             </div>
                         </div>
                     )}
                     <div>
-                        <button onClick={() => leaveServ(server.id)}>Leave Server</button>
+                        <button className="drp-server-btn" id="dropdown-leave" onClick={() => leaveServ(server.id)}>Leave Server</button>
                         <i className="fa-solid fa-arrow-right-from-bracket"></i>
                     </div>
                 </div>
             )}
-        </>
+        </div>
     )
 }
 

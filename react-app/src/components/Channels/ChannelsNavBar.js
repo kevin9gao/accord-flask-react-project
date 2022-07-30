@@ -9,6 +9,7 @@ import EditChannelModal from './EditChannelModal'
 
 import './ChannelsNavBar.css';
 import { loadServers, loadSingleUserServers } from "../../store/servers";
+import LogoutButton from '../auth/LogoutButton';
 
 const ChannelsNavBar = () => {
     const dispatch = useDispatch();
@@ -66,33 +67,32 @@ const ChannelsNavBar = () => {
 
     return (
         <div>
-            <div>
-                <ServerNameDropDown server={server} />
-            </div>
             <div className='channels-container'>
-                <div className="display-user">
-                    <h2>{user.username}</h2>
+                <div className='server-name-in-channel-div'>
+                    <ServerNameDropDown server={server} />
                 </div>
                 <div className='channels-navbar'>
-                    Channels NavBar
+                    <h4 className='text-channels'>CHANNELS</h4>
                     <CreateChannelModal />
                 </div>
                 <div>
                     {/* this should be on discovery main page: */}
                     {/* <h1>Any other fillers we want on the main page of a server</h1> */}
                 </div>
-                <div>
-                    {channels && channels.map(channel => (
-                        <ul key={channel.id}>
-                            <div className='channels-box' onClick={() => setRoom(channel.name)}>
-                                <NavLink className={'channels'} to={`/channels/${serverId}/${channel.id}`}>
-                                    <li key={channel.id}>{channel.name}</li>
-                                </NavLink>
-                            </div>
-                            <EditChannelModal channel={channel} setChannelExists={setChannelExists}/>
-                        </ul>
-                    ))}
-                    { channelExists && (<ChannelChat />)}
+                {channels && channels.map(channel => (
+                    <ul className='single-channel-div' key={channel.id}>
+                        <div className='channels-box' onClick={() => setRoom(channel.name)}>
+                            <NavLink className={'channels'} to={`/channels/${serverId}/${channel.id}`}>
+                                <li className='channel-name' key={channel.id}># {channel.name}</li>
+                            </NavLink>
+                        </div>
+                        <EditChannelModal channel={channel} setChannelExists={setChannelExists}/>
+                    </ul>
+                ))}
+                { channelExists && (<ChannelChat />)}
+                <div className="display-user">
+                    <h2 className='channel-username'>{user.username}</h2>
+                    <LogoutButton />
                 </div>
               </div>
           </div>

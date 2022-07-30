@@ -4,13 +4,13 @@
     background-color: #343a40;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: 96vh;
     /* use icons to fit width */
     /* width: 4rem; */
-    width: 10rem;
+    width: 8rem;
     margin: 0;
     padding: 0;
-    position: fixed;
+    position: absolute;
     color: white;
     align-items: center;
 }
@@ -22,14 +22,14 @@
     align-items: center;
 }
 
-.display-user {
+/* .display-user {
     background-color: green;
     display: flex;
     justify-content: center;
 
     position: fixed;
     bottom: 0;
-}
+} */
 
 /* .servers-box {
     background-color: red;
@@ -43,6 +43,13 @@
     align-items: center;
     text-decoration: none;
     color: white;
+    background-color: #434b52;
+    margin: 20px;
+    margin-left: 18px;
+    border-radius: 50%;
+    height: 45px;
+    width: 45px;
+    text-align: center;
 }
 
 /* .servers:after {
@@ -64,3 +71,37 @@
 /* .servers:hover:after {
     transform: scaleY(1);
 } */
+
+.server-name-nav-bar {
+    margin-top: 10px;
+
+}
+
+.fa-solid.fa-circle-plus,
+.fa-solid.fa-compass {
+    font-size: 45px;
+    padding: 10px;
+    color: #434b52;
+}
+
+.fa-solid.fa-circle-plus:hover,
+.fa-solid.fa-compass:hover {
+    color: green;
+    cursor: pointer;
+}
+
+.fa-solid.fa-circle-plus {
+    border-top: 1px solid #495057;
+    margin-top: 10px;
+    margin-left: 2px;
+}
+button#create-server {
+    background-color: transparent;
+    border: none;
+}
+
+.discover {
+    color: #434b52;
+    padding: 8px;
+    font-size: 45px;
+}

@@ -10,7 +10,9 @@ const EditChannelModal = ({channel, setChannelExists}) => {
         <div>
 
             <div>
-                <button onClick={()=> setShowModal(true)}>Edit Channel</button>
+                <button className='edit-channel-btn' onClick={()=> setShowModal(true)}>
+                <i className="fa-solid fa-gear"></i>
+                </button>
             </div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>

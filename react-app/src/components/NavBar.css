@@ -35,7 +35,7 @@
     display: flex;
     justify-content: space-between;
     /* border: 1px solid red; */
-    margin: 0 auto;
+    margin: .5em auto;
 }
 
 .navigation>div {
@@ -44,4 +44,29 @@
 
 .navigation>div>div{
     margin-right: 10px;
+}
+
+.accord-logo-div {
+    margin-top: 10px;
+}
+.accord-logo{
+    text-decoration: none;
+    color: rgb(39, 132, 195);
+    letter-spacing: 0.5;
+    text-align: center;
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #495057;
+}
+
+.splash-discover-div {
+    margin-top: 7px;
+}
+
+.splash-discover {
+    font-size: 15px;
+    text-decoration: none;
+    color: rgb(39, 132, 195);
+    font-weight: 500;
 }

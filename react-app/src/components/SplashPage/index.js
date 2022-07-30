@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import NavBar from '../NavBar';
 import './index.css'
 
 function SplashPage() {
@@ -11,6 +12,7 @@ function SplashPage() {
 
     return (
         <div className='splash-page'>
+            <NavBar />
             <div className='image-container'>
                 <div className='splash-image1'>
                     <h1>
