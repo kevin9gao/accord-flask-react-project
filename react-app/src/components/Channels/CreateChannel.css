@@ -25,11 +25,12 @@ input.create-channel-input {
     display: flex;
     justify-content: end;
     background-color: #343a40;
-    width: 53.7%;
+    width: 100%;
     height: 3.5rem;
-    position: fixed;
-    bottom: 313.2;
+    position: relative;
+    bottom: 0;
     border-radius: 5px;
+    margin-bottom: -16;
 }
 
 button {
@@ -39,7 +40,7 @@ button {
 
 button.create-channel-submit-btn {
     margin-left: 10px;
-    margin-top: 15px;
+    margin-top: 14px;
     background-color: rgb(39, 132, 195);
     height: 30;
     border-radius: 5px;
