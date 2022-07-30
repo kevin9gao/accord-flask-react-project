@@ -10,6 +10,7 @@ export default function ServerDiscover() {
     const dispatch = useDispatch();
 
     const servers = useSelector(state => state.servers)
+    const user = useSelector(state => state.session.user)
 
     const userServers = servers ? servers['user-servers'] : null
     const userServersArr = userServers ? Object.values(userServers) : null
@@ -24,10 +25,10 @@ export default function ServerDiscover() {
         dispatch(serverActions.loadServers());
     }, [dispatch])
 
-
-    return (
-        <div className="discover-container">
-            <div className="discover-upper">
+    let discoverComp = (
+        <div className="discover-container-no-user">
+            <NavLink className='accord-logo-no-user' id="accord-discover" to='/' exact={true} activeClassName='active'>ACCORD</NavLink>
+            <div className="discover-upper-no-user">
                 <h1>
                     Find your community on Accord
                 </h1>
@@ -35,12 +36,12 @@ export default function ServerDiscover() {
                     From gaming, to music, to learning, there's a place for you.
                 </h2>
             </div>
-            <div className="discover lower">
-                <h2 className="discover">Discover</h2>
-                <div className="discover-cards-container">
+            <div className="discover lower-no-user">
+                <h2 className="discover-no-user">Discover</h2>
+                <div className="discover-cards-container-no-user">
                     {serversArray && serversArray.map(server => {
                         return (server && (
-                            <div className="card-inner-container" key={server.id}>
+                            <div className="card-inner-container-no-user" key={server.id}>
                                 <JoinServerModal server={server} />
                             </div>
                         )
@@ -49,6 +50,39 @@ export default function ServerDiscover() {
                     )}
                 </div>
             </div>
+        </div>
+    )
+
+
+    return (
+        <div>
+            {!user && discoverComp}
+            {user && (
+                <div className="discover-container">
+                    <div className="discover-upper">
+                        <h1>
+                            Find your community on Accord
+                        </h1>
+                        <h2>
+                            From gaming, to music, to learning, there's a place for you.
+                        </h2>
+                    </div>
+                    <div className="discover lower">
+                        <h2 className="discover">Discover</h2>
+                        <div className="discover-cards-container">
+                            {serversArray && serversArray.map(server => {
+                                return (server && (
+                                    <div className="card-inner-container" key={server.id}>
+                                        <JoinServerModal server={server} />
+                                    </div>
+                                )
+                                )
+                            }
+                            )}
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     )
 }

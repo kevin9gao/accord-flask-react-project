@@ -70,6 +70,11 @@
     font-size: 15px;
     padding-bottom: 10px;
 }
+
+#accord-discover {
+    text-align: left;
+    margin: 10px;
+}
 .splash-discover-div {
     margin-top: 7px;
 }
