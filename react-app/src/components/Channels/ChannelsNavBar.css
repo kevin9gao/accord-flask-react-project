@@ -70,6 +70,10 @@ button.drp-server-btn {
     padding: 8px;
 }
 
+button.drp-server-btn:hover {
+    cursor: pointer;
+}
+
 .fa-solid.fa-pen-to-square {
     padding-left: 50px;
 }
@@ -168,6 +172,7 @@ button.edit-channel-btn {
     position: absolute;
     /* top: 10rem; */
     left: 14.5rem;
+    z-index: -1000000;
 }
 
 .fa-solid.fa-gear:hover {
