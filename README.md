@@ -1,12 +1,12 @@
 # Accord
 
-Accord is a fullstack web application modeled after the popular chat app, Discord. Signed up users have the ability to join communities or create their own community and chat through live messaging. 
+Accord is a fullstack web application modeled after the popular chat app, Discord. Signed up users have the ability to join communities or create their own community and chat through live messaging.
 
-Visit our live site here: 
+Visit our live site here:
 
 ## Technologies Used
 * **Languages:** Javascript, Python, HTML/CSS
-* **Backend:** Flask 
+* **Backend:** Flask
 * **Frontend:** React, Redux
 * **Database:** PostgreSQL
 * **Hosting:** Heroku
@@ -22,10 +22,10 @@ Visit our live site here:
 * [Redux State Shape](https://github.com/kevin9gao/accord-flask-react-project/wiki/State-Shape)
 
 
-## How to the Development Environment
+## How to Start the Development Environment
 1. Clone this repository
     git clone https://github.com/kevin9gao/accord-flask-react-project.git
-2. Install dependencies 
+2. Install dependencies
     pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
 3. Create a **.env** file based on the example with the proper settings for your development environment
 4. Setup your PostgresSQL user,password, and database and make sure it matches with your **.env** file
