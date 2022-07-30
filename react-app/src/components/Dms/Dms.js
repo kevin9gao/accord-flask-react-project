@@ -136,7 +136,7 @@ const DmChat = () => {
 
 
     return (
-        <div className='dm-chat-container'>
+        // <div className='dm-chat-container'>
             <div className='dms-container'>
                 <div className='dm-history-container'>
                     {sessionUser && (
@@ -167,7 +167,7 @@ const DmChat = () => {
                     </form>
                 </div>
             </div>
-        </div>
+        // </div>
     )
 }
 

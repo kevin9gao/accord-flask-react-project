@@ -5,6 +5,13 @@
     box-sizing: border-box;
 }
 
+root {
+    display: flex;
+    flex-direction: row;
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
 body {
     min-height: 100vh;
     min-width: 100vw;
@@ -85,5 +92,3 @@ form {
     flex-direction: column;
     height: 100%;
 }
-
-

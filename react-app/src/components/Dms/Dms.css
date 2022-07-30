@@ -1,18 +1,15 @@
-.dm-chat-container {
-  position: absolute;
-  left: 22vw;
-  top: 0;
-  width: 78vw;
-  height: 100vh;
-}
+
 
 .dms-container {
   background-color: #6b7077;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  width: 100%;
-  height: 100vh;
+
+  height: 100%;
+  left: 24rem;
+  position: absolute;
+  margin:0;
   padding: .5em 2em;
   padding-left: .2em;
 }
