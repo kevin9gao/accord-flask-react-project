@@ -16,7 +16,7 @@
     display: flex;
     width: 256px;
     background-color: #495057;
-    border-bottom: 1px solid black;
+    border-bottom: 0.5px solid lightgrey;
 }
 
 .channel-server-name {
