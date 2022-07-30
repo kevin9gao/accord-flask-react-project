@@ -43,6 +43,13 @@
     align-items: center;
     text-decoration: none;
     color: white;
+    background-color: #434b52;
+    margin: 20px;
+    margin-left: 18px;
+    border-radius: 50%;
+    height: 45px;
+    width: 45px;
+    text-align: center;
 }
 
 /* .servers:after {
@@ -64,3 +71,37 @@
 /* .servers:hover:after {
     transform: scaleY(1);
 } */
+
+.server-name-nav-bar {
+    margin-top: 10px;
+
+}
+
+.fa-solid.fa-circle-plus,
+.fa-solid.fa-compass {
+    font-size: 45px;
+    padding: 10px;
+    color: #434b52;
+}
+
+.fa-solid.fa-circle-plus:hover,
+.fa-solid.fa-compass:hover {
+    color: green;
+    cursor: pointer;
+}
+
+.fa-solid.fa-circle-plus {
+    border-top: 1px solid #495057;
+    margin-top: 10px;
+    margin-left: 2px;
+}
+button#create-server {
+    background-color: transparent;
+    border: none;
+}
+
+.discover {
+    color: #434b52;
+    padding: 8px;
+    font-size: 45px;
+}

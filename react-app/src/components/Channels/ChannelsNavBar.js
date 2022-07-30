@@ -66,15 +66,14 @@ const ChannelsNavBar = () => {
 
     return (
         <div>
-            <div>
-                <ServerNameDropDown server={server} />
-            </div>
             <div className='channels-container'>
+                <div className='server-name-in-channel-div'>
+                    <ServerNameDropDown server={server} />
+                </div>
                 <div className="display-user">
                     <h2>{user.username}</h2>
                 </div>
                 <div className='channels-navbar'>
-                    Channels NavBar
                     <CreateChannelModal />
                 </div>
                 <div>

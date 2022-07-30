@@ -8,7 +8,96 @@
     padding: 0;
     width: 16rem;
     align-items: center;
+    position: fixed;
 }
+
+.channel-server-div {
+    display: flex;
+    width: 256px;
+    background-color: #495057;
+    border-bottom: 1px solid black;
+}
+
+.channel-server-name {
+    font-family:'Secular One', sans-serif;
+    text-align: left;
+    padding-left: 3px;
+    /* padding-right: 8rem; */
+    margin: 10px;
+    width: fit-content;
+    font-size: 14px;
+}
+
+.server-name-in-channel-div {
+    background-color: antiquewhite;
+}
+
+button.dropdown-button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    position: fixed;
+    margin-left: 243px;
+    margin-top: 15px;
+}
+
+.fa-solid.fa-angle-down {
+    color: lightgrey;
+}
+
+.fa-solid.fa-angle-down:hover {
+    cursor: pointer;
+}
+
+/* dropdown */
+.dropdown-container {
+    width: 10rem;
+    height: 7rem;
+    background-color: rgb(15, 15, 15, 0.95);
+    position: absolute;
+    top: 3rem;
+    left: 5rem;
+    border: none;
+    border-radius: 5px;
+}
+
+button.drp-server-btn {
+    background-color: transparent;
+    border: none;
+    color: lightgray;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 8px;
+}
+
+.fa-solid.fa-pen-to-square {
+    padding-left: 50px;
+}
+
+.fa-solid.fa-trash-can,
+.fa-solid.fa-arrow-right-from-bracket {
+    padding-left: 33px;
+}
+
+.dropdown-delete-div {
+    border-bottom: 0.5px solid #495057;
+    padding-bottom: 7px;
+    margin: 3px;
+}
+
+#dropdown-delete {
+    padding-left: 4px;
+}
+
+.fa-solid.fa-trash-can {
+    padding-bottom: 8.5px;
+}
+
+#dropdown-leave,
+.fa-solid.fa-arrow-right-from-bracket {
+    color: red;
+}
+
+
 
 .display-user {
     background-color: green;

@@ -6,6 +6,7 @@ import EditServerModal from "./EditServerModal";
 import { leaveServer, deleteServer } from "../../store/servers";
 import { NavLink, useHistory } from "react-router-dom";
 import './ServersNavBar.css';
+import NavBar from "../NavBar";
 export default function ServersNavBar() {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -44,30 +45,26 @@ export default function ServersNavBar() {
   if (user) {
     return (
       <div className="servers-container">
+        <NavBar />
         <div className="display-user">
           <h2>{user.username}</h2>
         </div>
-        <div className="server-navbar">
-          Server Navbar
-          <CreateServerModal />
-        </div>
-
-        {userServersArr && userServersArr.map(server => (
-          <div className="servers-box" key={server.id}>
-            <NavLink className={'servers'} to={`/channels/${server.id}`}>
-              <h3>{server.name}</h3>
-            </NavLink>
-            {sessionUser?.id === server.owner_id &&
-            (
-              <div>
-                {/* <EditServerModal server={server} /> */}
-                {/* <button type="submit" onClick={()=> deleteServ(server.id)}>Delete Server</button> */}
-                {/* <button onClick={() => leaveServ(server.id)}>Leave Server</button> */}
+        <div>
+          {userServersArr && userServersArr.map(server => (
+            <div className="servers-box" key={server.id}>
+                <NavLink className={'servers'} to={`/channels/${server.id}`}>
+                  <h3 className="server-name-nav-bar">{server.name[0].toUpperCase()}</h3>
+                </NavLink>
               </div>
-            )
-          }
+          ))}
+          <CreateServerModal />
+          <div>
+            <NavLink className='discover' to='/discover' exact={true} activeClassName='active'>
+            <i className="fa-solid fa-compass"></i>
+            </NavLink>
           </div>
-        ))}
+
+        </div>
 
       </div>
     );
