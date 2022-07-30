@@ -40,7 +40,7 @@ const NavBar = () => {
               </NavLink>
             )}
             {!user && (
-              <NavLink className='accord-logo' to='/' exact={true} activeClassName='active'>
+              <NavLink className='accord-logo-no-user' to='/' exact={true} activeClassName='active'>
                 ACCORD
               </NavLink>
             )}

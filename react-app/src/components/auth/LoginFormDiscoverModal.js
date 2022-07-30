@@ -15,7 +15,8 @@ function LoginFormDiscoverModal() {
 
     return (
         <>
-            <button className='button'
+            <button 
+                className='login-here-button'
                 onClick={() => setShowModal(true)}>Log In Here!
             </button>
             {showModal && (

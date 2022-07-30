@@ -49,7 +49,8 @@
 .accord-logo-div {
     margin-top: 10px;
 }
-.accord-logo{
+
+.accord-logo {
     text-decoration: none;
     color: rgb(39, 132, 195);
     letter-spacing: 0.5;
@@ -60,6 +61,15 @@
     border-bottom: 1px solid #495057;
 }
 
+.accord-logo-no-user {
+    text-decoration: none;
+    color: rgb(39, 132, 195);
+    letter-spacing: 0.5;
+    text-align: center;
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 15px;
+    padding-bottom: 10px;
+}
 .splash-discover-div {
     margin-top: 7px;
 }
@@ -69,4 +79,65 @@
     text-decoration: none;
     color: rgb(39, 132, 195);
     font-weight: 500;
+}
+
+.log-in-splash-btn {
+    background-color: white;
+    height: 35;
+    border-radius: 15px;
+    width: 60px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    margin-left: 5px;
+}
+
+.log-in-splash-btn:hover {
+    cursor: pointer;
+    background-color: rgb(39, 132, 195);
+    color: white;
+}
+
+.form-misc {
+    display: flex;
+    flex-direction: column;
+}
+.login-modal-label {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    padding-right: 10px;
+    /* padding-bottom: 8px; */
+    /* margin: 5px; */
+    text-transform: uppercase;
+    font-size: 14px;
+    /* margin-bottom: 8px; */
+    
+}
+
+input.login-modal-input {
+    width: 250;
+    margin: 8px;
+    /* width: 95%; */
+    background-color: rgb(17, 17, 17, 0.9);
+    border: transparent;
+    line-height: 26px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 5px;
+    font-size: 14px;
+    padding-left: 5px;
+    /* margin-bottom: 5px; */
+    color: #434b52;;
+}
+
+.login-splash-submit-btn {
+    background-color: rgb(39, 132, 195);
+    color: white;
+    border-radius: 5px;
+    width: 250;
+    line-height:  26px;
+    margin-top: 10px;
+}
+
+.login-splash-submit-btn:hover {
+    background-color: rgb(18, 117, 183);
+    cursor: pointer;
 }

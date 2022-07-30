@@ -18,7 +18,7 @@ function DemoUser() {
   }
 
   return (
-    <button onClick={handleDemoUser}>Demo User</button>
+    <button className='log-in-splash-btn' onClick={handleDemoUser}>Demo</button>
   )
 }
 

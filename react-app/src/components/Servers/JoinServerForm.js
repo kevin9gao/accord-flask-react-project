@@ -12,14 +12,14 @@ const JoinServerForm = ({ server, hideForm, setAlreadyJoined, alreadyJoined }) =
 
   const userServersArr = userServers ? Object.values(userServers) : null
 
-  const alreadyJoinedServer = userServersArr.filter(server => {
+  const alreadyJoinedServer = userServersArr?.filter(server => {
     return server.id === serverId
   })
 
   console.log("ALREADY JOINED??", alreadyJoined, alreadyJoinedServer)
 
   useEffect(()=> {
-    if (alreadyJoinedServer.length > 0) {
+    if (alreadyJoinedServer?.length > 0) {
       setAlreadyJoined(true)
     }
   }, [alreadyJoinedServer])
