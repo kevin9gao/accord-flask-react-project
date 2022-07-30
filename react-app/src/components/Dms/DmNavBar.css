@@ -1,0 +1,12 @@
+.dm-navbar-container{
+  background-color: #495057;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 96vh;
+  margin: 0;
+  padding: 0;
+  width: 14vw;
+  align-items: center;
+  margin-left: 8vw;
+}
