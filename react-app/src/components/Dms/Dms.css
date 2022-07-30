@@ -5,48 +5,64 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-
+  overflow-y:scroll;
   height: 100%;
   left: 24rem;
   position: absolute;
   margin:0;
   padding: .5em 2em;
   padding-left: .2em;
+
 }
 
 .dm-history-container {
   margin: 1em;
-  margin-left: 2em;
-  padding-left: 1em;
+  display: flex;
+  flex-flow: column wrap;
+  height: fit-content;
 }
 
-.chat-box-container {
-  margin: .1em;
-}
+
 
 .chat-box-container {
   width: 78vw;
   padding-bottom: 1em;
+  padding-left: 1em;
 }
 
-form {
+.chat-box-form {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   padding-right: 2em;
+
 }
 
 #chat-box-form input {
-  width: 90%;
-  height: 40px;
+  max-width: 90%;
+  min-width: 10%;
+  height: 45px;
   background-color: #9fa6af;
   border-radius: 10px;
-  padding: 10px;
+  border: none;
+  padding: 5px 10px;
+  display: flex;
+  font-size: 16px;
 }
 
+
+
 .dm-history-container div {
-  color: white;
-  font-size: 14px;
-  margin: .5em;
+  font-size: 16px;
+
+}
+
+.single-dm {
+  margin: 10px 5px;
+}
+
+.dm-name {
+  color: blue;
+  font-weight: bold;
 }
