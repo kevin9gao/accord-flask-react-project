@@ -7,13 +7,14 @@
     color: white;
     height: 100%;
     align-items: center;
-    width: 16rem;
+    width: 100%;
     align-items: center;
     margin: 0;
     padding: 0;
 }
 
 .user-box {
+    margin-left: 10rem;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -24,21 +25,22 @@
 }
 
 .user-list {
-    margin:0;
+    margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.user-list>div>button {
+.user-list li {
     background-color: transparent;
     border: none;
     font-size: 1rem;
     color: white;
+    text-decoration: none;
 }
 
-.user-list>div>button:hover {
+.user-list li:hover {
     background-color: green;
     transition: all 1s ease;
     color: white
