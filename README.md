@@ -5,19 +5,11 @@ Accord is a fullstack web application modeled after the popular chat app, Discor
 Visit our live site here: 
 
 ## Technologies Used
-* Languages
-    * Javascript
-    * Python
-    * HTML/CSS
-* Backend
-    * Flask 
-* Frontend
-    * React
-    * Redux
-* Database
-    * PostgreSQL
-* Hosting
-    Heroku
+* **Languages:** Javascript, Python, HTML/CSS
+* **Backend:** Flask 
+* **Frontend:** React, Redux
+* **Database:** PostgreSQL
+* **Hosting:** Heroku
 
 ## Links
 * [Visit Accord Live Site]
