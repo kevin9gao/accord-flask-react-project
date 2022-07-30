@@ -7,9 +7,6 @@ const ServerMainPage = () => {
     <div className="container">
       <ChannelsNavBar />
       <div className="main-page">
-        <h1>
-          Find your community on Accord
-        </h1>
       </div>
   
     </div>
