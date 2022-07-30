@@ -14,7 +14,6 @@ import ServerDiscover from './components/Servers/ServerDiscover';
 import { loadServers } from './store/servers';
 import ChannelsNavBar from './components/Channels/ChannelsNavBar';
 import CreateServerModal from './components/Servers/CreateServerModal';
-import PrivateServer from './components/PrivateServer';
 import ServersNavBar from './components/Servers/ServersNavbar';
 import ServerMainPage from './components/Servers/ServerMainPage';
 import DmNavBar from './components/Dms/DmNavBar';
@@ -70,7 +69,6 @@ function App() {
           <DmNavBar />
         </ProtectedRoute>
         <ProtectedRoute path='/channels/@me/:userId'>
-          {/* <DmNavBar /> */}
           <ServersNavBar />
           <DmNavBar />
           <DmChat />
