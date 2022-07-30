@@ -22,7 +22,7 @@ Visit our live site here:
 * [Redux State Shape](https://github.com/kevin9gao/accord-flask-react-project/wiki/State-Shape)
 
 
-## How to the Development Environment
+## How to Start the Development Environment
 1. Clone this repository
     git clone https://github.com/kevin9gao/accord-flask-react-project.git
 2. Install dependencies 
