@@ -3,13 +3,11 @@
   color: white;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 96vh;
-  margin: 0;
+  height: 100vh;
   padding: 0;
-  width: 14vw;
+  width: 16rem;
   align-items: center;
-  margin-left: 8vw;
+
 }
 
 .direct-messages {

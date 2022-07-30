@@ -7,9 +7,7 @@ import './DmNavBar.css';
 const DmNavBar = () => {
 
     return (
-        <div className='dm-navbar-container'>
             <UsersList />
-        </div>
     )
 }
 

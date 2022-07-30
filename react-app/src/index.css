@@ -5,13 +5,19 @@
     box-sizing: border-box;
 }
 
+root {
+    display: flex;
+    flex-direction: row;
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
 body {
     min-height: 100vh;
     min-width: 100vw;
     overflow-y: hidden;
     overflow-x: hidden;
-    background-color:  lightgrey;
-}
+    background-color: #6b7077;}
 
 .form {
     padding: 10px;
@@ -86,5 +92,3 @@ form {
     height: 100%;
     padding: 0%;
 }
-
-

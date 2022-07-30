@@ -136,38 +136,44 @@ const DmChat = () => {
 
 
     return (
-        <div className='dm-chat-container'>
-            <div className='dms-container'>
-                <div className='dm-history-container'>
-                    {sessionUser && (
-                        dmHistory && dmHistory?.map((message, idx) => (
-                            <div key={idx}>
-                                {`${message.sender_id === sessionUser.id ?
+        // <div className='dm-chat-container'>
+        <div className='dms-container'>
+            <div className='dm-history-container'>
+                {sessionUser && (
+                    dmHistory && dmHistory?.map((message, idx) => (
+                        <div className='single-dm' key={idx}>
+                            <div className='dm-name'>
+
+                                {message.sender_id === sessionUser.id ?
                                     sessionUser?.username :
-                                    recipient?.username}: ${message.message_body ?
-                                                        message?.message_body :
-                                                        message?.msg}`}
+                                    recipient?.username}
                             </div>
-                        ))
+                            <div className='msg-body' >
+                                {message.message_body ?
+                                    message?.message_body :
+                                    message?.msg}
+                            </div>
+                        </div>
+                    ))
 
-                    )}
-                </div>
+                )}
+            </div>
 
-                <div className='chat-box-container'>
-                    <form
-                        onSubmit={sendChat}
-                        id='chat-box-form'
-                    >
-                        <input
-                            placeholder={`Message ${recipient?.username}`}
-                            value={chatInput}
-                            onChange={updateChatInput}
-                        />
-                        {/* <button>Send</button> */}
-                    </form>
-                </div>
+            <div className='chat-box-container'>
+                <form
+                    onSubmit={sendChat}
+                    id='chat-box-form'
+                >
+                    <input
+                        placeholder={`Message ${recipient?.username}`}
+                        value={chatInput}
+                        onChange={updateChatInput}
+                    />
+                    {/* <button>Send</button> */}
+                </form>
             </div>
         </div>
+        // </div>
     )
 }
 
