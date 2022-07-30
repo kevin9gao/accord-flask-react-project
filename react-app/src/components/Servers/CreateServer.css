@@ -30,6 +30,7 @@ input.create-server-input {
     font-size: 17px;
     padding-left: 5px;
     margin-bottom: 5px;
+    /* margin-left: 30px; */
     color: #434b52;;
 }
 
@@ -44,6 +45,8 @@ input.create-server-input {
     bottom: 0;
     margin-bottom: -16;
     border-radius: 5px;
+    /* margin-left: 30px; */
+    margin-top: 5px;
 }
 
 .create-server-submit-btn {
