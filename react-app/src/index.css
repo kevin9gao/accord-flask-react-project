@@ -10,6 +10,7 @@ body {
     width: 100vw;
     overflow-y: hidden;
     overflow-x: hidden;
+    background-color:  #495057;
 }
 
 .form {
@@ -42,3 +43,23 @@ body {
 .button:hover::after {
     transform: scaleY(1);
 } */
+
+#modal-background {
+    background-color: black;
+    opacity: 0.85;
+}
+
+#modal-content {
+    background-color:#434b52;
+    opacity: 1;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}

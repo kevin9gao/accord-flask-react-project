@@ -36,8 +36,8 @@ const JoinServerForm = ({ server, hideForm, setAlreadyJoined, alreadyJoined }) =
           user_id: user.id,
           server_id: Number(serverId)
         }
-        
-        
+
+
         await dispatch(joinServer(payload));
         hideForm()
         return <Redirect to={`/channels/${serverId}`} />
@@ -56,7 +56,7 @@ const JoinServerForm = ({ server, hideForm, setAlreadyJoined, alreadyJoined }) =
 
   return (
     <div>
-      <h1>Join {server.name} Server</h1>
+      <h1>Join <span className="join-server-name"> {server.name}</span> Server</h1>
       {alreadyJoined && component}
       {!alreadyJoined && (
         <button onClick={handleJoin}> Join </button>

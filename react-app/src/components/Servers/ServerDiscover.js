@@ -35,12 +35,12 @@ export default function ServerDiscover() {
                     From gaming, to music, to learning, there's a place for you.
                 </h2>
             </div>
-            <div className="discover">
-                <h2>Discover</h2>
-                <div className="discover-options-grid">
+            <div className="discover lower">
+                <h2 className="discover">Discover</h2>
+                <div className="discover-cards-container">
                     {serversArray && serversArray.map(server => {
                         return (server && (
-                            <div className="discover-options" key={server.id}>
+                            <div className="card-inner-container" key={server.id}>
                                 <JoinServerModal server={server} />
                             </div>
                         )
