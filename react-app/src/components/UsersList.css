@@ -18,9 +18,9 @@
 .user-box {
     margin-left: 10rem;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    /* display: flex;
+    flex-direction: column; */
+    /* align-items: center; */
     margin: 0;
     padding: 0;
     font-size: 1.25rem;
@@ -28,22 +28,40 @@
 
 .user-list {
     margin: 0;
-    padding: 0;
+    padding: 15px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
+    list-style: none;
+    /* margin-left: -8rem; */
+    text-align: left;
+    /* width: 140px; */
 }
 
 .user-list li {
     background-color: transparent;
     border: none;
     font-size: 1rem;
-    color: white;
-    text-decoration: none;
+    color: lightgrey;
+    width: 100%;
+    /* text-decoration: none!important; */
 }
 
 .user-list li:hover {
-    background-color: green;
+    background-color: rgb(52, 58, 64, 0.9);;
     transition: all 1s ease;
     color: white
+}
+
+.username-div {
+    width: 256px;
+    /* background-color: white; */
+    line-height: 3;
+}
+
+.userslist-username {
+    width: 100%;
+    color: lightgray;
+    font-family: "Secular One", sans-serif;
+    padding-left: 10px;
 }

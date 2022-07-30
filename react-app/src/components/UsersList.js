@@ -32,14 +32,14 @@ function UsersList() {
   return (
     <>
       <div className='user-list-container'>
+      <div className='direct-messages'>Direct Messages</div>
         <div className='user-box'>
-          <div>User List:</div>
           {usersList && usersList.map(user => (
             <ul className='user-list' key={user.id}>
 
-              <div onClick={() => setChat(true)}>
-                <NavLink to={`/channels/@me/${user.id}`}>
-                  <li key={user.id}>{user.username}</li>
+              <div className='username-div' onClick={() => setChat(true)}>
+                <NavLink to={`/channels/@me/${user.id}`} style={{ textDecoration: 'none' }}>
+                  <li className='userslist-username' key={user.id}>{user.username}</li>
                 </NavLink>
               </div>
             </ul>
