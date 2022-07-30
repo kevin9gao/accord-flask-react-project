@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { io } from 'socket.io-client';
 import { loadDMHistory, sendDmMessage } from '../../store/chat';
+import './Dms.css';
 
 let socket;
 
@@ -135,38 +136,37 @@ const DmChat = () => {
 
 
     return (
-        <div>
-            <div>
-                {sessionUser && (
-                    dmHistory && dmHistory?.map((message, idx) => (
-                        <div key={idx}>
-                            {`${message.sender_id === sessionUser.id ?
-                                sessionUser?.username :
-                                recipient?.username}: ${message.message_body ?
-                                                    message?.message_body :
-                                                    message?.msg}`}
-                        </div>
-                    ))
+        <div className='dm-chat-container'>
+            <div className='dms-container'>
+                <div className='dm-history-container'>
+                    {sessionUser && (
+                        dmHistory && dmHistory?.map((message, idx) => (
+                            <div key={idx}>
+                                {`${message.sender_id === sessionUser.id ?
+                                    sessionUser?.username :
+                                    recipient?.username}: ${message.message_body ?
+                                                        message?.message_body :
+                                                        message?.msg}`}
+                            </div>
+                        ))
 
-                )}
-                {/* {messages && messages.map((message, idx) => (
-                    <div key={idx}>
-                        {`${message.user}: ${message.msg}`}
-                    </div>
-                ))} */}
+                    )}
+                </div>
+
+                <div className='chat-box-container'>
+                    <form
+                        onSubmit={sendChat}
+                        id='chat-box-form'
+                    >
+                        <input
+                            placeholder={`Message ${recipient?.username}`}
+                            value={chatInput}
+                            onChange={updateChatInput}
+                        />
+                        {/* <button>Send</button> */}
+                    </form>
+                </div>
             </div>
-
-            <form
-                onSubmit={sendChat}
-            >
-                <input
-                    value={chatInput}
-                    onChange={updateChatInput}
-                />
-                <button
-                // onClick={}
-                >Send</button>
-            </form>
         </div>
     )
 }
