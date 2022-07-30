@@ -10,7 +10,7 @@ body {
     width: 100vw;
     overflow-y: hidden;
     overflow-x: hidden;
-    background-color:  #495057;
+    /* background-color:  #495057; */
 }
 
 .form {
@@ -47,6 +47,7 @@ body {
 #modal-background {
     background-color: black;
     opacity: 0.85;
+    border: none;
 }
 
 #modal-content {
