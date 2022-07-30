@@ -48,18 +48,22 @@ const JoinServerForm = ({ server, hideForm, setAlreadyJoined, alreadyJoined }) =
 
   let component = (
   <div>
-    <div>You've already joined this server </div>
-    <button onClick={()=> hideForm()}>Close</button>
+    <div className="joined-server-p">You've already joined this server </div>
+    <button onClick={()=> hideForm()}>
+    <i className="fa-solid fa-circle-xmark"></i>
+    </button>
   </div>
   )
 
 
   return (
     <div>
-      <h1>Join <span className="join-server-name"> {server.name}</span> Server</h1>
+      <h1 className="join-server-h1">Join <span className="join-server-name"> {server.name}</span> Server</h1>
       {alreadyJoined && component}
       {!alreadyJoined && (
-        <button onClick={handleJoin}> Join </button>
+        <div className="join-server-btn-div">
+          <button className="join-server-submit-btn" onClick={handleJoin}> Join </button>
+        </div>
       )}
     </div>
   );
