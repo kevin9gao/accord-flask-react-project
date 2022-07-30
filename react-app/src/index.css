@@ -17,8 +17,7 @@ body {
     min-width: 100vw;
     overflow-y: hidden;
     overflow-x: hidden;
-    background-color:  lightgrey;
-}
+    background-color: #6b7077;}
 
 .form {
     padding: 10px;

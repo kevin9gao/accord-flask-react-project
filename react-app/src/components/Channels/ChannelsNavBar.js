@@ -6,10 +6,9 @@ import ChannelChat from '../LiveChat/ChannelChat';
 import ServerNameDropDown from '../ServersDropDown';
 import CreateChannelModal from './CreateChannelModal'
 import EditChannelModal from './EditChannelModal'
-
-import './ChannelsNavBar.css';
 import { loadServers, loadSingleUserServers } from "../../store/servers";
 import LogoutButton from '../auth/LogoutButton';
+import './ChannelsNavBar.css';
 
 const ChannelsNavBar = () => {
     const dispatch = useDispatch();
@@ -31,7 +30,7 @@ const ChannelsNavBar = () => {
     // console.log(server ? server[0] : null)
 
     server = server ? server[0] : null
-    
+
     console.log(server)
 
     //moving user from server to channel
@@ -44,8 +43,6 @@ const ChannelsNavBar = () => {
         return channel['server_id'] === Number(serverId);
     })
 
-    console.log("CHANNELSID FOR THIS SERVER", channelId)
-
 
     useEffect(() => {
         if (user) dispatch(loadSingleUserServers(sessionUser.id));
@@ -57,7 +54,7 @@ const ChannelsNavBar = () => {
 
 
     useEffect(() => {
-        if(!channelId) {
+        if (!channelId) {
             setChannelExists(false)
         } else {
             setChannelExists(true)
@@ -66,7 +63,7 @@ const ChannelsNavBar = () => {
 
 
     return (
-        <div>
+        <div className="channels-nav-chat-container">
             <div className='channels-container'>
                 <div className='server-name-in-channel-div'>
                     <ServerNameDropDown server={server} />
@@ -86,16 +83,22 @@ const ChannelsNavBar = () => {
                                 <li className='channel-name' key={channel.id}># {channel.name}</li>
                             </NavLink>
                         </div>
-                        <EditChannelModal channel={channel} setChannelExists={setChannelExists}/>
+                        <EditChannelModal channel={channel} setChannelExists={setChannelExists} />
                     </ul>
                 ))}
-                { channelExists && (<ChannelChat />)}
                 <div className="display-user">
                     <h2 className='channel-username'>{user.username}</h2>
                     <LogoutButton />
                 </div>
-              </div>
-          </div>
+            </div>
+
+            {channelExists && (
+                <div className='live-chat-container'>
+                    <ChannelChat />
+                </div>
+            )}
+        </div>
+
     )
 }
 

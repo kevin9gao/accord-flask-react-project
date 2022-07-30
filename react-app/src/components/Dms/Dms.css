@@ -20,6 +20,7 @@
   display: flex;
   flex-flow: column wrap;
   height: fit-content;
+  width: fit-content;
 }
 
 
@@ -40,7 +41,7 @@
 }
 
 #chat-box-form input {
-  max-width: 90%;
+  max-width: 95%;
   min-width: 10%;
   height: 45px;
   background-color: #9fa6af;
@@ -52,17 +53,16 @@
 }
 
 
-
-.dm-history-container div {
-  font-size: 16px;
-
-}
-
 .single-dm {
-  margin: 10px 5px;
+  margin: 12px 5px;
 }
 
 .dm-name {
-  color: blue;
+  color: white;
   font-weight: bold;
+  font-size: 18px;
+}
+
+.msg-body {
+  color: white;
 }

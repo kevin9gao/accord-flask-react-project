@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { io } from 'socket.io-client';
 import { loadLiveChatHistory, sendLiveChatMessage } from '../../store/chat';
+import './ChannelChat.css';
 
 
 let socket;
@@ -42,7 +43,7 @@ const ChannelChat = () => {
 
   useEffect(async () => {
 
-    if(channelId) await dispatch(loadLiveChatHistory(channelId));
+    if (channelId) await dispatch(loadLiveChatHistory(channelId));
 
     // create websocket
     socket = io();
@@ -82,7 +83,7 @@ const ChannelChat = () => {
       const dateTime = new Date();
       const isoTime = dateTime.toISOString();
       const date = isoTime.slice(0, 10);
-      const time = isoTime.slice(12,19);
+      const time = isoTime.slice(12, 19);
       const combined = date + ' ' + time
 
       // console.log(combined)
@@ -105,32 +106,28 @@ const ChannelChat = () => {
 
 
   return (user && (
-    <div>
-      <div>
+    <div className='channel-chat-container'>
+      <div className="chat-history-container">
         {chatHistory && chatHistory.map((message, idx) => (
-          <div key={idx}>
-            {`${message.username}: ${message.message_body ? message.message_body : message.msg}`}
+          <div className='single-chat' key={idx}>
+            <div className='chat-name'> {message.username} </div>
+            <div className='chat-body'> {message.message_body ? message.message_body : message.msg} </div>
           </div>
         ))}
       </div>
-      <form className='channel-chat-form'
-        onSubmit={sendChat}
-      >
-        {hasSubmitted && validationErrors.length > 0 && (
-          <ul>
-            {validationErrors.map(error => (
-              <li key={error}>{error}</li>
-            ))}
-          </ul>
-        )}
-        <input className='channel-chat-input'
-          value={chatInput}
-          onChange={updateChatInput}
-        />
-        <button className='channel-chat-button'
-        // onClick={}
-        >Send</button>
-      </form>
+      <div className='channel-chat-container'>
+        <form id='channel-chat-form' onSubmit={sendChat}>
+          {hasSubmitted && validationErrors.length > 0 && (
+            <ul>
+              {validationErrors.map(error => (
+                <li key={error}>{error}</li>
+              ))}
+            </ul>
+          )}
+          <input className='channel-chat-input' value={chatInput} onChange={updateChatInput} />
+          {/* <button className='channel-chat-button'>Send</button> */}
+        </form>
+      </div>
     </div>
   ));
 }

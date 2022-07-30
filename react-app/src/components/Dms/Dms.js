@@ -148,7 +148,7 @@ const DmChat = () => {
                                     sessionUser?.username :
                                     recipient?.username}
                             </div>
-                            <div>
+                            <div className='msg-body' >
                                 {message.message_body ?
                                     message?.message_body :
                                     message?.msg}
