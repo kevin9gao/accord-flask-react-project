@@ -1,9 +1,9 @@
 .dm-chat-container {
   position: absolute;
   left: 22vw;
-  top: 4.2vh;
+  top: 0;
   width: 78vw;
-  height: 95.8vh;
+  height: 100vh;
 }
 
 .dms-container {
@@ -12,12 +12,15 @@
   flex-direction: column;
   justify-content: flex-end;
   width: 100%;
-  height: 97vh;
+  height: 100vh;
   padding: .5em 2em;
+  padding-left: .2em;
 }
 
 .dm-history-container {
   margin: 1em;
+  margin-left: 2em;
+  padding-left: 1em;
 }
 
 .chat-box-container {
@@ -34,10 +37,11 @@ form {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  padding-right: 2em;
 }
 
 #chat-box-form input {
-  width: 94%;
+  width: 90%;
   height: 40px;
   background-color: #9fa6af;
   border-radius: 10px;
