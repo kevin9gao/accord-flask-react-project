@@ -7,7 +7,7 @@
     height: 100%;
     /* use icons to fit width */
     /* width: 4rem; */
-    width: 10rem;
+    width: 8rem;
     margin: 0;
     padding: 0;
     position: fixed;
@@ -22,14 +22,14 @@
     align-items: center;
 }
 
-.display-user {
+/* .display-user {
     background-color: green;
     display: flex;
     justify-content: center;
 
     position: fixed;
     bottom: 0;
-}
+} */
 
 /* .servers-box {
     background-color: red;

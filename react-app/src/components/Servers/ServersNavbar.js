@@ -46,9 +46,9 @@ export default function ServersNavBar() {
     return (
       <div className="servers-container">
         <NavBar />
-        <div className="display-user">
+        {/* <div className="display-user">
           <h2>{user.username}</h2>
-        </div>
+        </div> */}
         <div>
           {userServersArr && userServersArr.map(server => (
             <div className="servers-box" key={server.id}>
