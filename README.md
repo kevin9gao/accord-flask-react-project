@@ -17,3 +17,7 @@ Visit our live site here:
 * [Database Schema](https://github.com/kevin9gao/accord-flask-react-project/wiki/Database-Schema)
 * [Frontend Routes](https://github.com/kevin9gao/accord-flask-react-project/wiki/Frontend-Routes)
 * [Backend API Routes](https://github.com/kevin9gao/accord-flask-react-project/wiki/API-Routes)
+* [User Stories](https://github.com/kevin9gao/accord-flask-react-project/wiki/User-Stories)
+* [Redux State Shape](https://github.com/kevin9gao/accord-flask-react-project/wiki/State-Shape)
+
+
