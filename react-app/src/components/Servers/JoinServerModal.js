@@ -13,10 +13,10 @@ function JoinServerModal({ server }) {
     return (
         <>
             <div className='server-card'>
-                <button onClick={() => setShowModal(true)}>
-                    {server.name}
-                </button>
+                <button className='server-card-button' onClick={() => setShowModal(true)}>
                 <img className='server-photo' src={server.server_pic_url}/>
+                <div className='server-card-name'>{server.name}</div>
+                </button>
             </div>
 
             {showModal && (

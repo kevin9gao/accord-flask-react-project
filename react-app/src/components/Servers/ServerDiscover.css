@@ -6,15 +6,15 @@
     height: 100%;
     margin: 0;
     padding: 0;
-    margin-left: 10rem;
+    margin-left: 7.8rem;
     color: white;
 }
 
 .discover-upper {
     height: 50%;
     color: white;
-    background-image: url("https://wallpaperaccess.com/full/1217368.jpg");
-    background-position: center;
+    background-image: url("https://www.linkpicture.com/q/7mXlKog.jpeg");
+    background-position: 50% 45%;
     background-repeat: no-repeat;
     background-size: 100% auto;
     display: flex;
@@ -22,9 +22,10 @@
     flex-direction: column;
     margin-left: 16rem;
     border-radius: 1rem;
-    margin-right: 1%;
-    margin-left: 1%;
+    margin-right: 2.5%;
+    margin-left: 2.5%;
     margin-top: 1%;
+    padding: 20px;
 }
 
 .discover-upper>h1 {
@@ -47,8 +48,8 @@
 }
 
 .discover.lower {
-    background-color: #2181e2;
-
+    background-color: #495057;;
+    padding: 2.5%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -59,78 +60,71 @@
 
 }
 
-.discover>h2 {
+h2.discover {
     color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: 30px;
+    margin-top: 45px;
 }
-
-.server-card {
-    display: block;
-    background-color: aquamarine;
-}
-
-.server-photo {
-    height: 200px;
-    width: 200px;
-}
-
 
 .discover-cards-container {
-    background-color: red;
+    /* background-color: red; */
     display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
     min-height: 100%;
     width: 100%;
     gap: 1rem;
 }
 
+.card-inner-container {
+    height: fit-content;
+    width: fit-content;
+    border-radius: 10px;
 
-/* .discover-options {
+}
+
+.server-card {
+    height: fit-content;
+    width: fit-content;
+    border-radius: 10px;
+
+}
+
+.server-card-button {
     display: flex;
     flex-direction: column;
+    justify-content:flex-start;
     align-items: center;
-    text-decoration: none;
-    color: white;
-} */
-
-/*
-IF I WANT BORDER RADIUS
-.discover-options>button {
-    background-color: aqua;
-    padding: 1rem;
-    border: 1px solid orange;
-    border-radius: .5em;
-    font-size: 1.25rem;
-}
-*/
-
-/*
-IF I WANT BORDER SHADOW
-*/
-/* .discover-options>button {
-    background-color: aqua;
-    padding: 1rem;
-
+    border-radius: 10px;
+    width: 250px;
     border: none;
-    border-radius: 0.5rem;
-    font-size: 1.25rem;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2);
-} */
-
-
-/* .discover-options>button:hover, .discover-options>button:focus {
-    background-color: green;
-    transition: all 1s ease;
-} */
-
-/* .discover-options::after{
-    background: #b6a6ca;
-    border-radius: 50px;
-    transform: sacleY(0);
-    transition: transform 0.3s ease;
+    padding: 0;
+    height: 250px;
+    font-size: 20px;
+    background-color: #343a40;
+    color: white;
+    transition-property: background-color, transform;
 }
 
-.discover-options:hover::after {
-    transform: scaleY(1);
-} */
+.server-card-button:hover {
+    background-color: #252b31;
+    transform: scale(1.01);
+    transition-duration: 0.5s;
+}
+
+.server-photo {
+    height: 200px;
+    width: 250px;
+    border-radius: 10px 10px 0px 0px;
+
+}
+
+.server-card-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}

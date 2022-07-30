@@ -36,11 +36,11 @@ export default function ServerDiscover() {
                 </h2>
             </div>
             <div className="discover lower">
-                <h2>Discover</h2>
+                <h2 className="discover">Discover</h2>
                 <div className="discover-cards-container">
                     {serversArray && serversArray.map(server => {
                         return (server && (
-                            <div className="discover-options" key={server.id}>
+                            <div className="card-inner-container" key={server.id}>
                                 <JoinServerModal server={server} />
                             </div>
                         )
