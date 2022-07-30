@@ -12,13 +12,13 @@ const NavBar = () => {
   const user = useSelector(state => state.session.user);
 
   let sessionLinks;
-  if (user) {
-    sessionLinks = (
-      <div>
-        <LogoutButton />
-      </div>
-    )
-  } else {
+  if (!user) {
+  //   sessionLinks = (
+  //     <div>
+  //       <LogoutButton />
+  //     </div>
+  //   )
+  // } else {
     sessionLinks = (
       <div>
         <div>
@@ -33,14 +33,14 @@ const NavBar = () => {
     <nav>
       <ul className='navigation'>
         <div>
-          <div>
+          <div className='accord-logo-div'>
             {user && (
-              <NavLink to='/channels/@me' exact={true} activeClassName='active'>
+              <NavLink className='accord-logo' to='/channels/@me' exact={true} activeClassName='active'>
               ACCORD
               </NavLink>
             )}
             {!user && (
-              <NavLink to='/' exact={true} activeClassName='active'>
+              <NavLink className='accord-logo' to='/' exact={true} activeClassName='active'>
                 ACCORD
               </NavLink>
             )}
@@ -50,10 +50,12 @@ const NavBar = () => {
               Users
             </NavLink> */}
           </div>
-          <div>
-            <NavLink to='/discover' exact={true} activeClassName='active'>
-              Discover
-            </NavLink>
+          <div className='splash-discover-div'>
+            {!user && (
+              <NavLink className='splash-discover' to='/discover' exact={true} activeClassName='active'>
+                DISCOVER
+              </NavLink>
+            )}
           </div>
         </div>
         {sessionLinks}

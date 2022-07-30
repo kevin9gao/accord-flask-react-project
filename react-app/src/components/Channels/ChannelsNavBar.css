@@ -8,23 +8,128 @@
     padding: 0;
     width: 16rem;
     align-items: center;
-}
-
-.display-user {
-    background-color: green;
-    display: flex;
-    justify-content: center;
-
     position: fixed;
-    bottom: 0;
+    left:8rem;
 }
+
+.channel-server-div {
+    display: flex;
+    width: 256px;
+    background-color: #495057;
+    border-bottom: 1px solid black;
+}
+
+.channel-server-name {
+    font-family:'Secular One', sans-serif;
+    text-align: left;
+    padding-left: 3px;
+    /* padding-right: 8rem; */
+    margin: 10px;
+    width: fit-content;
+    font-size: 14px;
+}
+
+.server-name-in-channel-div {
+    background-color: antiquewhite;
+}
+
+button.dropdown-button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    position: fixed;
+    margin-left: 243px;
+    margin-top: 15px;
+}
+
+.fa-solid.fa-angle-down {
+    color: lightgrey;
+}
+
+.fa-solid.fa-angle-down:hover {
+    cursor: pointer;
+}
+
+/* dropdown */
+.dropdown-container {
+    width: 10rem;
+    height: 7rem;
+    background-color: rgb(15, 15, 15, 0.95);
+    position: absolute;
+    top: 3rem;
+    left: 5rem;
+    border: none;
+    border-radius: 5px;
+}
+
+button.drp-server-btn {
+    background-color: transparent;
+    border: none;
+    color: lightgray;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 8px;
+}
+
+button.drp-server-btn:hover {
+    cursor: pointer;
+}
+
+.fa-solid.fa-pen-to-square {
+    padding-left: 50px;
+}
+
+.fa-solid.fa-trash-can,
+.fa-solid.fa-arrow-right-from-bracket {
+    padding-left: 33px;
+}
+
+.dropdown-delete-div {
+    border-bottom: 0.5px solid #495057;
+    padding-bottom: 7px;
+    margin: 3px;
+}
+
+#dropdown-delete {
+    padding-left: 4px;
+}
+
+.fa-solid.fa-trash-can {
+    padding-bottom: 8.5px;
+}
+
+#dropdown-leave,
+.fa-solid.fa-arrow-right-from-bracket {
+    color: red;
+}
+
 
 .channels-navbar {
-    font-size: 1.25rem;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    height: 30px;
+    margin-bottom: 5px;
 }
+.text-channels {
+    font-size: 13px;
+    color:lightgray;
+    text-align: left;
+}
+
+button.create-channel-btn {
+    background-color: transparent;
+    border: none;
+    margin-left: 9rem;
+    margin-top: 18px;
+}
+
+.fa-solid.fa-plus {
+    color: lightgray;
+}
+
+.fa-solid.fa-plus:hover {
+    cursor: pointer;
+}
+
+
 
 .channels {
     /* background-color: purple; */
@@ -33,4 +138,75 @@
     align-items: center;
     text-decoration: none;
     color: white;
+}
+
+.single-channel-div {
+    display: flex;
+    margin-top: 5px;
+    width: 230px;
+    padding-left: 0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    height: 8px;
+    padding: 5px;
+}
+
+.channel-name {
+    list-style: none;
+    text-align: left;
+    /* padding-bottom: 5px; */
+    overflow: hidden;
+}
+
+.channel-name:hover {
+    color: green;
+}
+
+button.edit-channel-btn {
+    background-color: transparent;
+    border: none;
+}
+
+.fa-solid.fa-gear {
+    color: lightgray;
+    position: absolute;
+    /* top: 10rem; */
+    left: 14.5rem;
+    z-index: -1000000;
+}
+
+.fa-solid.fa-gear:hover {
+    cursor: pointer;
+    color: green;
+}
+
+.display-user {
+    background-color: #434b52;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    width: 256px;
+}
+
+.channel-username {
+    font-size: 14px;
+    justify-content: space-between;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-left: 8px;
+}
+
+button.logout-btn {
+    background-color: transparent;
+    border: none;
+}
+
+#logout-btn-gear {
+    margin-top: 12px;
+    font-size: 15px;
+}
+
+#logout-btn-gear:hover::before {
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    content: "Logout";
 }

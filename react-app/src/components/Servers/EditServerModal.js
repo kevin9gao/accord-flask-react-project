@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import EditServerForm from './EditServerForm';
 
+import '../Channels/ChannelsNavBar.css'
+
 const EditServerModal = ({ server }) => {
     const [ showModal, setShowModal ] = useState(false);
 
@@ -10,7 +12,7 @@ const EditServerModal = ({ server }) => {
         <div>
             
             <div>
-                <button onClick={()=> setShowModal(true)}>Edit Server</button>
+                <button className='drp-server-btn' onClick={()=> setShowModal(true)}>Edit Server</button>
                 <i className="fa-solid fa-pen-to-square"></i>
             </div>
             {showModal && (
