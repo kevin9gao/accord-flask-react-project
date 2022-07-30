@@ -21,3 +21,4 @@ Visit our live site here:
 * [Redux State Shape](https://github.com/kevin9gao/accord-flask-react-project/wiki/State-Shape)
 
 
+## How to the Development Environment
