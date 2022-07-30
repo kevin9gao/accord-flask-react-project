@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { createServer, joinServer } from "../../store/servers";
+import './CreateServer.css';
 
 const CreateServerForm = ({ hideForm }) => {
     const dispatch = useDispatch();

@@ -48,6 +48,7 @@ button.dropdown-button {
 
 .fa-solid.fa-angle-down:hover {
     cursor: pointer;
+    color: green;
 }
 
 /* dropdown */
@@ -127,6 +128,7 @@ button.create-channel-btn {
 
 .fa-solid.fa-plus:hover {
     cursor: pointer;
+    color: green;
 }
 
 

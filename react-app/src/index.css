@@ -10,7 +10,7 @@ body {
     width: 100vw;
     overflow-y: hidden;
     overflow-x: hidden;
-    /* background-color:  #495057; */
+    background-color:  lightgrey;
 }
 
 .form {
@@ -53,14 +53,18 @@ body {
 #modal-content {
     background-color:#434b52;
     opacity: 1;
-    padding: 20px;
+    /* padding: 20px; */
     border-radius: 10px;
-    display: flex;
-    justify-content: center;
+    /* display: flex; */
+    /* justify-content: center; */
     color: white;
+    height: 15rem;
+    width: 29rem;
+    box-shadow: none;
 }
 
 form {
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
