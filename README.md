@@ -15,3 +15,5 @@ Visit our live site here:
 * [Visit Accord Live Site]
 * [Feature List](https://github.com/kevin9gao/accord-flask-react-project/wiki/Feature-List)
 * [Database Schema](https://github.com/kevin9gao/accord-flask-react-project/wiki/Database-Schema)
+* [Frontend Routes](https://github.com/kevin9gao/accord-flask-react-project/wiki/Frontend-Routes)
+* [Backend API Routes](https://github.com/kevin9gao/accord-flask-react-project/wiki/API-Routes)
