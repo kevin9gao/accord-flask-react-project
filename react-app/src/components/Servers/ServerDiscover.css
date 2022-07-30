@@ -13,6 +13,21 @@
     /* margin: 0; */
 }
 
+.discover-container-no-user {
+    background-color: #495057;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    margin-left: 7.8rem;
+    color: white;
+    overflow-y: scroll;
+    min-width: 100vw;
+    margin: 0;
+}
+
 
 
 .discover-upper {
@@ -33,7 +48,26 @@
     padding: 20px;
 }
 
-.discover-upper>h1 {
+.discover-upper-no-user {
+    height: 50%;
+    color: white;
+    background-image: url("https://www.linkpicture.com/q/7mXlKog.jpeg");
+    background-position: 50% 45%;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 16rem;
+    border-radius: 1rem;
+    margin-right: 2.5%;
+    margin-left: 2.5%;
+    margin-top: 1%;
+    padding: 20px;
+}
+
+.discover-upper>h1,
+.discover-upper-no-user>h1 {
     color: white;
     text-shadow: 4px 4px 4px black;
     display: flex;
@@ -43,7 +77,8 @@
     align-self: center;
 }
 
-.discover-upper>h2 {
+.discover-upper>h2,
+.discover-upper-no-user>h2 {
     color: white;
     text-shadow: 4px 4px 4px black;
     display: flex;
@@ -52,9 +87,9 @@
     flex-direction: column;
 }
 
-.discover.lower {
+.discover.lower,
+.discover.lower-no-user {
     background-color: #495057;
-    ;
     padding: 2.5%;
     display: flex;
     flex-direction: column;
@@ -66,7 +101,8 @@
 
 }
 
-h2.discover {
+h2.discover,
+h2.discover-no-user {
     color: white;
     display: flex;
     flex-direction: column;
@@ -75,7 +111,8 @@ h2.discover {
     margin-top: 45px;
 }
 
-.discover-cards-container {
+.discover-cards-container,
+.discover-cards-container-no-user {
     /* background-color: red; */
     display: flex;
     flex-flow: row wrap;
@@ -85,7 +122,8 @@ h2.discover {
     gap: 1rem;
 }
 
-.card-inner-container {
+.card-inner-container,
+.card-inner-container-no-user {
     height: fit-content;
     width: fit-content;
     border-radius: 10px;
