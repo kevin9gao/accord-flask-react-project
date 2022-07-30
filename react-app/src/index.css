@@ -10,6 +10,7 @@ body {
     width: 100vw;
     overflow-y: hidden;
     overflow-x: hidden;
+    background-color:  #495057;
 }
 
 .form {
