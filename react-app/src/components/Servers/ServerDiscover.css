@@ -46,16 +46,17 @@
     flex-direction: column;
 }
 
-.discover {
-    /* background-color: #495057; */
-    /*
+.discover.lower {
+    background-color: #2181e2;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     left: 0;
     height: 100%;
-    */
+    width: 100%;
+
 }
 
 .discover>h2 {
@@ -67,6 +68,7 @@
 
 .server-card {
     display: block;
+    background-color: aquamarine;
 }
 
 .server-photo {
@@ -74,14 +76,15 @@
     width: 200px;
 }
 
-/*
-.discover-options-grid {
+
+.discover-cards-container {
     background-color: red;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
-    max-height: 100%;
-     gap: 1rem; } */
+    display: flex;
+    min-height: 100%;
+    width: 100%;
+    gap: 1rem;
+}
+
 
 /* .discover-options {
     display: flex;
@@ -105,25 +108,23 @@ IF I WANT BORDER RADIUS
 /*
 IF I WANT BORDER SHADOW
 */
-.discover-options>button {
+/* .discover-options>button {
     background-color: aqua;
     padding: 1rem;
-    /*
-    border: 1px solid orange;
-    */
+
     border: none;
     border-radius: 0.5rem;
     font-size: 1.25rem;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2);
-}
+} */
 
 
-.discover-options>button:hover, .discover-options>button:focus {
+/* .discover-options>button:hover, .discover-options>button:focus {
     background-color: green;
     transition: all 1s ease;
-}
+} */
 
-    /* .discover-options::after{
+/* .discover-options::after{
     background: #b6a6ca;
     border-radius: 50px;
     transform: sacleY(0);
