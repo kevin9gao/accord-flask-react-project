@@ -2,6 +2,15 @@
 
 Accord is a fullstack web application modeled after the popular chat app, Discord. Signed up users have the ability to join communities or create their own community and chat through live messaging. 
 
+Visit our live site here: 
+
+## Technologies Used
+* Hosting Service
+    * Heroku
+* Backend
+    * Python
+    * Flask 
+
 ## Links
 * [Visit Accord Live Site]
 * [Feature List](https://github.com/kevin9gao/accord-flask-react-project/wiki/Feature-List)
