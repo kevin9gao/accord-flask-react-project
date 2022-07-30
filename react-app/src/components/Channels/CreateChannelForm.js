@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import { createChannel } from "../../store/channels";
+import './CreateChannel.css';
 
 const CreateChannelForm = ({ hideForm }) => {
     const dispatch = useDispatch();
@@ -58,16 +59,18 @@ const CreateChannelForm = ({ hideForm }) => {
                     </ul>
                 )}
                 <h3>Create Channel</h3>
-                <label>CHANNEL NAME</label>
+                <div></div>
+                <label className="create-channel-label">CHANNEL NAME</label>
                 <input
+                    className="create-channel-input"
                     placeholder="new-channel"
                     type="text"
                     value={name}
                     onChange={e => setName(e.target.value)}
                 />
-                <div>
-                    <button type="button" onClick={onCancel}>Cancel</button>
-                    <button type="submit">Submit New Channel</button>
+                <div className="create-channel-bottom-div">
+                    <button className="cancel-create-channel-btn" type="button" onClick={onCancel}>Cancel</button>
+                    <button className="create-channel-submit-btn" type="submit">Create Channel</button>
                 </div>
             </form>
         </>

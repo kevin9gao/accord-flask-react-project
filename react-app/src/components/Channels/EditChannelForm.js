@@ -68,16 +68,17 @@ const EditChannelForm = ({hideForm, channel, setChannelExists}) => {
                     </ul>
                 )}
                 <h3>Edit Channel</h3>
-                <button type="button" onClick={(e) => onDelete(e, channel.id)}>Delete Channel</button>
-                <label>CHANNEL NAME</label>
+                <label className="create-channel-label">CHANNEL NAME</label>
                 <input
+                    className="create-channel-input"
                     type="text"
                     value={editName}
                     onChange={e => setEditName(e.target.value)}
                 />
-                <div>
-                    <button type="button" onClick={onCancel}>Cancel</button>
-                    <button type="submit">Submit Edit Channel</button>
+                <div className="create-channel-bottom-div">
+                    <button className="delete-channel-btn" type="button" onClick={(e) => onDelete(e, channel.id)}>Delete</button>
+                    <button className="cancel-create-channel-btn"  type="button" onClick={onCancel}>Cancel</button>
+                    <button className="create-channel-submit-btn" type="submit">Edit Channel</button>
                 </div>
             </form>
         </div>

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { loadDMHistory } from '../store/chat';
 import DmChat from './Dms/Dms';
+import LogoutButton from './auth/LogoutButton';
 
 import './UsersList.css'
 
@@ -43,7 +44,10 @@ function UsersList() {
               </div>
             </ul>
           ))}
-
+          <div className="display-user">
+              <h2 className='channel-username'>{sessionUser.username}</h2>
+              <LogoutButton />
+          </div>
           {/* {chat && <DmChat />} */}
         </div>
       </div>

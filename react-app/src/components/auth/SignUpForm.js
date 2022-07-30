@@ -52,7 +52,7 @@ const SignUpForm = () => {
 
   return (
     <div className='signup-container'>
-      <form onSubmit={onSignUp}>
+      <form className='signup-form-div' onSubmit={onSignUp}>
         <div>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
@@ -107,14 +107,14 @@ const SignUpForm = () => {
             required={true}
           ></input>
           </div>
-          <div className='shift-right'>
+          <div>
             <button className='signup-button' type='submit'>Sign Up</button>
           </div>
         </div>
-      </form>
-      <div>Already have an account?
+      <div className='have-an-account'>Already have an account?
         <LoginFormDiscoverModal />
       </div>
+      </form>
     </div>
   );
 };

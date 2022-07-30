@@ -6,11 +6,11 @@
 }
 
 body {
-    height: 100vh;
-    width: 100vw;
+    min-height: 100vh;
+    min-width: 100vw;
     overflow-y: hidden;
     overflow-x: hidden;
-    background-color:  #495057;
+    background-color:  lightgrey;
 }
 
 .form {
@@ -18,20 +18,37 @@ body {
     margin: 10px;
 }
 
-.form-misc {
+/* .form-misc {
     display: flex;
     justify-content: center;
     align-content: center;
-}
+} */
 
 .close-button {
     background-color: transparent;
     border: none;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 5px;
 }
 
-.button {
-    background-color: red;
+.close-button:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
+
+.login-here-button {
+    background-color: rgb(39, 132, 195);
+    color: white;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.login-here-button:hover {
+    cursor: pointer;
+    background-color: rgb(18, 117, 183);
+}
+
 
 /* .button::after {
     background: #b6a6ca;
@@ -47,19 +64,26 @@ body {
 #modal-background {
     background-color: black;
     opacity: 0.85;
+    border: none;
 }
 
 #modal-content {
     background-color:#434b52;
     opacity: 1;
-    padding: 20px;
+    /* padding: 20px; */
     border-radius: 10px;
-    display: flex;
-    justify-content: center;
+    /* display: flex; */
+    /* justify-content: center; */
     color: white;
+    height: fit-content;
+    width: 29rem;
+    box-shadow: none;
 }
 
 form {
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
+
+

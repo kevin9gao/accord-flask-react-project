@@ -9,7 +9,8 @@
     margin-left: 7.8rem;
     color: white;
     overflow-y: scroll;
-
+    /* min-width: 100vw; */
+    /* margin: 0; */
 }
 
 
@@ -121,6 +122,7 @@ h2.discover {
     transform: scale(1.01);
     transition-duration: 0.5s;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
 }
 
 .server-photo {
@@ -137,3 +139,51 @@ h2.discover {
     height: 100px;
 }
 
+.join-server-h1 {
+    font-size: 30px;
+    padding: 8px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.join-server-btn-div {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.join-server-submit-btn {
+    background-color: rgb(39, 132, 195);
+    color: white;
+    border-radius: 5px;
+    width: 70px;
+    font-size: 25px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-transform: uppercase;
+}
+
+.join-server-submit-btn:hover {
+    cursor: pointer;
+    background-color: rgb(18, 117, 183);;
+}
+
+.joined-server-p {
+    text-align: center;
+    color: rgb(39, 132, 195);
+    text-transform: uppercase;
+    font-size: 15px;
+}
+
+.fa-solid.fa-circle-xmark {
+    color: rgb(39, 132, 195);
+    margin-left: 13rem;
+    font-size: 28px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.fa-solid.fa-circle-xmark:hover {
+    color: rgb(18, 117, 183);
+    cursor: pointer;
+    font-size: 30px;
+}

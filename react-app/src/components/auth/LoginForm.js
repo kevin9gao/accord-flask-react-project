@@ -36,8 +36,9 @@ const LoginForm = () => {
         ))}
       </div>
       <div className='form-misc'>
-        <label htmlFor='email'>Email</label>
+        <label className='login-modal-label' htmlFor='email'>Email</label>
         <input
+          className='login-modal-input'
           name='email'
           type='text'
           placeholder='Email'
@@ -46,8 +47,9 @@ const LoginForm = () => {
         />
       </div>
       <div className='form-misc'>
-        <label htmlFor='password'>Password</label>
+        <label className='login-modal-label' htmlFor='password'>Password</label>
         <input
+          className='login-modal-input'
           name='password'
           type='password'
           placeholder='Password'
@@ -56,7 +58,7 @@ const LoginForm = () => {
         />
       </div>
       <div className='form-misc'>
-        <button type='submit'>Login</button>
+        <button className='login-splash-submit-btn' type='submit'>Login</button>
       </div>
     </form>
   );

@@ -1,0 +1,64 @@
+.create-channel-label {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 12px;
+    text-align: left;
+    padding: 10px;
+    display: flex;
+    justify-content: left;
+}
+
+input.create-channel-input {
+    width: 95%;
+    background-color: rgb(17, 17, 17, 0.9);
+    border: transparent;
+    line-height: 26px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 5px;
+    font-size: 17px;
+    padding-left: 5px;
+    margin-bottom: 12px;
+    color: #434b52;;
+    margin-bottom: 12px;
+}
+
+.create-channel-bottom-div {
+    display: flex;
+    justify-content: end;
+    background-color: #343a40;
+    width: 53.7%;
+    height: 4rem;
+    position: fixed;
+    bottom: 313.2;
+    border-radius: 5px;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+}
+
+button.create-channel-submit-btn {
+    margin-left: 10px;
+    margin-top: 15px;
+    background-color: rgb(39, 132, 195);
+    height: 30;
+    border-radius: 5px;
+    color: white;
+    margin-right: 10px;
+}
+
+button.cancel-create-channel-btn {
+    color: white;
+}
+
+.delete-channel-btn {
+    display: block;
+    color: white;
+}
+
+.delete-channel-btn:hover,
+.cancel-create-channel-btn:hover,
+.create-channel-submit-btn:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}

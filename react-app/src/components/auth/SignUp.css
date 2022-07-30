@@ -5,20 +5,45 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     color:white;
     height: 100%;
     width: 100%;
+
 }
 
+.signup-form-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: fit-content;
+}
 .signup-button {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgb(39, 132, 195);
+    color: white;
+    border-radius: 5px;
+    /* width: 250; */
+    line-height:  26px;
+    margin-top: 10px;
+    margin-left: 40px;
+}
+
+.signup-button:hover {
+    cursor: pointer;
+    background-color: rgb(18, 117, 183);
 }
 
 .shift-right {
-    margin-left: 8%;
+    margin-left: 3%;
+}
+
+.have-an-account {
+    /* margin-top: 10px; */
+    position: fixed;
+    bottom: 220;
 }
