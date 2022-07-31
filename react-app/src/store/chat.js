@@ -1,6 +1,5 @@
 const LOAD = '/chat/LOAD';
 const SEND_LC = '/chat/SEND_LC';
-const SEND = '/chat/SEND';
 const LOADDM = '/dm/LOADDM'
 const SAVEDM = '/dm/SAVEDM'
 

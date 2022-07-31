@@ -65,3 +65,11 @@
     font-family: "Secular One", sans-serif;
     padding-left: 10px;
 }
+
+#logout-btn-gear:hover {
+    border: 2px solid rgb(148, 144, 144);
+    border-radius: 5px;
+    padding: .1em;
+    color: rgb(39, 132, 195);
+    background-color: #9fa6af;
+}
