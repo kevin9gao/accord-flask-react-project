@@ -1,6 +1,4 @@
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { loadServers } from '../../store/servers';
+import { useState } from 'react';
 import './ServersNavBar.css';
 import './ServerModal.css'
 import { Modal } from '../../context/Modal';

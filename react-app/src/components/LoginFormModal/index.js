@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import LoginForm from '../auth/LoginForm';
 import SignUpForm from '../auth/SignUpForm';
-import {Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function LoginFormModal() {
     const [showModal, setShowModal] = useState(false);

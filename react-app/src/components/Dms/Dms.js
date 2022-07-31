@@ -15,7 +15,6 @@ const DmChat = () => {
     const [chatInput, setChatInput] = useState('');
     const [users, setUsers] = useState([]);
     const [validationErrors, setValidationErrors] = useState([]);
-    const [hasSubmitted, setHasSubmitted] = useState(false);
     const { userId } = useParams();
     let recipientId = Number(userId)
 
@@ -49,9 +48,6 @@ const DmChat = () => {
         fetchData();
     }, [])
 
-
-
-    const sender = sessionUser;
 
     // const recipient = users.filter(user => {
     //     return user.id === Number(recipientId)
@@ -105,7 +101,6 @@ const DmChat = () => {
 
     const sendChat = async (e) => {
         e.preventDefault();
-        setHasSubmitted(true);
 
         if (validationErrors.length === 0) {
             //emit a message
@@ -125,7 +120,6 @@ const DmChat = () => {
             }
 
             await dispatch(sendDmMessage(payload));
-            setHasSubmitted(false);
             setChatInput('');
         }
 
