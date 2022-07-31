@@ -6,14 +6,13 @@ import ChannelChat from '../LiveChat/ChannelChat';
 import ServerNameDropDown from '../ServersDropDown';
 import CreateChannelModal from './CreateChannelModal'
 import EditChannelModal from './EditChannelModal'
-import { loadServers, loadSingleUserServers } from "../../store/servers";
+import { loadSingleUserServers } from "../../store/servers";
 import LogoutButton from '../auth/LogoutButton';
 import './ChannelsNavBar.css';
 
 const ChannelsNavBar = () => {
     const dispatch = useDispatch();
     const { serverId } = useParams();
-    const [room, setRoom] = useState('')
     const [channelExists, setChannelExists] = useState(true)
 
     let { channelId } = useParams();
@@ -31,10 +30,9 @@ const ChannelsNavBar = () => {
 
     server = server ? server[0] : null
 
-    console.log(server)
+    // console.log(server)
 
     //moving user from server to channel
-    const sessionUser = useSelector(state => state.session.user);
 
     const allChannels = useSelector(state => state.channels)
     const allChannelsArr = Object.values(allChannels)
@@ -45,8 +43,8 @@ const ChannelsNavBar = () => {
 
 
     useEffect(() => {
-        if (user) dispatch(loadSingleUserServers(sessionUser.id));
-    }, [dispatch])
+        if (user) dispatch(loadSingleUserServers(user.id));
+    }, [dispatch, user])
 
     useEffect(() => {
         dispatch(loadChannels(serverId));
@@ -78,7 +76,7 @@ const ChannelsNavBar = () => {
                 </div>
                 {channels && channels.map(channel => (
                     <ul className='single-channel-div' key={channel.id}>
-                        <div className='channels-box' onClick={() => setRoom(channel.name)}>
+                        <div className='channels-box'>
                             <NavLink className={'channels'} to={`/channels/${serverId}/${channel.id}`}>
                                 <li className='channel-name' key={channel.id}># {channel.name}</li>
                             </NavLink>

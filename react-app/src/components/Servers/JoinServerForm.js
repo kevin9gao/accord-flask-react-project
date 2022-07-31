@@ -16,7 +16,7 @@ const JoinServerForm = ({ server, hideForm, setAlreadyJoined, alreadyJoined }) =
     return server.id === serverId
   })
 
-  console.log("ALREADY JOINED??", alreadyJoined, alreadyJoinedServer)
+  // console.log("ALREADY JOINED??", alreadyJoined, alreadyJoinedServer)
 
   useEffect(()=> {
     if (alreadyJoinedServer?.length > 0) {

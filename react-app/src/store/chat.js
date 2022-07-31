@@ -102,13 +102,13 @@ export const loadDMHistory = (senderId, recipientId) => async dispatch => {
 }
 
 export const sendDmMessage = (payload) => async dispatch => {
-  console.log('INSIDE THUNK send', payload)
+  // console.log('INSIDE THUNK send', payload)
   const res = await fetch('/api/chat/dms', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
   });
-  console.log('INSIDE THUNK, AFTER RES, res', res)
+  // console.log('INSIDE THUNK, AFTER RES, res', res)
 
   if (res.ok) {
     const message = await res.json();
@@ -136,7 +136,7 @@ export default function chatReducer(state = {}, action) {
 
     case SEND_LC:
       newState = { ...state };
-      console.log('IN REDUCER', action, action.type)
+      // console.log('IN REDUCER', action, action.type)
       newState['live-chat-history'][action.message.id] = action.message;
 
       return newState;
@@ -146,7 +146,7 @@ export default function chatReducer(state = {}, action) {
       newState = {}
       const dmHistory = action.list['dm_messages'];
       if (!newState['dm-messages']) newState['dm-messages'] = {};
-      console.log('REDUCER', action, action.list)
+      // console.log('REDUCER', action, action.list)
       dmHistory.forEach(message => {
         newState['dm-messages'][message.id] = message
       })
@@ -155,7 +155,7 @@ export default function chatReducer(state = {}, action) {
     case SAVEDM:
 
       newState = { ...state };
-      console.log('IN REDUCER', action, action.type)
+      // console.log('IN REDUCER', action, action.type)
       // if (!newState['dm-messages'])  newState['dm-messages'] = {};
       newState['dm-messages'][action.message.id] = action.message
       return newState

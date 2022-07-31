@@ -87,7 +87,7 @@ export const joinServer = payload => async dispatch => {
 }
 
 export const leaveServer = payload => async dispatch => {
-  console.log('INSIDE THUNK, payload', payload)
+  // console.log('INSIDE THUNK, payload', payload)
   const res = await fetch(`/api/servers/${payload.server_id}/leave`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

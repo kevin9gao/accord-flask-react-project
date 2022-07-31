@@ -19,25 +19,35 @@ const EditChannelForm = ({hideForm, channel, setChannelExists}) => {
     useEffect(() => {
         const errors = [];
         if (!editName) errors.push("Channel name cannot be empty");
-        if (channelsArr.map(channel => channel.name).includes(editName)) errors.push("Channel name must be unique");
         setValidationErrors(errors);
     }, [editName]);
 
     const onSubmit = async (e) => {
         e.preventDefault();
         setHasSubmitted(true);
+
+        const errors = [];
+
+        if (channelsArr.map(channel => channel.name).includes(editName)) errors.push("Channel name must be unique");
+
+        if (errors.length > 0) {
+            setValidationErrors([...validationErrors, ...errors]);
+        }
+
         if(validationErrors.length) alert("Cannot create channel");
 
-        const payload = {
-            id: channel.id,
-            name: editName,
-            server_id:  channel.server_id,
-        };
+        if (!errors.length) {
+            const payload = {
+                id: channel.id,
+                name: editName,
+                server_id:  channel.server_id,
+            };
 
-        let editedChannel = await dispatch(editChannel(payload));
-        if (editedChannel) reset();
-        setHasSubmitted(false);
-        hideForm();
+            let editedChannel = await dispatch(editChannel(payload));
+            if (editedChannel) reset();
+            setHasSubmitted(false);
+            hideForm();
+        }
     };
 
     const reset = () => {
