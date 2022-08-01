@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import './UsersList.css'
 
 function UsersList() {
 
   const [users, setUsers] = useState([]);
-
+  const { userId } = useParams();
   const sessionUser = useSelector(state => state.session.user);
   const usersList = users?.filter(user => {
     return (user.id !== sessionUser.id)
@@ -30,7 +30,7 @@ function UsersList() {
       <div className='direct-messages'>Direct Messages</div>
         <div className='user-box'>
           {usersList && usersList.map(user => (
-            <ul className='user-list' key={user.id}>
+            <ul className={(Number(userId) === user.id)? 'selected-user':'user-list'} key={user.id}>
 
               <div className='username-div' >
                 <NavLink to={`/channels/@me/${user.id}`} style={{ textDecoration: 'none' }}>

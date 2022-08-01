@@ -26,7 +26,7 @@
     font-size: 1.25rem;
 }
 
-.user-list {
+.user-list, .selected-user {
     margin: 0;
     padding: 15px;
     display: flex;
@@ -47,10 +47,25 @@
     /* text-decoration: none!important; */
 }
 
-.user-list li:hover {
-    background-color: rgb(52, 58, 64, 0.9);;
+.selected-user li {
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+    color: white;
+    width: 100%;
+    background-color: rgb(39, 132, 195);
+}
+
+.user-list li:hover{
+    background-color: rgb(52, 58, 64, 0.9);
     transition: all 1s ease;
-    color: white
+    color: white;
+}
+
+.selected-user li:hover {
+    background-color: rgb(39, 132, 195);
+    transition: all 1s ease;
+    color: white;
 }
 
 .username-div {
@@ -63,8 +78,10 @@
     width: 100%;
     color: lightgray;
     font-family: "Secular One", sans-serif;
-    padding-left: 10px;
+    padding-left: 20px;
 }
+
+
 
 #logout-btn-gear:hover {
     border: 2px solid rgb(148, 144, 144);
