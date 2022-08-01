@@ -2,7 +2,10 @@
 
 Accord is a fullstack web application modeled after the popular chat app, Discord. Signed up users have the ability to join communities or create their own community and chat through live messaging.
 
-Visit our live site here:
+Visit our live site here :https://accord-flask-react.herokuapp.com/
+
+![image](https://user-images.githubusercontent.com/46208016/182058926-efc02305-5efe-4614-be87-c83d6d794d33.png)
+
 
 ## Technologies Used
 * **Languages:** Javascript, Python, HTML/CSS
@@ -42,7 +45,7 @@ Visit our live site here:
 ## Features
 # Servers
 As a signed in user, one can access servers that the user is apart of, as well as being able to join other serversvia Discover page.  The signed in user has the capability to create servers if so desired, thereofre, that user becomes the owner of said server which enables the ability to edit and delete that specific server.  Servers can be found on the very left navigation bar, and he/she can create a server by clicking the "+" icon, which will have a form pop up to the user.  The user can edit and delete the created server by clicking the drop-down menu next to the server's name at the top of the following navigation bar.
-![image](https://user-images.githubusercontent.com/46208016/182057489-26157ccd-6172-496a-a1f0-75d8828e82a7.png)
+![image](https://user-images.githubusercontent.com/46208016/182059011-67c2c302-8010-47dc-90bc-00dfd200fb2d.png)
 ![image](https://user-images.githubusercontent.com/46208016/182057530-89ff1321-0329-4adc-99e1-70f5f8d3dac9.png)
 ![image](https://user-images.githubusercontent.com/46208016/182057572-3cdc9070-4268-4b80-a317-e20adb322bf2.png)
 
