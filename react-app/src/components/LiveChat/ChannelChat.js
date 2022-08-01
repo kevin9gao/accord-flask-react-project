@@ -19,6 +19,10 @@ const ChannelChat = () => {
 
 
   const { channelId, serverId } = useParams()
+  const channels = useSelector(state => state.channels);
+  const channel = channels[channelId]
+  // console.log('channel: ', channel)
+
   const dispatch = useDispatch();
 
   // console.log('channelId', channelId)
@@ -27,11 +31,6 @@ const ChannelChat = () => {
 
   // const channelRoom = useSelector(state => state.channel['room'])
   const user = useSelector(state => state.session.user);
-  const allChannels = useSelector(state => state.channels)
-
-  const channel = Object.values(allChannels).filter(channel => {
-    return channel['id'] === Number(channelId)
-  })[0]
 
 
   useEffect(() => {
@@ -124,8 +123,12 @@ const ChannelChat = () => {
               ))}
             </ul>
           )}
-          <input className='channel-chat-input' value={chatInput} onChange={updateChatInput} />
-          {/* <button className='channel-chat-button'>Send</button> */}
+          <input
+            className='channel-chat-input'
+            placeholder={`Message ${channel?.name}`}
+            value={chatInput}
+            onChange={updateChatInput}
+          />
         </form>
       </div>
     </div>

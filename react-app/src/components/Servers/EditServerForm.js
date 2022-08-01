@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 
 import { editServer } from "../../store/servers";
 
@@ -19,9 +18,6 @@ const EditServerForm = ({ server, hideForm }) => {
     useEffect(() => {
         const errors = [];
         if (!editName) errors.push("Server name cannot be empty");
-        if (serversArray.filter(otherServer => otherServer.id !== server.id).map(server => server.name).includes(editName)) {
-            errors.push("Server name must be unique");
-        }
         setValidationErrors(errors);
     }, [editName, editServerPicUrl]);
 
@@ -29,20 +25,32 @@ const EditServerForm = ({ server, hideForm }) => {
         e.preventDefault();
         setHasSubmitted(true);
 
+        const errors = [];
+
+        if (serversArray.filter(otherServer => otherServer.id !== server.id).map(server => server.name).includes(editName)) {
+            errors.push("Server name must be unique");
+        }
+
+        if (errors.length > 0) {
+            setValidationErrors([...validationErrors, ...errors]);
+        }
+
         if (validationErrors.length) alert("Cannot edit channel");
 
-        const payload = {
-            id: server.id,
-            name: editName,
-            owner_id: owner.id,
-            server_pic_url: editServerPicUrl
-        }
-        // console.log("payload in COMPONENT", payload )
+        if (!errors.length) {
+            const payload = {
+                id: server.id,
+                name: editName,
+                owner_id: owner.id,
+                server_pic_url: editServerPicUrl
+            }
+            // console.log("payload in COMPONENT", payload )
 
-        const editedServer = await dispatch(editServer(payload));
-        if (editedServer) reset();
-        setHasSubmitted(false);
-        hideForm();
+            const editedServer = await dispatch(editServer(payload));
+            if (editedServer) reset();
+            setHasSubmitted(false);
+            hideForm();
+        }
     }
 
     const reset = () => {

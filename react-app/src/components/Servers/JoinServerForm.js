@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory, useParams } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { joinServer } from "../../store/servers";
 
 const JoinServerForm = ({ server, hideForm, setAlreadyJoined, alreadyJoined }) => {
@@ -16,7 +16,7 @@ const JoinServerForm = ({ server, hideForm, setAlreadyJoined, alreadyJoined }) =
     return server.id === serverId
   })
 
-  console.log("ALREADY JOINED??", alreadyJoined, alreadyJoinedServer)
+  // console.log("ALREADY JOINED??", alreadyJoined, alreadyJoinedServer)
 
   useEffect(()=> {
     if (alreadyJoinedServer?.length > 0) {

@@ -12,31 +12,46 @@ const CreateChannelForm = ({ hideForm }) => {
     const channels = useSelector(state => state.channels);
     const channelsArr = Object.values(channels);
 
-    const [ name, setName ] = useState("");
-    const [ hasSubmitted, setHasSubmitted ] = useState(false);
-    const [ validationErrors, setValidationErrors ] = useState([]);
+    const [name, setName] = useState("");
+    const [hasSubmitted, setHasSubmitted] = useState(false);
+    const [validationErrors, setValidationErrors] = useState([]);
 
     useEffect(() => {
         const errors = [];
         if (!name) errors.push("Channel name cannot be empty");
-        if (channelsArr.map(channel => channel.name).includes(name)) errors.push("Channel name must be unique");
         setValidationErrors(errors);
     }, [name]);
 
     const onSubmit = async (e) => {
         e.preventDefault();
         setHasSubmitted(true);
-        if(validationErrors.length) alert("Cannot create channel");
 
-        const payload = {
-            name,
-            server_id:  serverId
-        };
+        const errors = [];
 
-        let createdChannel = await dispatch(createChannel(payload));
-        if (createdChannel) reset();
-        setHasSubmitted(false);
-        hideForm();
+        if (channelsArr.map(channel => channel.name).includes(name)) errors.push("Channel name must be unique");
+        // console.log('channelsArr.map(channel => channel.name).includes(name)', channelsArr.map(channel => channel.name).includes(name))
+
+        // console.log('errors', errors);
+        if (errors.length > 0) {
+            // console.log('validationErrors', validationErrors)
+            // console.log('errors', errors)
+            setValidationErrors([...validationErrors, ...errors]);
+            // console.log('validationErrors', validationErrors)
+        }
+
+        if (validationErrors.length) alert("Cannot create channel");
+
+        if (!errors.length) {
+            const payload = {
+                name,
+                server_id: serverId
+            };
+
+            let createdChannel = await dispatch(createChannel(payload));
+            if (createdChannel) reset();
+            setHasSubmitted(false);
+            hideForm();
+        }
     };
 
     const reset = () => {

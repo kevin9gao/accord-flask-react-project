@@ -1,10 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
 
 import './NavBar.css'
-import SignUpForm from './auth/SignUpForm';
 import LoginFormModal from './LoginFormModal';
 import DemoUser from './LoginFormModal/DemoUser';
 
@@ -13,12 +11,6 @@ const NavBar = () => {
 
   let sessionLinks;
   if (!user) {
-  //   sessionLinks = (
-  //     <div>
-  //       <LogoutButton />
-  //     </div>
-  //   )
-  // } else {
     sessionLinks = (
       <div>
         <div>

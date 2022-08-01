@@ -1,19 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
-import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import Footer from './components/Footer'
 import SplashPage from './components/SplashPage';
 import ServerDiscover from './components/Servers/ServerDiscover';
-import { loadServers } from './store/servers';
 import ChannelsNavBar from './components/Channels/ChannelsNavBar';
-import CreateServerModal from './components/Servers/CreateServerModal';
 import ServersNavBar from './components/Servers/ServersNavbar';
 import ServerMainPage from './components/Servers/ServerMainPage';
 import DmNavBar from './components/Dms/DmNavBar';

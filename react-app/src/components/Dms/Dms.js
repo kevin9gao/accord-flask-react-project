@@ -15,7 +15,6 @@ const DmChat = () => {
     const [chatInput, setChatInput] = useState('');
     const [users, setUsers] = useState([]);
     const [validationErrors, setValidationErrors] = useState([]);
-    const [hasSubmitted, setHasSubmitted] = useState(false);
     const { userId } = useParams();
     let recipientId = Number(userId)
 
@@ -25,7 +24,7 @@ const DmChat = () => {
         return user.id === recipientId
     })[0];
 
-    console.log('recipient', recipient)
+    // console.log('recipient', recipient)
 
     const dmHistoryObj = useSelector(state => state['chat']['dm-messages']);
     const dmHistory = dmHistoryObj ? Object.values(dmHistoryObj) : null;
@@ -36,7 +35,7 @@ const DmChat = () => {
     // })
 
 
-    console.log('DM HISTORY', dmHistory)
+    // console.log('DM HISTORY', dmHistory)
 
     // console.log("PRIVATE HISTORY", privateHistory)
 
@@ -49,9 +48,6 @@ const DmChat = () => {
         fetchData();
     }, [])
 
-
-
-    const sender = sessionUser;
 
     // const recipient = users.filter(user => {
     //     return user.id === Number(recipientId)
@@ -87,7 +83,7 @@ const DmChat = () => {
         socket.on('dm_chat', chat => {
             // when receive a chat, add to messages state var
             setMessages(messages => [...messages, chat]);
-            console.log('chat in socket.on(dm_chat):', chat)
+            // console.log('chat in socket.on(dm_chat):', chat)
         })
 
         //when component unmounts, disconnect
@@ -105,7 +101,6 @@ const DmChat = () => {
 
     const sendChat = async (e) => {
         e.preventDefault();
-        setHasSubmitted(true);
 
         if (validationErrors.length === 0) {
             //emit a message
@@ -125,7 +120,6 @@ const DmChat = () => {
             }
 
             await dispatch(sendDmMessage(payload));
-            setHasSubmitted(false);
             setChatInput('');
         }
 

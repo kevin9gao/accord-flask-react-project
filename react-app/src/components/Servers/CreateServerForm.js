@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { createChannel } from "../../store/channels";
 
 import { createServer, joinServer } from "../../store/servers";
 import './CreateServer.css';
 
 const CreateServerForm = ({ hideForm }) => {
     const dispatch = useDispatch();
-    // const history = useHistory();
+    const history = useHistory();
 
     const owner = useSelector(state => state.session.user);
     const servers = useSelector(state => state.servers);
@@ -21,7 +22,6 @@ const CreateServerForm = ({ hideForm }) => {
     useEffect(() => {
         const errors = [];
         if (!name) errors.push("Server name cannot be empty");
-        if (serversArray.map(server => server.name).includes(name)) errors.push("Server name must be unique");
         setValidationErrors(errors);
     }, [name]);
 
@@ -29,25 +29,39 @@ const CreateServerForm = ({ hideForm }) => {
         e.preventDefault();
         setHasSubmitted(true);
 
+        const errors = [];
+
+        if (serversArray.map(server => server.name).includes(name)) errors.push("Server name must be unique");
+
+        if (errors.length > 0) {
+            setValidationErrors([...validationErrors, ...errors]);
+        }
+
         if (validationErrors.length) alert("Cannot create new server");
 
-        const payload = {
-            name,
-            owner_id: owner.id,
-            server_pic_url: !!serverPicUrl ? serverPicUrl : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZa82uPbc_oNLQh2TxnFsvEQaO4qQTQs14mg&usqp=CAU'
-        };
+        if (!errors.length) {
+            const payload = {
+                name,
+                owner_id: owner.id,
+                server_pic_url: !!serverPicUrl ? serverPicUrl : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZa82uPbc_oNLQh2TxnFsvEQaO4qQTQs14mg&usqp=CAU'
+            };
 
-        const createdServer = await dispatch(createServer(payload));
-        const joinServerPayload = {
-            user_id: owner.id,
-            server_id: createdServer.id
+            const createdServer = await dispatch(createServer(payload));
+            const joinServerPayload = {
+                user_id: owner.id,
+                server_id: createdServer.id
+            }
+            await dispatch(joinServer(joinServerPayload))
+            // console.log("FRONTEND ROUTE, createdserver", createdServer)
+            // console.log('createserver component, owner: ', owner);
+            if (createdServer) {
+                reset();
+                setHasSubmitted(false);
+                hideForm();
+                await dispatch(createChannel({ name: 'General', server_id: createdServer.id }))
+                history.push(`/channels/${createdServer.id}`);
+            }
         }
-        await dispatch(joinServer(joinServerPayload))
-        // console.log("FRONTEND ROUTE, createdserver", createdServer)
-        // console.log('createserver component, owner: ', owner);
-        if (createdServer) reset();
-        setHasSubmitted(false);
-        hideForm();
     }
 
     const reset = () => {

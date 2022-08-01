@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import * as sessionActions from "../../store/session";
 import * as serverActions from "../../store/servers";
 import { NavLink } from "react-router-dom";
 import JoinServerModal from './JoinServerModal';
@@ -12,9 +11,6 @@ export default function ServerDiscover() {
     const servers = useSelector(state => state.servers)
     const user = useSelector(state => state.session.user)
 
-    const userServers = servers ? servers['user-servers'] : null
-    const userServersArr = userServers ? Object.values(userServers) : null
-    // console.log(userServersArr)
     const serversArray = servers ? Object.values(servers) : null
     // console.log("server array",serversArray)
 
