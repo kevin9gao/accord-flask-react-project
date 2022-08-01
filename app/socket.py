@@ -6,7 +6,8 @@ from app.models import Channel, db
 
 if os.environ.get('FLASK_ENV') == 'production':
   origins = [
-    'https://accord-flask-react.herokuapp.com/'
+    'https://accord-flask-react.herokuapp.com/',
+    'http://accord-flask-react.herokuapp.com/'
   ]
 else:
   origins = '*'
