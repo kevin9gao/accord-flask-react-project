@@ -65,7 +65,7 @@ const CreateChannelForm = ({ hideForm }) => {
 
     return (
         <>
-            <form onSubmit={onSubmit}>
+            <form className="create-channel" onSubmit={onSubmit}>
                 {hasSubmitted && validationErrors.length > 0 && (
                     <ul>
                         {validationErrors.map(error => (

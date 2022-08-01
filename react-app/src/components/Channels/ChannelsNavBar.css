@@ -17,6 +17,7 @@
     width: 256px;
     background-color: #495057;
     border-bottom: 0.5px solid lightgrey;
+    padding-bottom: 2px;
 }
 
 .channel-server-name {
@@ -26,7 +27,7 @@
     /* padding-right: 8rem; */
     margin: 10px;
     width: fit-content;
-    font-size: 14px;
+    font-size: 20px;
 }
 
 .server-name-in-channel-div {
@@ -38,8 +39,9 @@ button.dropdown-button {
     border: none;
     padding: 0;
     position: fixed;
-    margin-left: 243px;
+    margin-left: 235px;
     margin-top: 15px;
+    padding-top: 5px;
 }
 
 .fa-solid.fa-angle-down {
@@ -107,7 +109,8 @@ button.drp-server-btn:hover {
 .channels-navbar {
     display: flex;
     height: 30px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    margin-left: 5px;
 }
 .text-channels {
     font-size: 13px;
@@ -150,7 +153,7 @@ button.create-channel-btn {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 15px;
     height: 8px;
-    padding: 5px;
+    padding: 13px 3px;
 }
 
 .channel-name {
@@ -158,6 +161,17 @@ button.create-channel-btn {
     text-align: left;
     /* padding-bottom: 5px; */
     overflow: hidden;
+    font-size: 16px;
+    padding-bottom: 10px;
+}
+
+.selected-channel {
+    list-style: none;
+    text-align: left;
+    color: rgb(39, 132, 195);
+    overflow: hidden;
+    font-size: 16px;
+    padding-bottom: 10px;
 }
 
 .channel-name:hover {
@@ -175,6 +189,7 @@ button.edit-channel-btn {
     /* top: 10rem; */
     left: 14.5rem;
     z-index: -1000000;
+    font-size: 18px;
 }
 
 .fa-solid.fa-gear:hover {

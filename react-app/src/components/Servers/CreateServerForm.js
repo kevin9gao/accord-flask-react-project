@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createChannel } from "../../store/channels";
-
 import { createServer, joinServer } from "../../store/servers";
 import './CreateServer.css';
 
@@ -70,7 +69,7 @@ const CreateServerForm = ({ hideForm }) => {
 
     return (
         <>
-            <form onSubmit={onSubmit}>
+            <form className="create-server" onSubmit={onSubmit}>
                 {hasSubmitted && validationErrors.length > 0 && (
                     <ul>
                         {validationErrors.map(error => (
