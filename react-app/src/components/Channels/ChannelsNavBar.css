@@ -183,7 +183,7 @@ button.edit-channel-btn {
 }
 
 .display-user {
-    background-color: #434b52;
+    background-color:  rgb(39, 132, 195);
     display: flex;
     position: fixed;
     bottom: 0;

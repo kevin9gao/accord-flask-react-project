@@ -23,7 +23,7 @@ const NavBar = () => {
 
   return (
     <nav>
-      <ul className='navigation'>
+      <ul className={user? 'navigation-home': "navigation"}>
         <div>
           <div className='accord-logo-div'>
             {user && (

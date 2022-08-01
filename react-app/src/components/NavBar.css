@@ -1,48 +1,27 @@
-/* .navigation {
-    display: flex;
-    justify-content: space-between;
-    text-decoration: none;
-    position: absolute;
-    color: white;
-} */
 
-/* .navigation {
-    display: flex;
-    justify-content: space-between;
-    position: static;
-    margin-right: 10px;
-    color: red;
-} */
-/* nav {
-    position: relative;
-    height: 50px;
-    border: 1px solid red;
-    top: 0;
-    margin: 0px;
-} */
-
-
-/* .navigation {
-    width: 80%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    top: 0;
-} */
 .navigation {
     display: flex;
     justify-content: space-between;
     /* border: 1px solid red; */
-    margin: .5em auto;
+    /* margin: .5em auto; */
+    background-color: rgb(1, 65, 108);
+    margin: 0;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+.navigation-home {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 2em ;
 }
 
 .navigation>div {
     display: flex;
 }
 
-.navigation>div>div{
+.navigation>div>div {
     margin-right: 10px;
 }
 
@@ -63,11 +42,11 @@
 
 .accord-logo-no-user {
     text-decoration: none;
-    color: rgb(39, 132, 195);
+    color: rgb(255, 255, 255);
     letter-spacing: 0.5;
     text-align: center;
     font-family: 'Press Start 2P', sans-serif;
-    font-size: 15px;
+    font-size: 20px;
     padding-bottom: 10px;
 }
 
@@ -75,15 +54,21 @@
     text-align: left;
     margin: 10px;
 }
+
 .splash-discover-div {
-    margin-top: 7px;
+    margin-top: 10px;
 }
 
 .splash-discover {
     font-size: 15px;
     text-decoration: none;
-    color: rgb(39, 132, 195);
+    color: rgb(255, 255, 255);
     font-weight: 500;
+    transition-property: text-decoration;
+}
+
+.splash-discover:hover {
+    text-decoration: underline 1px solid white;
 }
 
 .log-in-splash-btn {
@@ -93,19 +78,21 @@
     width: 60px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align: center;
-    margin-left: 5px;
+    margin-right: 10px;
 }
 
 .log-in-splash-btn:hover {
     cursor: pointer;
     background-color: rgb(39, 132, 195);
     color: white;
+
 }
 
 .form-misc {
     display: flex;
     flex-direction: column;
 }
+
 .login-modal-label {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: white;
@@ -115,7 +102,7 @@
     text-transform: uppercase;
     font-size: 14px;
     /* margin-bottom: 8px; */
-    
+
 }
 
 input.login-modal-input {
@@ -130,7 +117,8 @@ input.login-modal-input {
     font-size: 14px;
     padding-left: 5px;
     /* margin-bottom: 5px; */
-    color: #434b52;;
+    color: #434b52;
+    ;
 }
 
 .login-splash-submit-btn {
@@ -138,7 +126,7 @@ input.login-modal-input {
     color: white;
     border-radius: 5px;
     width: 250;
-    line-height:  26px;
+    line-height: 26px;
     margin-top: 10px;
 }
 
