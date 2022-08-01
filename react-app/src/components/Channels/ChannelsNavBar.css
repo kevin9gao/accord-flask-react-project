@@ -189,6 +189,7 @@ button.edit-channel-btn {
     /* top: 10rem; */
     left: 14.5rem;
     z-index: -1000000;
+    font-size: 18px;
 }
 
 .fa-solid.fa-gear:hover {
