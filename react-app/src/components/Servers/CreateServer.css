@@ -1,9 +1,15 @@
 h3 {
     font-size: 24px;
-    text-align: left;
+    text-align: center;
     margin-top: 10px;
 }
 
+form.create-server, form.edit-server {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .create-server-label {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 12px;
@@ -58,4 +64,8 @@ input.create-server-input {
     border-radius: 5px;
     color: white;
     margin-right: 10px;
+}
+
+.create-server-submit-btn:hover {
+    background-color: rgb(18, 117, 183);
 }

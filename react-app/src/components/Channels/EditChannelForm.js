@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
-
+import "./CreateChannel.css"
 import { editChannel, deleteChannel } from "../../store/channels";
 
 const EditChannelForm = ({hideForm, channel, setChannelExists}) => {
@@ -69,7 +69,7 @@ const EditChannelForm = ({hideForm, channel, setChannelExists}) => {
 
     return (
         <div>
-            <form onSubmit={onSubmit}>
+            <form className="edit-channel" onSubmit={onSubmit}>
                 {hasSubmitted && validationErrors.length > 0 && (
                     <ul>
                         {validationErrors.map(error => (

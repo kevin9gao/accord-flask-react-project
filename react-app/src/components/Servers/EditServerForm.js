@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import "./CreateServer.css"
 import { editServer } from "../../store/servers";
 
 const EditServerForm = ({ server, hideForm, showMenu, setShowMenu }) => {
@@ -60,7 +60,7 @@ const EditServerForm = ({ server, hideForm, showMenu, setShowMenu }) => {
 
     return (
         <>
-            <form onSubmit={onSubmit}>
+            <form className="edit-server" onSubmit={onSubmit}>
                 {hasSubmitted && validationErrors.length > 0 && (
                     <ul>
                         {validationErrors.map(error => (

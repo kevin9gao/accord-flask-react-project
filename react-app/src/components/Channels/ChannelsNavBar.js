@@ -70,15 +70,12 @@ const ChannelsNavBar = () => {
                     <h4 className='text-channels'>CHANNELS</h4>
                     <CreateChannelModal />
                 </div>
-                <div>
-                    {/* this should be on discovery main page: */}
-                    {/* <h1>Any other fillers we want on the main page of a server</h1> */}
-                </div>
+
                 {channels && channels.map(channel => (
                     <ul className='single-channel-div' key={channel.id}>
                         <div className='channels-box'>
                             <NavLink className={'channels'} to={`/channels/${serverId}/${channel.id}`}>
-                                <li className='channel-name' key={channel.id}># {channel.name}</li>
+                                <li className={!(Number(channelId)=== channel.id )? 'channel-name': 'selected-channel'} key={channel.id}># {channel.name}</li>
                             </NavLink>
                         </div>
                         <EditChannelModal channel={channel} setChannelExists={setChannelExists} />

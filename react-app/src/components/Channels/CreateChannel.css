@@ -55,11 +55,25 @@ button.cancel-create-channel-btn {
 .delete-channel-btn {
     display: block;
     color: white;
+    transition-property: color;
 }
 
-.delete-channel-btn:hover,
-.cancel-create-channel-btn:hover,
-.create-channel-submit-btn:hover {
+.delete-channel-btn:hover {
     cursor: pointer;
     text-decoration: underline;
+    color: red;
+}
+
+.cancel-create-channel-btn:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+.create-channel-submit-btn:hover {
+    background-color: rgb(18, 117, 183);
+}
+
+form.create-channel, form.edit-channel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
