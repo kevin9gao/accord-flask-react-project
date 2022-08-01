@@ -42,7 +42,7 @@ Visit our live site here:
 ## Features
 # Servers
 As a signed in user, one can access servers that the user is apart of, as well as being able to join other serversvia Discover page.  The signed in user has the capability to create servers if so desired, thereofre, that user becomes the owner of said server which enables the ability to edit and delete that specific server.  Servers can be found on the very left navigation bar, and he/she can create a server by clicking the "+" icon, which will have a form pop up to the user.  The user can edit and delete the created server by clicking the drop-down menu next to the server's name at the top of the following navigation bar.
-![image](https://user-images.githubusercontent.com/46208016/182057489-26157ccd-6172-496a-a1f0-75d8828e82a7.png)
+![image](https://user-images.githubusercontent.com/46208016/182058715-5a440642-2011-4485-9a17-a95fd8fdfd7c.png)
 ![image](https://user-images.githubusercontent.com/46208016/182057530-89ff1321-0329-4adc-99e1-70f5f8d3dac9.png)
 ![image](https://user-images.githubusercontent.com/46208016/182057572-3cdc9070-4268-4b80-a317-e20adb322bf2.png)
 
