@@ -63,7 +63,7 @@ const ChannelChat = () => {
       socket.disconnect()
       setMessages([]);
     })
-  }, [channelId])
+  }, [channelId, messages])
 
 
   const updateChatInput = e => {
