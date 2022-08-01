@@ -6,7 +6,6 @@ import EditServerModal from "../Servers/EditServerModal";
 import '../Channels/ChannelsNavBar.css';
 
 const ServerNameDropDown = ({ server }) => {
-
     const user = useSelector(state => state.session.user)
     // const userServers = useSelector(state => state?.servers['user-servers'])
     const [showMenu, setShowMenu] = useState(false);
@@ -31,6 +30,7 @@ const ServerNameDropDown = ({ server }) => {
         }
         // console.log('FRONTEND, payload', payload)
         await dispatch(leaveServer(payload))
+        history.push('/channels/@me')
     }
 
     // console.log(server)
