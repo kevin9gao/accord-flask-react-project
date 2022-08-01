@@ -45,8 +45,11 @@ Visit our live site here :https://accord-flask-react.herokuapp.com/
 ## Features
 # Servers
 As a signed in user, one can access servers that the user is apart of, as well as being able to join other serversvia Discover page.  The signed in user has the capability to create servers if so desired, thereofre, that user becomes the owner of said server which enables the ability to edit and delete that specific server.  Servers can be found on the very left navigation bar, and he/she can create a server by clicking the "+" icon, which will have a form pop up to the user.  The user can edit and delete the created server by clicking the drop-down menu next to the server's name at the top of the following navigation bar.
+<br/>
 ![image](https://user-images.githubusercontent.com/46208016/182059011-67c2c302-8010-47dc-90bc-00dfd200fb2d.png)
+<br/>
 ![image](https://user-images.githubusercontent.com/46208016/182057530-89ff1321-0329-4adc-99e1-70f5f8d3dac9.png)
+<br/>
 ![image](https://user-images.githubusercontent.com/46208016/182057572-3cdc9070-4268-4b80-a317-e20adb322bf2.png)
 
 # Channels
@@ -72,3 +75,4 @@ A signed in user can view other users and create direct messages.  This feature 
 * Server Roles
 
 ## Technical Implementation Details
+Accord brought many challenges to the team, primarily implementing web sockets.  Web sockets proved to be the most diffcult task placed upon the team because there was not any prior instruction on how to implement this task.  Through constant research and attempts of implementing web sockets, the team was able to implement the web sockets and can be viewed through Direct Messages via Private Servers and Live Chat.  
