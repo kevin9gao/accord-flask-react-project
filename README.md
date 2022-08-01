@@ -4,7 +4,7 @@ Accord is a fullstack web application modeled after the popular chat app, Discor
 
 Visit our live site here :https://accord-flask-react.herokuapp.com/
 
-![image](https://user-images.githubusercontent.com/46208016/182058926-efc02305-5efe-4614-be87-c83d6d794d33.png)
+![image](https://user-images.githubusercontent.com/46208016/182064365-05db5961-1d2a-4737-a619-1d35fa885819.png)
 
 
 ## Technologies Used
