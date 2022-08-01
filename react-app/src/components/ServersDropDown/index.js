@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { deleteServer, leaveServer, loadSingleUserServers } from "../../store/servers";
+import { deleteServer, leaveServer, loadServers } from "../../store/servers";
 import EditServerModal from "../Servers/EditServerModal";
 import '../Channels/ChannelsNavBar.css';
 
@@ -22,9 +22,9 @@ const ServerNameDropDown = () => {
     server = server ? server[0] : null
     console.log(server)
   
-    useEffect(() => {
-        if (!showMenu) return;
-    }, [showMenu]);
+    // useEffect(() => {
+    //     if (!showMenu) return;
+    // }, [showMenu]);
 
     const deleteServ = async (id) => {
         await dispatch(deleteServer(id));
@@ -50,7 +50,8 @@ const ServerNameDropDown = () => {
     }, [server?.id])
 
     useEffect(() => {
-        dispatch(loadSingleUserServers(user?.id))
+        dispatch(loadServers())
+
     }, [dispatch, server?.name])
 
     return (
@@ -63,7 +64,7 @@ const ServerNameDropDown = () => {
                 <div className="dropdown-container">
                     {user?.id === server?.owner_id && (
                         <div>
-                            <EditServerModal server={server} />
+                            <EditServerModal server={server} showMenu={showMenu} setShowMenu={setShowMenu} />
                             <div className="dropdown-delete-div">
                                 <button className="drp-server-btn" id="dropdown-delete" type="submit" onClick={() => deleteServ(server.id)}>Delete Server</button>
                                 <i className="fa-solid fa-trash-can"></i>

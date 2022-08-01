@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { editServer } from "../../store/servers";
 
-const EditServerForm = ({ server, hideForm }) => {
+const EditServerForm = ({ server, hideForm, showMenu, setShowMenu }) => {
     const dispatch = useDispatch();
 
     const owner = useSelector(state => state.session.user);
@@ -50,6 +50,7 @@ const EditServerForm = ({ server, hideForm }) => {
             if (editedServer) reset();
             setHasSubmitted(false);
             hideForm();
+            setShowMenu(false);
         }
     }
 
