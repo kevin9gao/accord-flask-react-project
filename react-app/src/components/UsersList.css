@@ -1,0 +1,75 @@
+.user-list-container {
+    margin-left: 10rem;
+    /* position: absolute; */
+    display: flex;
+    flex-direction: column;
+    background-color: #495057;
+    color: white;
+    min-height: 100vh;
+    align-items: center;
+    width: 256px;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 128px;
+}
+
+.user-box {
+    margin-left: 10rem;
+    height: 100%;
+    /* display: flex;
+    flex-direction: column; */
+    /* align-items: center; */
+    margin: 0;
+    padding: 0;
+    font-size: 1.25rem;
+}
+
+.user-list {
+    margin: 0;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    list-style: none;
+    /* margin-left: -8rem; */
+    text-align: left;
+    /* width: 140px; */
+}
+
+.user-list li {
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+    color: lightgrey;
+    width: 100%;
+    /* text-decoration: none!important; */
+}
+
+.user-list li:hover {
+    background-color: rgb(52, 58, 64, 0.9);;
+    transition: all 1s ease;
+    color: white
+}
+
+.username-div {
+    width: 256px;
+    /* background-color: white; */
+    line-height: 3;
+}
+
+.userslist-username {
+    width: 100%;
+    color: lightgray;
+    font-family: "Secular One", sans-serif;
+    padding-left: 10px;
+}
+
+#logout-btn-gear:hover {
+    border: 2px solid rgb(148, 144, 144);
+    border-radius: 5px;
+    padding: .1em;
+    color: rgb(39, 132, 195);
+    background-color: #9fa6af;
+}

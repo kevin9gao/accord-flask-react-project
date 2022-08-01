@@ -1,0 +1,24 @@
+.dm-navbar-container{
+  background-color: #495057;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 0;
+  width: 16rem;
+  align-items: center;
+
+}
+
+.direct-messages {
+  text-transform: uppercase;
+  font-size: 13px;
+  color:lightgray;
+  text-align: left;
+  margin-top: 2rem;
+  margin-left: -5.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 0.5px solid lightgrey;
+  padding-bottom: 10px;
+}
+
