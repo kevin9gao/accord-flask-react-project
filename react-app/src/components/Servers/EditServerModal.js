@@ -5,7 +5,7 @@ import EditServerForm from './EditServerForm';
 
 import '../Channels/ChannelsNavBar.css'
 
-const EditServerModal = ({ server }) => {
+const EditServerModal = ({ server, showMenu, setShowMenu }) => {
     const [ showModal, setShowModal ] = useState(false);
 
     return (
@@ -17,7 +17,7 @@ const EditServerModal = ({ server }) => {
             </div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <EditServerForm server={server} hideForm={() => setShowModal(false)} />
+                    <EditServerForm server={server} hideForm={() => setShowModal(false)} showMenu={showMenu} setShowMenu={setShowMenu} />
                 </Modal>
             )}
         </div>
